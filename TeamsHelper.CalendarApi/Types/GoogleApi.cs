@@ -9,16 +9,18 @@ namespace TeamsHelper.CalendarApi
     public class GoogleApi
     {
         public IGetCalendarsRequestGenerator GetCalendarsRequestGenerator;
+        public IGetCalendarRequestGenerator GetCalendarRequestGenerator;
         public ICreateCalendarRequestGenerator CreateCalendarRequestGenerator;
         public IInsertEventRequestGenerator InsertEventRequestGenerator;
         
         readonly HttpClient _http = new HttpClient();
 
-        public GoogleApi(IGetCalendarsRequestGenerator getCalendarsRequestGenerator, ICreateCalendarRequestGenerator createCalendarRequestGenerator, IInsertEventRequestGenerator insertEventRequestGenerator)
+        public GoogleApi(IGetCalendarsRequestGenerator getCalendarsRequestGenerator, ICreateCalendarRequestGenerator createCalendarRequestGenerator, IInsertEventRequestGenerator insertEventRequestGenerator, IGetCalendarRequestGenerator getCalendarRequestGenerator)
         {
             GetCalendarsRequestGenerator = getCalendarsRequestGenerator;
             CreateCalendarRequestGenerator = createCalendarRequestGenerator;
             InsertEventRequestGenerator = insertEventRequestGenerator;
+            GetCalendarRequestGenerator = getCalendarRequestGenerator;
         }
 
         public async Task<List<Calendar>> GetCalendarsAsync(string accessToken)
@@ -31,6 +33,14 @@ namespace TeamsHelper.CalendarApi
             return calendars;
         }
 
+        public async Task<Calendar> GetCalendar(string calendarId, string accessToken)
+        {
+            HttpRequestMessage req = GetCalendarRequestGenerator.Generate(calendarId, accessToken);
+            HttpResponseMessage response = await _http.SendAsync(req);
+            string content = await response.Content.ReadAsStringAsync();
+            return JObject.Parse(content)["items"].ToObject<Calendar>();
+        }
+        
         public async Task<Calendar> CreateCalendarAsync(Calendar calendar, string accessToken)
         {
             HttpRequestMessage req = CreateCalendarRequestGenerator.Generate(calendar, accessToken);
