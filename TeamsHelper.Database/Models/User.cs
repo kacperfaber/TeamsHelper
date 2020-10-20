@@ -13,8 +13,12 @@ namespace TeamsHelper.Database
 
         [ForeignKey("MicrosoftAuthorizationId")]
         public Authorization MicrosoftAuthorization { get; set; }
+
+        public Guid? MicrosoftAuthorizationId { get; set; }
         
         [ForeignKey("GoogleAuthorizationId")]
         public Authorization GoogleAuthorization { get; set; }
+
+        public Guid? GoogleAuthorizationId { get; set; }
     }
 }
