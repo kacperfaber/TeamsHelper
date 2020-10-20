@@ -17,7 +17,14 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "projectReferences": {}
+        "projectReferences": {
+          "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {
+            "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj"
+          },
+          "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj": {
+            "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj"
+          }
+        }
       }
     },
     "warningProperties": {

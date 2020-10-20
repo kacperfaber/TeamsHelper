@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models" />
+      <ProjectReference Include="..\TeamsHelper.CalendarApi\TeamsHelper.CalendarApi.csproj" />
+      <ProjectReference Include="..\TeamsHelper.TeamsApi\TeamsHelper.TeamsApi.csproj" />
     </ItemGroup>
 </Project>
