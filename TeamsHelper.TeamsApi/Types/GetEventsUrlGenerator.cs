@@ -7,7 +7,7 @@ namespace TeamsHelper.TeamsApi
         public string Generate(TeamsCalendar calendar, DateTime startingAt, DateTime endingAt)
         {
             return
-                $"https://outlook.office.com/api/v2.0/me/calendars/{calendar.Id}/calendarview?startDateTime={startingAt}&endDateTime={endingAt}";
+                $"https://graph.microsoft.com/v1.0/me/calendars/{calendar.Id}/calendarView?startDateTime={startingAt}&endDateTime={endingAt}";
         }
     }
 }
