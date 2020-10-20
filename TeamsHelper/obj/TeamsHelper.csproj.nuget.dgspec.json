@@ -173,6 +173,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "Spencer.NET": {
+              "target": "Package",
+              "version": "[1.1.3000, )"
             }
           },
           "imports": [
