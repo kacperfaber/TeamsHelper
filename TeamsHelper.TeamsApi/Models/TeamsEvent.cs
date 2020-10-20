@@ -1,7 +1,6 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace TeamsHelper
+namespace TeamsHelper.TeamsApi
 {
     public class TeamsEvent
     {
