@@ -14,7 +14,15 @@ namespace TeamsHelper
         public IMicrosoftTokenRefresher MicrosoftTokenRefresher;
         public IGoogleTokenRefresher GoogleTokenRefresher;
         public TeamsHelper Helper;
-        
+
+        public Worker(IGoogleTokenRefresher googleTokenRefresher, IMicrosoftTokenRefresher microsoftTokenRefresher, ILocalConfigurationProvider configurationProvider, TeamsHelper helper)
+        {
+            GoogleTokenRefresher = googleTokenRefresher;
+            MicrosoftTokenRefresher = microsoftTokenRefresher;
+            ConfigurationProvider = configurationProvider;
+            Helper = helper;
+        }
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
