@@ -10,13 +10,15 @@ namespace TeamsHelper.CalendarApi
     {
         public IGetCalendarsRequestGenerator GetCalendarsRequestGenerator;
         public ICreateCalendarRequestGenerator CreateCalendarRequestGenerator;
+        public IInsertEventRequestGenerator InsertEventRequestGenerator;
         
         readonly HttpClient _http = new HttpClient();
 
-        public GoogleApi(IGetCalendarsRequestGenerator getCalendarsRequestGenerator, ICreateCalendarRequestGenerator createCalendarRequestGenerator)
+        public GoogleApi(IGetCalendarsRequestGenerator getCalendarsRequestGenerator, ICreateCalendarRequestGenerator createCalendarRequestGenerator, IInsertEventRequestGenerator insertEventRequestGenerator)
         {
             GetCalendarsRequestGenerator = getCalendarsRequestGenerator;
             CreateCalendarRequestGenerator = createCalendarRequestGenerator;
+            InsertEventRequestGenerator = insertEventRequestGenerator;
         }
 
         public async Task<List<Calendar>> GetCalendarsAsync(string accessToken)
@@ -36,6 +38,14 @@ namespace TeamsHelper.CalendarApi
 
             string content = await response.Content.ReadAsStringAsync();
             return JObject.Parse(content).ToObject<Calendar>();
+        }
+
+        public async Task<Event> InsertEventAsync(Calendar calendar, Event googleEvent, string accessToken)
+        {
+            HttpRequestMessage request = InsertEventRequestGenerator.Generate(calendar, googleEvent, accessToken);
+            HttpResponseMessage response = await _http.SendAsync(request);
+            string content = await response.Content.ReadAsStringAsync();
+            return JObject.Parse(content).ToObject<Event>();
         }
     }
 }
