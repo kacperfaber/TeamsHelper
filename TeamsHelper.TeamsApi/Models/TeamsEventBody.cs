@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TeamsHelper
+namespace TeamsHelper.TeamsApi
 {
     public class TeamsEventBody
     {

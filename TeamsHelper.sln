@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamsHelper", "TeamsHelper\TeamsHelper.csproj", "{3B64A4C8-DF6A-4CF5-9FC8-E6116162B002}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamsHelper.CalendarApi", "TeamsHelper.CalendarApi\TeamsHelper.CalendarApi.csproj", "{5B585918-7FFB-4094-B7C5-A639EF7300EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamsHelper.TeamsApi", "TeamsHelper.TeamsApi\TeamsHelper.TeamsApi.csproj", "{5E235061-AF62-49E7-8B2E-459E03650643}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamsHelper.Database", "TeamsHelper.Database\TeamsHelper.Database.csproj", "{5893720F-F78C-4013-8342-6AC173BD8652}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{3B64A4C8-DF6A-4CF5-9FC8-E6116162B002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B64A4C8-DF6A-4CF5-9FC8-E6116162B002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B64A4C8-DF6A-4CF5-9FC8-E6116162B002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B585918-7FFB-4094-B7C5-A639EF7300EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B585918-7FFB-4094-B7C5-A639EF7300EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B585918-7FFB-4094-B7C5-A639EF7300EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B585918-7FFB-4094-B7C5-A639EF7300EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E235061-AF62-49E7-8B2E-459E03650643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E235061-AF62-49E7-8B2E-459E03650643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E235061-AF62-49E7-8B2E-459E03650643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E235061-AF62-49E7-8B2E-459E03650643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5893720F-F78C-4013-8342-6AC173BD8652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5893720F-F78C-4013-8342-6AC173BD8652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5893720F-F78C-4013-8342-6AC173BD8652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5893720F-F78C-4013-8342-6AC173BD8652}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

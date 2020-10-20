@@ -1,4 +1,4 @@
-﻿namespace TeamsHelper
+﻿namespace TeamsHelper.TeamsApi
 {
     public class TeamsEventOrganizer
     {
