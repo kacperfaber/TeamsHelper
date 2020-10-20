@@ -9,9 +9,11 @@ namespace TeamsHelper
     public class TeamsHelper
     {
         public TeamsApi.TeamsApi TeamsApi;
+        public GoogleApi GoogleApi;
         public ITeamsCalendarProvider TeamsCalendarProvider;
         public ITomorrowDatesGenerator TomorrowDatesGenerator;
         public IGoogleEventsGenerator GoogleEventsGenerator;
+        public IGoogleCalendarChooser 
 
         public async Task DoSomething(string accessToken)
         {
@@ -27,6 +29,8 @@ namespace TeamsHelper
             List<Event> googleEvents = await GoogleEventsGenerator.GenerateAsync(events);
             
             // Find gogle-calendar or create new.
+            List<Calendar> allGoogleCalendars = await GoogleApi.GetCalendarsAsync("");
+            
 
             // Put into google calendar.
         }
