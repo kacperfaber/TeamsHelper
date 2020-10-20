@@ -13,26 +13,37 @@ namespace TeamsHelper
         public ITeamsCalendarProvider TeamsCalendarProvider;
         public ITomorrowDatesGenerator TomorrowDatesGenerator;
         public IGoogleEventsGenerator GoogleEventsGenerator;
-        public IGoogleCalendarChooser 
+        public IPrimaryCalendarProvider PrimaryCalendarProvider;
 
-        public async Task DoSomething(string accessToken)
+        public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider, ITomorrowDatesGenerator tomorrowDatesGenerator, IGoogleEventsGenerator googleEventsGenerator, IPrimaryCalendarProvider primaryCalendarProvider)
         {
-            List<TeamsCalendar> allCalendars = await TeamsApi.GetCalendarsAsync(accessToken);
+            TeamsApi = teamsApi;
+            GoogleApi = googleApi;
+            TeamsCalendarProvider = teamsCalendarProvider;
+            TomorrowDatesGenerator = tomorrowDatesGenerator;
+            GoogleEventsGenerator = googleEventsGenerator;
+            PrimaryCalendarProvider = primaryCalendarProvider;
+        }
+
+        public async Task<Raport> DoSomething(string microsoftToken, string googleToken)
+        {
+            List<TeamsCalendar> allCalendars = await TeamsApi.GetCalendarsAsync(microsoftToken);
             
             TeamsCalendar teamsCalendar = await TeamsCalendarProvider.ProvideAsync(allCalendars);
-
-            // Get events for tomorrow
+            
             TomorrowDates tomorrowDates = TomorrowDatesGenerator.Generate(DateTime.Now);
-            List<TeamsEvent> events = await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, ""); //TODO: Token
-
-            // Translate TeamsEvent into and GoogleEvent.
+            List<TeamsEvent> events = await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, googleToken);
+            
             List<Event> googleEvents = await GoogleEventsGenerator.GenerateAsync(events);
             
-            // Find gogle-calendar or create new.
-            List<Calendar> allGoogleCalendars = await GoogleApi.GetCalendarsAsync("");
+            Calendar calendar = await PrimaryCalendarProvider.Provide(googleToken);
             
+            foreach (Event googleEvent in googleEvents)
+            {
+                await GoogleApi.InsertEventAsync(calendar, googleEvent, googleToken);
+            }
 
-            // Put into google calendar.
+            return new Raport();
         }
     }
 }
