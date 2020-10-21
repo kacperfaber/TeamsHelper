@@ -31,7 +31,11 @@ namespace TeamsHelper.WebApp
         public async Task<User> ProvideAsync(HttpContext httpContext)
         {
             Guid id = Guid.Parse(httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            return await HelperContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            
+            return await HelperContext.Users.Where(x => x.Id == id)
+                .Include(x => x.GoogleAuthorization)
+                .Include(x => x.MicrosoftAuthorization)
+                .FirstOrDefaultAsync();
         }
     }
 }

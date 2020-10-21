@@ -20,8 +20,10 @@ namespace TeamsHelper.WebApp
         public IOAuthConfigurationProvider ConfigurationProvider;
         public IConfiguration Configuration;
         public ITokenProvider TokenProvider;
+        public IAuthorizationGenerator AuthorizationGenerator;
+        public HelperContext HelperContext;
 
-        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration, IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator, ITokenProvider tokenProvider)
+        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration, IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator, ITokenProvider tokenProvider, IAuthorizationGenerator authorizationGenerator, HelperContext helperContext)
         {
             UserProvider = userProvider;
             GoogleRedirectUrlGenerator = googleRedirectUrlGenerator;
@@ -29,6 +31,8 @@ namespace TeamsHelper.WebApp
             ConfigurationProvider = configurationProvider;
             MicrosoftRedirectUrlGenerator = microsoftRedirectUrlGenerator;
             TokenProvider = tokenProvider;
+            AuthorizationGenerator = authorizationGenerator;
+            HelperContext = helperContext;
         }
 
         public async Task<IActionResult> AuthorizeGoogle()
@@ -54,7 +58,15 @@ namespace TeamsHelper.WebApp
         {
             OAuthConfiguration configuration = ConfigurationProvider.Provide(Configuration, "Google");
             Token token = await TokenProvider.ProvideAsync(code, configuration);
-            return Json(token);
+            
+            User user = await UserProvider.ProvideAsync(HttpContext);
+            Authorization authorization = await AuthorizationGenerator.GenerateAsync(token.AccessToken, token.RefreshToken);
+            user.GoogleAuthorization = authorization;
+
+            HelperContext.Update(user);
+            await HelperContext.SaveChangesAsync();
+
+            return RedirectToAction("Home", "Home");
         }
 
         [HttpGet("signin-oidc")]
@@ -62,7 +74,15 @@ namespace TeamsHelper.WebApp
         {
             OAuthConfiguration configuration = ConfigurationProvider.Provide(Configuration, "Microsoft");
             Token token = await TokenProvider.ProvideAsync(code, configuration);
-            return Json(token);
+            
+            User user = await UserProvider.ProvideAsync(HttpContext);
+            Authorization authorization = await AuthorizationGenerator.GenerateAsync(token.AccessToken, token.RefreshToken);
+            user.MicrosoftAuthorization = authorization;
+
+            HelperContext.Update(user);
+            await HelperContext.SaveChangesAsync();
+            
+            return RedirectToAction("Home", "Home");
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Net;
-
+﻿using TeamsHelper.Database;
 namespace TeamsHelper.WebApp
 {
     public class SetupViewModel : ViewModel

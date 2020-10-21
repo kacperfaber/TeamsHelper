@@ -14,7 +14,8 @@ namespace TeamsHelper.WebApp
         public IUserProvider UserProvider;
         public IUserPasswordValidator PasswordValidator;
 
-        public LoginController(IClaimsIdentityGenerator claimsIdentityGenerator, IAuthenticationPropertiesGenerator authenticationPropertiesGenerator, IUserProvider userProvider, IUserPasswordValidator passwordValidator)
+        public LoginController(IClaimsIdentityGenerator claimsIdentityGenerator, IAuthenticationPropertiesGenerator authenticationPropertiesGenerator,
+            IUserProvider userProvider, IUserPasswordValidator passwordValidator)
         {
             ClaimsIdentityGenerator = claimsIdentityGenerator;
             AuthenticationPropertiesGenerator = authenticationPropertiesGenerator;
@@ -39,7 +40,7 @@ namespace TeamsHelper.WebApp
                     ClaimsIdentity claimsIdentity = ClaimsIdentityGenerator.Generate(user);
                     AuthenticationProperties props = AuthenticationPropertiesGenerator.Generate(user);
 
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), props);
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
                     return Json(user);
                 }
