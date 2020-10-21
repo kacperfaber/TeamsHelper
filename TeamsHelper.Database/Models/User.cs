@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TeamsHelper.Database
@@ -20,5 +21,8 @@ namespace TeamsHelper.Database
         public Authorization GoogleAuthorization { get; set; }
 
         public Guid? GoogleAuthorizationId { get; set; }
+
+        [InverseProperty("Owner")]
+        public List<Day> Days { get; set; }
     }
 }

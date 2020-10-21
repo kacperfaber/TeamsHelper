@@ -2,7 +2,7 @@
 
 namespace TeamsHelper.CalendarApi
 {
-    public class Person
+    public class GooglePerson
     {
         [JsonProperty("email")]
         public string Email { get; set; }

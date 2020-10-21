@@ -5,6 +5,6 @@ namespace TeamsHelper
 {
     public interface IPrimaryCalendarProvider
     {
-        Task<Calendar> Provide(string accessToken);
+        Task<GoogleCalendar> Provide(string accessToken);
     }
 }

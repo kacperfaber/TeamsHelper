@@ -14,15 +14,15 @@ namespace TeamsHelper
             GoogleEventGenerator = googleEventGenerator;
         }
 
-        public Task<List<Event>> GenerateAsync(IEnumerable<TeamsEvent> events)
+        public Task<List<GoogleEvent>> GenerateAsync(IEnumerable<TeamsEvent> events)
         {
             return Task.Run(async () =>
             {
-                List<Event> output = new List<Event>();
+                List<GoogleEvent> output = new List<GoogleEvent>();
                 foreach (TeamsEvent teamsEvent in events)
                 {
-                    Event @event = await GoogleEventGenerator.GenerateAsync(teamsEvent);
-                    output.Add(@event);
+                    GoogleEvent googleEvent = await GoogleEventGenerator.GenerateAsync(teamsEvent);
+                    output.Add(googleEvent);
                 }
 
                 return output;

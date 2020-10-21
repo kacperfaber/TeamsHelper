@@ -34,13 +34,13 @@ namespace TeamsHelper
             TomorrowDates tomorrowDates = TomorrowDatesGenerator.Generate(DateTime.Now);
             List<TeamsEvent> events = await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, googleToken);
             
-            List<Event> googleEvents = await GoogleEventsGenerator.GenerateAsync(events);
+            List<GoogleEvent> googleEvents = await GoogleEventsGenerator.GenerateAsync(events);
             
-            Calendar calendar = await PrimaryCalendarProvider.Provide(googleToken);
+            GoogleCalendar googleCalendar = await PrimaryCalendarProvider.Provide(googleToken);
             
-            foreach (Event googleEvent in googleEvents)
+            foreach (GoogleEvent googleEvent in googleEvents)
             {
-                await GoogleApi.InsertEventAsync(calendar, googleEvent, googleToken);
+                await GoogleApi.InsertEventAsync(googleCalendar, googleEvent, googleToken);
             }
 
             return new Raport();

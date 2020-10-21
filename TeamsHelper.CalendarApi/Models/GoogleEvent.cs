@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace TeamsHelper.CalendarApi
 {
-    public class Event
+    public class GoogleEvent
     {
         [JsonProperty("kind")]
         public string Kind { get; set; }
@@ -30,7 +30,7 @@ namespace TeamsHelper.CalendarApi
         public string Summary { get; set; }
         
         [JsonProperty("creator")]
-        public Person Creator { get; set; }
+        public GooglePerson Creator { get; set; }
         
         [JsonProperty("start")]
         public GoogleTime Start { get; set; }

@@ -14,13 +14,13 @@ namespace TeamsHelper.CalendarApi
             Serializer = serializer;
         }
 
-        public HttpRequestMessage Generate(Calendar calendar, Event googleEvent, string accessToken)
+        public HttpRequestMessage Generate(GoogleCalendar googleCalendar, GoogleEvent googleGoogleEvent, string accessToken)
         {
             HttpRequestMessage req = new HttpRequestMessage
             {
-                RequestUri = new Uri(UrlGenerator.Generate(calendar)),
+                RequestUri = new Uri(UrlGenerator.Generate(googleCalendar)),
                 Method = HttpMethod.Post,
-                Content = new StringContent(Serializer.Serialize(googleEvent))
+                Content = new StringContent(Serializer.Serialize(googleGoogleEvent))
             };
             
             req.Headers.Add("Authorization", "Bearer " + accessToken);

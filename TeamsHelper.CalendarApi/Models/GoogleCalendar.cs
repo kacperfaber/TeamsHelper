@@ -2,7 +2,7 @@
 
 namespace TeamsHelper.CalendarApi
 {
-    public class Calendar
+    public class GoogleCalendar
     {
         [JsonProperty("kind")]
         public string Kind { get; set; }
