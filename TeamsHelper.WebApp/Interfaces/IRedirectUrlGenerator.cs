@@ -4,6 +4,6 @@ namespace TeamsHelper.WebApp
 {
     public interface IRedirectUrlGenerator
     {
-        Task<string> GenerateAsync(string clientId, string redirectUrl, string scopes, string responseType);
+        Task<string> GenerateAsync(OAuthConfiguration authConfiguration, string responseType);
     }
 }

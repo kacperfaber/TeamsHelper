@@ -34,7 +34,7 @@ namespace TeamsHelper.WebApp
                 x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
             });
 
-            services.AddAuthentication(options => { options.RequireAuthenticatedSignIn = false; })
+            services.AddAuthentication(options => { })
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
             
             services.AddDbContext<HelperContext>(b => b.UseSqlite("Data Source=.db;", s => s.MigrationsAssembly("TeamsHelper.WebApp")));
@@ -43,6 +43,10 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IAuthenticationPropertiesGenerator, AuthenticationPropertiesGenerator>();
             services.AddScoped<IUserProvider, UserProvider>();
             services.AddScoped<IUserPasswordValidator, UserPasswordValidator>();
+            services.AddScoped<IOAuthConfigurationProvider, OAuthConfigurationProvider>();
+            services.AddScoped<IMicrosoftRedirectUrlGenerator, MicrosoftRedirectUrlGenerator>();
+            services.AddScoped<IGoogleRedirectUrlGenerator, GoogleRedirectUrlGenerator>();
+            services.AddScoped<IOAuthConfigurationSectionNameGenerator, OAuthConfigurationSectionNameGenerator>();
             
             services.AddSingleton(Configuration);
         }
@@ -59,6 +63,7 @@ namespace TeamsHelper.WebApp
             app.UseMvc(x => x.MapRoute("default", "{controller}/{action}"));
 
             app.UseAuthentication();
+            app.UseAuthorization();
         }
     }
 }

@@ -12,41 +12,52 @@ using TeamsHelper.Database;
 
 namespace TeamsHelper.WebApp
 {
-    [Authorize]
     public class OAuthController : Controller
     {
         public IUserProvider UserProvider;
         public IGoogleRedirectUrlGenerator GoogleRedirectUrlGenerator;
         public IMicrosoftRedirectUrlGenerator MicrosoftRedirectUrlGenerator;
+        public IOAuthConfigurationProvider ConfigurationProvider;
         public IConfiguration Configuration;
 
-        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration)
+        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration, IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator)
         {
             UserProvider = userProvider;
             GoogleRedirectUrlGenerator = googleRedirectUrlGenerator;
             Configuration = configuration;
+            ConfigurationProvider = configurationProvider;
+            MicrosoftRedirectUrlGenerator = microsoftRedirectUrlGenerator;
         }
 
         public async Task<IActionResult> AuthorizeGoogle()
         {
-            User user = await UserProvider.ProvideAsync(HttpContext);
+            OAuthConfiguration authConfiguration = ConfigurationProvider.Provide(Configuration, "Google");
 
-            
-            
-            return RedirectPermanent("");
+            string url = await GoogleRedirectUrlGenerator.GenerateAsync(authConfiguration, "code");
+
+            return RedirectPermanent(url);
         }
 
         public async Task<IActionResult> AuthorizeMicrosoft()
         {
-            // string url = await GoogleRedirectUrlGenerator.GenerateAsync();
-            // return RedirectPermanent(url);
-            throw new NotImplementedException();
+            OAuthConfiguration authConfiguration = ConfigurationProvider.Provide(Configuration, "Microsoft");
+
+            string url = await MicrosoftRedirectUrlGenerator.GenerateAsync(authConfiguration, "code");
+
+            return RedirectPermanent(url);
         }
 
         [HttpGet("signin-google")]
-        public IActionResult CallbackGoogle(string code)
+        public IActionResult CallbackGoogle()
         {
-            return Content("code is " + code);
+            string code = HttpContext.Request.Query["code"];
+            return Content("google: code is " + code);
+        }
+
+        [HttpGet("signin-oidc")]
+        public IActionResult CallbackMicrosoft([FromQuery] string code)
+        {
+            return Content("ms: code is " + code);
         }
     }
 }
