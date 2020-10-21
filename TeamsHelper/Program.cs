@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Spencer.NET;
 
 namespace TeamsHelper
 {
@@ -22,8 +21,8 @@ namespace TeamsHelper
                 {
                     LocalConfiguration localConfig = hostContext.Configuration.GetSection("LocalConfiguration").Get<LocalConfiguration>();
 
-                    IContainer c = ContainerFactory.Container();
-                    c.ResolveOrAuto<TeamsHelper>();
+                    // IContainer c = ContainerFactory.Container();
+                    // c.ResolveOrAuto<TeamsHelper>();
 
                     services.AddHostedService<Worker>();
                 });

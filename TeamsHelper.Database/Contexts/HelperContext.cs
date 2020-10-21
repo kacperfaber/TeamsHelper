@@ -12,5 +12,13 @@ namespace TeamsHelper.Database
         public DbSet<User> Users { get; set; }
         public DbSet<Day> Days { get; set; }
         public DbSet<Event> Events { get; set; }
+
+        public HelperContext()
+        {
+        }
+
+        public HelperContext(DbContextOptions<HelperContext> options) : base(options)
+        {
+        }
     }
 }

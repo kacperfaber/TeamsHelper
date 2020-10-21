@@ -20,7 +20,7 @@ namespace TeamsHelper.WebApp
         public async Task<User> Provide(string emailAddress)
         {
             return await HelperContext.Users.FirstOrDefaultAsync(x =>
-                string.Equals(emailAddress, x.EmailAddress, StringComparison.InvariantCultureIgnoreCase));
+                x.EmailAddress.ToLower() == emailAddress.ToLower());
         }
 
         public async Task<User> ProvideAsync(Guid id)

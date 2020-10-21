@@ -17,7 +17,7 @@ namespace TeamsHelper.WebApp
         public Task<bool> ValidateAsync(string displayName)
         {
             return Task.Run(() =>
-                HelperContext.Users.AsParallel().Any(x => string.Equals(x.DisplayName, displayName, StringComparison.InvariantCultureIgnoreCase)));
+                HelperContext.Users.AsParallel().Any(x => displayName.ToLower() == x.DisplayName.ToLower()));
         }
     }
 }

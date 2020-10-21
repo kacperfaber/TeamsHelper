@@ -8,7 +8,7 @@ namespace TeamsHelper.WebApp
     {
         public Task<bool> ValidateAsync(User user, string password)
         {
-            return Task.Run(() => string.Equals(user.Password, password, StringComparison.InvariantCulture));
+            return Task.Run(() => user.Password == password);
         }
     }
 }
