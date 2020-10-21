@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 namespace TeamsHelper.WebApp
 {
@@ -14,8 +15,10 @@ namespace TeamsHelper.WebApp
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.a
-            services.AddMvc(x => x.EnableEndpointRouting = false);
+            services.AddMvc(x => x.EnableEndpointRouting = false).AddNewtonsoftJson(x =>
+            {
+                x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
