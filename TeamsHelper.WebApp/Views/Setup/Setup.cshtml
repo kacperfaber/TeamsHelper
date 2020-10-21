@@ -5,3 +5,39 @@
 }
 
 <h2>title</h2>
+
+<div>
+    <span>Microsoft Account</span>
+    <br/>
+    
+    @if (Model.MicrosoftAuthorization == null)
+    {
+        <strong>None</strong>
+    }
+    
+    @else 
+    {
+    <strong>Ok</strong>
+    }
+    
+    <br/>
+</div>
+
+<div>
+    <span>Google Account</span>
+    <br/>
+    
+    @if (Model.GoogleAuthorization == null)
+    {
+        <strong>None</strong>
+        <br/>
+        @Html.ActionLink("Authorize", "AuthorizeGoogle", "OAuth")
+    }
+    
+    @else 
+    {
+        <strong>Ok</strong>
+    }
+    
+    <br/>
+</div>

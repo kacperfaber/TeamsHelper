@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using TeamsHelper.Database;
 
@@ -18,6 +21,17 @@ namespace TeamsHelper.WebApp
         {
             return await HelperContext.Users.FirstOrDefaultAsync(x =>
                 string.Equals(emailAddress, x.EmailAddress, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public async Task<User> ProvideAsync(Guid id)
+        {
+            return await HelperContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<User> ProvideAsync(HttpContext httpContext)
+        {
+            Guid id = Guid.Parse(httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return await HelperContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }
