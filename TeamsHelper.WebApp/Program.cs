@@ -18,6 +18,12 @@ namespace TeamsHelper.WebApp
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((host, builder) =>
+                {
+                    builder
+                        .SetBasePath(host.HostingEnvironment.ContentRootPath)
+                        .AddJsonFile("OAuthConfiguration.json");
+                })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }

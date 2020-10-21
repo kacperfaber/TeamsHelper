@@ -1,9 +1,0 @@
-C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.CalendarApi\bin\Debug\netstandard2.0\TeamsHelper.CalendarApi.deps.json
-C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.CalendarApi\bin\Debug\netstandard2.0\TeamsHelper.CalendarApi.dll
-C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.CalendarApi\bin\Debug\netstandard2.0\TeamsHelper.CalendarApi.pdb
-C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.CalendarApi\obj\Debug\netstandard2.0\TeamsHelper.CalendarApi.csprojAssemblyReference.cache
-C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.CalendarApi\obj\Debug\netstandard2.0\TeamsHelper.CalendarApi.AssemblyInfoInputs.cache
-C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.CalendarApi\obj\Debug\netstandard2.0\TeamsHelper.CalendarApi.AssemblyInfo.cs
-C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.CalendarApi\obj\Debug\netstandard2.0\TeamsHelper.CalendarApi.csproj.CoreCompileInputs.cache
-C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.CalendarApi\obj\Debug\netstandard2.0\TeamsHelper.CalendarApi.dll
-C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.CalendarApi\obj\Debug\netstandard2.0\TeamsHelper.CalendarApi.pdb
