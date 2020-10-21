@@ -7,14 +7,7 @@ namespace TeamsHelper
 {
     public class MicrosoftTokenRefresher : IMicrosoftTokenRefresher
     {
-        public IFormUrlEncodedContentGenerator FormUrlEncodedContentGenerator;
-
         readonly HttpClient _http = new HttpClient();
-
-        public MicrosoftTokenRefresher(IFormUrlEncodedContentGenerator formUrlEncodedContentGenerator)
-        {
-            FormUrlEncodedContentGenerator = formUrlEncodedContentGenerator;
-        }
 
         public async Task<string> RefreshAsync(string refreshToken, ClientCredentials credentials)
         {

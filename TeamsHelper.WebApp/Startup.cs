@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
@@ -47,6 +48,10 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IMicrosoftRedirectUrlGenerator, MicrosoftRedirectUrlGenerator>();
             services.AddScoped<IGoogleRedirectUrlGenerator, GoogleRedirectUrlGenerator>();
             services.AddScoped<IOAuthConfigurationSectionNameGenerator, OAuthConfigurationSectionNameGenerator>();
+            services.AddScoped<IJsonDeserializer, JsonDeserializer>();
+            services.AddScoped<IGoogleTokenContentGenerator, GoogleTokenContentGenerator>();
+            services.AddScoped<IFormUrlGenerator,FormUrlGenerator>();
+            services.AddScoped<IGoogleTokenProvider, GoogleTokenProvider>();
             
             services.AddSingleton(Configuration);
         }
