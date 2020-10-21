@@ -14,6 +14,7 @@ namespace TeamsHelper.WebApp
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.a
             services.AddMvc(x => x.EnableEndpointRouting = false);
         }
 
