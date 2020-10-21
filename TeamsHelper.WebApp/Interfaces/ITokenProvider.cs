@@ -2,7 +2,7 @@
 
 namespace TeamsHelper.WebApp
 {
-    public interface IGoogleTokenProvider
+    public interface ITokenProvider
     {
         Task<Token> ProvideAsync(string code, OAuthConfiguration authConfiguration);
     }

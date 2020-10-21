@@ -49,9 +49,9 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IGoogleRedirectUrlGenerator, GoogleRedirectUrlGenerator>();
             services.AddScoped<IOAuthConfigurationSectionNameGenerator, OAuthConfigurationSectionNameGenerator>();
             services.AddScoped<IJsonDeserializer, JsonDeserializer>();
-            services.AddScoped<IGoogleTokenContentGenerator, GoogleTokenContentGenerator>();
+            services.AddScoped<ITokenContentGenerator, TokenContentGenerator>();
             services.AddScoped<IFormUrlGenerator,FormUrlGenerator>();
-            services.AddScoped<IGoogleTokenProvider, GoogleTokenProvider>();
+            services.AddScoped<ITokenProvider, TokenProvider>();
             
             services.AddSingleton(Configuration);
         }
