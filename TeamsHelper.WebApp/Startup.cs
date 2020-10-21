@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
@@ -19,6 +20,8 @@ namespace TeamsHelper.WebApp
 {
     public class Startup
     {
+        public IConfiguration Configuration;
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(x => x.EnableEndpointRouting = false).AddNewtonsoftJson(x =>
@@ -29,6 +32,8 @@ namespace TeamsHelper.WebApp
             services.AddAuthentication(options => { options.RequireAuthenticatedSignIn = false; })
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
 
+            services.AddSingleton(Configuration);
+            
             services.AddDbContext<HelperContext>(b => b.UseSqlite("Data Source=.db;", s => s.MigrationsAssembly("TeamsHelper.WebApp")));
 
             services.AddScoped<IClaimsIdentityGenerator, ClaimsIdentityGenerator>();
@@ -39,6 +44,11 @@ namespace TeamsHelper.WebApp
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            Configuration = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("localConfiguration.json", false)
+                .Build();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
