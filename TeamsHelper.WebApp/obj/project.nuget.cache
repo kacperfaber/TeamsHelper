@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "zZLeIQdyA55iBBuWYyhNEu+Ak5UJGOyTIxFfwt4zRdAX+IZUeoRyGsp+O7985RYz9N6ckwj/MwwqUgYHbdS2+Q==",
+  "dgSpecHash": "IzCQrKqlEmmUarsfAgT0frEROmVPFjl0FYupUwfzHc23vo1JjjZQDYN03Sx6eEQ1KGiudT6fDx1x90oO4xxkcA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.1.2\\microsoft.aspnetcore.authentication.cookies.2.1.2.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\3.1.8\\microsoft.aspnetcore.authentication.google.3.1.8.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.aspnetcore.authentication.microsoftaccount\\3.1.8\\microsoft.aspnetcore.authentication.microsoftaccount.3.1.8.nupkg.sha512",

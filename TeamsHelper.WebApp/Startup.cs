@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -34,9 +36,16 @@ namespace TeamsHelper.WebApp
             {
                 x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
             });
+            
+            services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo("SecretKeys")).SetApplicationName("TeamsHelper");
 
-            services.AddAuthentication(options => { })
-                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
+            services.AddAuthentication(x =>
+                {
+                    x.RequireAuthenticatedSignIn = false;
+                    x.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    x.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                })
+                .AddCookie(x => x.Cookie.Name = ".ckk");
             
             services.AddDbContext<HelperContext>(b => b.UseSqlite("Data Source=.db;", s => s.MigrationsAssembly("TeamsHelper.WebApp")));
 
@@ -50,9 +59,10 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IOAuthConfigurationSectionNameGenerator, OAuthConfigurationSectionNameGenerator>();
             services.AddScoped<IJsonDeserializer, JsonDeserializer>();
             services.AddScoped<ITokenContentGenerator, TokenContentGenerator>();
-            services.AddScoped<IFormUrlGenerator,FormUrlGenerator>();
+            services.AddScoped<IFormUrlGenerator, FormUrlGenerator>();
             services.AddScoped<ITokenProvider, TokenProvider>();
-            
+            services.AddScoped<IAuthorizationGenerator, AuthorizationGenerator>();
+
             services.AddSingleton(Configuration);
         }
 
@@ -69,6 +79,8 @@ namespace TeamsHelper.WebApp
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseCookiePolicy(new CookiePolicyOptions {MinimumSameSitePolicy = SameSiteMode.Strict});
         }
     }
 }
