@@ -4,6 +4,6 @@ namespace TeamsHelper.CalendarApi
 {
     public interface ICreateCalendarRequestGenerator
     {
-        HttpRequestMessage Generate(Calendar calendar, string accessToken);
+        HttpRequestMessage Generate(GoogleCalendar googleCalendar, string accessToken);
     }
 }

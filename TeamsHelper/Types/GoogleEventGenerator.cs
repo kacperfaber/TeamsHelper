@@ -17,9 +17,9 @@ namespace TeamsHelper
             StartGenerator = startGenerator;
         }
 
-        public Task<Event> GenerateAsync(TeamsEvent teamsEvent)
+        public Task<GoogleEvent> GenerateAsync(TeamsEvent teamsEvent)
         {
-            return Task.Run(() => new Event
+            return Task.Run(() => new GoogleEvent
             {
                 Summary = SummaryGenerator.Generate(teamsEvent),
                 End = EndGenerator.Generate(teamsEvent),

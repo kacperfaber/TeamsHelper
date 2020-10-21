@@ -2,6 +2,6 @@
 {
     public interface IInsertEventUrlGenerator
     {
-        string Generate(Calendar calendar);
+        string Generate(GoogleCalendar googleCalendar);
     }
 }

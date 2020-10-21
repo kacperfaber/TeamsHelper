@@ -7,6 +7,6 @@ namespace TeamsHelper
 {
     public interface IGoogleEventsGenerator
     {
-        Task<List<Event>> GenerateAsync(IEnumerable<TeamsEvent> events);
+        Task<List<GoogleEvent>> GenerateAsync(IEnumerable<TeamsEvent> events);
     }
 }

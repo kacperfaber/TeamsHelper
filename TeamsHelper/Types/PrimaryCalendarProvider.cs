@@ -12,7 +12,7 @@ namespace TeamsHelper
             GoogleApi = googleApi;
         }
 
-        public Task<Calendar> Provide(string accessToken)
+        public Task<GoogleCalendar> Provide(string accessToken)
         {
             return GoogleApi.GetCalendar("PRIMARY", accessToken);
         }
