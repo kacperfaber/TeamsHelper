@@ -2,11 +2,15 @@
 
 namespace TeamsHelper.WebApp
 {
-    public class LoginViewModel : ViewModel
+    public class RegisterViewModel : ViewModel
     {
         [Required]
+        [MinLength(3), MaxLength(18)]
+        public string DisplayName { get; set; }
+        
         [EmailAddress]
-        public string Email { get; set; }
+        [Required]
+        public string EmailAddress { get; set; }
         
         [Required]
         [MinLength(5), MaxLength(15)]
