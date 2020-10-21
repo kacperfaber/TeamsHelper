@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+2I5myyDO+xxmOw6PF+b54xQViJupNsBHoWAZaX4yfv0Of1lB6ZFrawe2KDDA2+0/S8mULrskPjir7UKjs5I5w==",
+  "dgSpecHash": "pIS+qT4KnpyU2WPP95N0L/iBJ54vbHG9zuq1ZbBGpU/yZiWnPvp97LTlpXsVTPqwC+kVshM9g6RZlFKRrr8ZMA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper\\TeamsHelper.csproj",
   "expectedPackageFiles": [
@@ -32,7 +32,6 @@
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
-    "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\spencer.net\\1.1.3000\\spencer.net.1.1.3000.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\system.diagnostics.eventlog\\4.7.0\\system.diagnostics.eventlog.4.7.0.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"

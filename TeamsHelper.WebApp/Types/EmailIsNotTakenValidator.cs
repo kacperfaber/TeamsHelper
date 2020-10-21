@@ -18,7 +18,7 @@ namespace TeamsHelper.WebApp
         {
             return Task.Run(() =>
             {
-                return !HelperContext.Users.Any(x => string.Equals(x.EmailAddress, emailAddress, StringComparison.InvariantCultureIgnoreCase));
+                return !HelperContext.Users.Any(x => x.EmailAddress.ToLower() == emailAddress.ToLower());
             });
         }
     }

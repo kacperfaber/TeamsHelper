@@ -1,0 +1,9 @@
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.Database\bin\Debug\netstandard2.0\TeamsHelper.Database.deps.json
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.Database\bin\Debug\netstandard2.0\TeamsHelper.Database.dll
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.Database\bin\Debug\netstandard2.0\TeamsHelper.Database.pdb
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.Database\obj\Debug\netstandard2.0\TeamsHelper.Database.csprojAssemblyReference.cache
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.Database\obj\Debug\netstandard2.0\TeamsHelper.Database.AssemblyInfoInputs.cache
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.Database\obj\Debug\netstandard2.0\TeamsHelper.Database.AssemblyInfo.cs
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.Database\obj\Debug\netstandard2.0\TeamsHelper.Database.csproj.CoreCompileInputs.cache
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.Database\obj\Debug\netstandard2.0\TeamsHelper.Database.dll
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.Database\obj\Debug\netstandard2.0\TeamsHelper.Database.pdb

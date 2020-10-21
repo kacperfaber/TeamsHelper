@@ -13,7 +13,15 @@ namespace TeamsHelper.WebApp
         public IAuthenticationPropertiesGenerator AuthenticationPropertiesGenerator;
         public IUserProvider UserProvider;
         public IUserPasswordValidator PasswordValidator;
-        
+
+        public LoginController(IClaimsIdentityGenerator claimsIdentityGenerator, IAuthenticationPropertiesGenerator authenticationPropertiesGenerator, IUserProvider userProvider, IUserPasswordValidator passwordValidator)
+        {
+            ClaimsIdentityGenerator = claimsIdentityGenerator;
+            AuthenticationPropertiesGenerator = authenticationPropertiesGenerator;
+            UserProvider = userProvider;
+            PasswordValidator = passwordValidator;
+        }
+
         public IActionResult Login()
         {
             return View("Login", new LoginViewModel());
