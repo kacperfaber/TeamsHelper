@@ -4,13 +4,13 @@
       "Google": {
         "ClientId": "781622260671-vpj4qaogud680mcbjgiks0qqv1tlm9ma.apps.googleusercontent.com",
         "ClientSecret": "taJgzVEBYk7iysjScZgg-FZ9",
-        "RedirectUrl": "/signin-google",
+        "RedirectUrl": "https://localhost:5001/signin-google",
         "Scopes": "https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/calendar.readonly%20https://www.googleapis.com/auth/calendar.events"
       },
       "Microsoft": {
         "ClientId": "0b4e92b5-68e9-4083-922d-b989c9e2c477",
         "ClientSecret": "u7TYbkjRs7_4h3P~6qT3.pf7x.~S8Mgmva",
-        "RedirectUrl": "/signin-microsoft",
+        "RedirectUrl": "https://localhost:5001/signin-microsoft",
         "Scopes": "offline_access%20Calendars.Read.Shared%20Calendars.Read"
       }
     }
