@@ -31,18 +31,16 @@ namespace TeamsHelper.WebApp
         {
             User user = await UserProvider.ProvideAsync(HttpContext);
 
-            string clientId = Configuration.GetSection("Authorization:Google:Credentials:ClientId").Get<string>();
-            string redirectUrl = Url.ActionLink("CallbackGoogle", "OAuth");
-            string scopes = "https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/calendar.readonly%20https://www.googleapis.com/auth/calendar.events";
-            string url = await GoogleRedirectUrlGenerator.GenerateAsync(clientId, redirectUrl, scopes, "code");
             
-            return RedirectPermanent(url);
+            
+            return RedirectPermanent("");
         }
 
         public async Task<IActionResult> AuthorizeMicrosoft()
         {
-            string url = await GoogleRedirectUrlGenerator.GenerateAsync();
-            return RedirectPermanent(url);
+            // string url = await GoogleRedirectUrlGenerator.GenerateAsync();
+            // return RedirectPermanent(url);
+            throw new NotImplementedException();
         }
 
         [HttpGet("signin-google")]

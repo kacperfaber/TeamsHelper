@@ -19,11 +19,6 @@ namespace TeamsHelper
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    LocalConfiguration localConfig = hostContext.Configuration.GetSection("LocalConfiguration").Get<LocalConfiguration>();
-
-                    // IContainer c = ContainerFactory.Container();
-                    // c.ResolveOrAuto<TeamsHelper>();
-
                     services.AddHostedService<Worker>();
                 });
         
