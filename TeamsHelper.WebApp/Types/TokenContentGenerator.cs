@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 
 namespace TeamsHelper.WebApp
 {
-    public class GoogleTokenContentGenerator : IGoogleTokenContentGenerator
+    public class TokenContentGenerator : ITokenContentGenerator
     {
         public IFormUrlGenerator FormUrlGenerator;
 
-        public GoogleTokenContentGenerator(IFormUrlGenerator formUrlGenerator)
+        public TokenContentGenerator(IFormUrlGenerator formUrlGenerator)
         {
             FormUrlGenerator = formUrlGenerator;
         }

@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 
 namespace TeamsHelper.WebApp
 {
-    public class GoogleTokenProvider : IGoogleTokenProvider
+    public class TokenProvider : ITokenProvider
     {
-        public IGoogleTokenContentGenerator ContentGenerator;
+        public ITokenContentGenerator ContentGenerator;
         public IJsonDeserializer JsonDeserializer;
         
         readonly HttpClient _http = new HttpClient();
 
-        public GoogleTokenProvider(IGoogleTokenContentGenerator contentGenerator, IJsonDeserializer jsonDeserializer)
+        public TokenProvider(ITokenContentGenerator contentGenerator, IJsonDeserializer jsonDeserializer)
         {
             ContentGenerator = contentGenerator;
             JsonDeserializer = jsonDeserializer;

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace TeamsHelper.WebApp
 {
-    public interface IGoogleTokenContentGenerator
+    public interface ITokenContentGenerator
     {
         Task<FormUrlEncodedContent> GenerateAsync(string code, OAuthConfiguration configuration);
     }

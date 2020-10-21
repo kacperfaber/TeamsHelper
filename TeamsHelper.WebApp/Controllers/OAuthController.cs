@@ -19,16 +19,16 @@ namespace TeamsHelper.WebApp
         public IMicrosoftRedirectUrlGenerator MicrosoftRedirectUrlGenerator;
         public IOAuthConfigurationProvider ConfigurationProvider;
         public IConfiguration Configuration;
-        public IGoogleTokenProvider GoogleTokenProvider;
+        public ITokenProvider TokenProvider;
 
-        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration, IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator, IGoogleTokenProvider googleTokenProvider)
+        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration, IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator, ITokenProvider tokenProvider)
         {
             UserProvider = userProvider;
             GoogleRedirectUrlGenerator = googleRedirectUrlGenerator;
             Configuration = configuration;
             ConfigurationProvider = configurationProvider;
             MicrosoftRedirectUrlGenerator = microsoftRedirectUrlGenerator;
-            GoogleTokenProvider = googleTokenProvider;
+            TokenProvider = tokenProvider;
         }
 
         public async Task<IActionResult> AuthorizeGoogle()
@@ -53,15 +53,16 @@ namespace TeamsHelper.WebApp
         public async Task<IActionResult> CallbackGoogle(string code)
         {
             OAuthConfiguration configuration = ConfigurationProvider.Provide(Configuration, "Google");
-            Token token = await GoogleTokenProvider.ProvideAsync(code, configuration);
+            Token token = await TokenProvider.ProvideAsync(code, configuration);
             return Json(token);
         }
 
         [HttpGet("signin-oidc")]
-        public IActionResult CallbackMicrosoft()
+        public async Task<IActionResult> CallbackMicrosoft(string code)
         {
-            string code = HttpContext.Request.Query["code"];
-            return Content("ms: code is " + code);
+            OAuthConfiguration configuration = ConfigurationProvider.Provide(Configuration, "Microsoft");
+            Token token = await TokenProvider.ProvideAsync(code, configuration);
+            return Json(token);
         }
     }
 }
