@@ -1,0 +1,9 @@
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.TeamsApi\bin\Debug\netstandard2.0\TeamsHelper.TeamsApi.deps.json
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.TeamsApi\bin\Debug\netstandard2.0\TeamsHelper.TeamsApi.dll
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.TeamsApi\bin\Debug\netstandard2.0\TeamsHelper.TeamsApi.pdb
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.TeamsApi\obj\Debug\netstandard2.0\TeamsHelper.TeamsApi.csprojAssemblyReference.cache
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.TeamsApi\obj\Debug\netstandard2.0\TeamsHelper.TeamsApi.AssemblyInfoInputs.cache
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.TeamsApi\obj\Debug\netstandard2.0\TeamsHelper.TeamsApi.AssemblyInfo.cs
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.TeamsApi\obj\Debug\netstandard2.0\TeamsHelper.TeamsApi.csproj.CoreCompileInputs.cache
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.TeamsApi\obj\Debug\netstandard2.0\TeamsHelper.TeamsApi.dll
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.TeamsApi\obj\Debug\netstandard2.0\TeamsHelper.TeamsApi.pdb
