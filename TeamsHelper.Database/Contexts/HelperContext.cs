@@ -2,7 +2,7 @@
 
 namespace TeamsHelper.Database
 {
-    public class HelperContext
+    public class HelperContext : DbContext
     {
         public DbSet<Authorization> Authorizations { get; set; }
         public DbSet<GoogleCalendar> GoogleCalendars { get; set; }
