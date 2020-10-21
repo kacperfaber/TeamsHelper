@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamsHelper.TeamsApi", "Tea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamsHelper.Database", "TeamsHelper.Database\TeamsHelper.Database.csproj", "{5893720F-F78C-4013-8342-6AC173BD8652}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamsHelper.WebApp", "TeamsHelper.WebApp\TeamsHelper.WebApp.csproj", "{1C3BBE4C-1012-435B-B716-47EA03060A21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{5893720F-F78C-4013-8342-6AC173BD8652}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5893720F-F78C-4013-8342-6AC173BD8652}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5893720F-F78C-4013-8342-6AC173BD8652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C3BBE4C-1012-435B-B716-47EA03060A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C3BBE4C-1012-435B-B716-47EA03060A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C3BBE4C-1012-435B-B716-47EA03060A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C3BBE4C-1012-435B-B716-47EA03060A21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
