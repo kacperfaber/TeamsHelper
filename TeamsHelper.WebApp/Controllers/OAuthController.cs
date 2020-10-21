@@ -55,8 +55,9 @@ namespace TeamsHelper.WebApp
         }
 
         [HttpGet("signin-oidc")]
-        public IActionResult CallbackMicrosoft([FromQuery] string code)
+        public IActionResult CallbackMicrosoft()
         {
+            string code = HttpContext.Request.Query["code"];
             return Content("ms: code is " + code);
         }
     }
