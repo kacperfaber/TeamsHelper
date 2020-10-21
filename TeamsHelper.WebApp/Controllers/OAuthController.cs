@@ -19,14 +19,16 @@ namespace TeamsHelper.WebApp
         public IMicrosoftRedirectUrlGenerator MicrosoftRedirectUrlGenerator;
         public IOAuthConfigurationProvider ConfigurationProvider;
         public IConfiguration Configuration;
+        public IGoogleTokenProvider GoogleTokenProvider;
 
-        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration, IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator)
+        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration, IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator, IGoogleTokenProvider googleTokenProvider)
         {
             UserProvider = userProvider;
             GoogleRedirectUrlGenerator = googleRedirectUrlGenerator;
             Configuration = configuration;
             ConfigurationProvider = configurationProvider;
             MicrosoftRedirectUrlGenerator = microsoftRedirectUrlGenerator;
+            GoogleTokenProvider = googleTokenProvider;
         }
 
         public async Task<IActionResult> AuthorizeGoogle()
@@ -48,10 +50,11 @@ namespace TeamsHelper.WebApp
         }
 
         [HttpGet("signin-google")]
-        public IActionResult CallbackGoogle()
+        public async Task<IActionResult> CallbackGoogle(string code)
         {
-            string code = HttpContext.Request.Query["code"];
-            return Content("google: code is " + code);
+            OAuthConfiguration configuration = ConfigurationProvider.Provide(Configuration, "Google");
+            Token token = await GoogleTokenProvider.ProvideAsync(code, configuration);
+            return Json(token);
         }
 
         [HttpGet("signin-oidc")]

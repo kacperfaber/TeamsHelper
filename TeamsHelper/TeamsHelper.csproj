@@ -25,4 +25,10 @@
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Types\GoogleTokenRefresher.cs" />
+      <Compile Remove="Types\LocalConfigurationProvider.cs" />
+      <Compile Remove="Types\MicrosoftTokenRefresher.cs" />
+    </ItemGroup>
 </Project>

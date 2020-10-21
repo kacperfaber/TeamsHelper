@@ -9,5 +9,7 @@
         public string RedirectUrl { get; set; }
 
         public string Scopes { get; set; }
+
+        public string TokenEndpoint { get; set; }
     }
 }
