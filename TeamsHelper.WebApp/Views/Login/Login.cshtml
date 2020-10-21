@@ -12,9 +12,22 @@
 </head>
 <body>
 <div>
-    <h1>Login Form</h1>
+    <h2>Login Form</h2>
+
+    @Html.BeginForm("LoginPost", "Login", FormMethod.Post)
+    {
+    <div style="margin-top: 2px;">
+        <span>Email address</span>
+        @Html.TextBoxFor(x => x.Email)
+    </div>
+
+    <div style="margin-top: 2px;">
+        <span>Password</span>
+        @Html.PasswordFor(x => x.Password)
+    </div>
     
-    @Html.BeginForm("")
+    <input type="submit" value="Submit"/>
+    }
 </div>
 </body>
 </html>
