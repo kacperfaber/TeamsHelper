@@ -36,17 +36,22 @@ namespace TeamsHelper.WebApp
             {
                 x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
             });
-            
+
             services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo("SecretKeys")).SetApplicationName("TeamsHelper");
 
-            services.AddAuthentication(x =>
+            services.AddAuthentication(options =>
                 {
-                    x.RequireAuthenticatedSignIn = false;
-                    x.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    x.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.RequireAuthenticatedSignIn = false;
                 })
-                .AddCookie(x => x.Cookie.Name = ".ckk");
-            
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new PathString("/Login/Login");
+                    options.LogoutPath = new PathString("/logout");
+                });
+
             services.AddDbContext<HelperContext>(b => b.UseSqlite("Data Source=.db;", s => s.MigrationsAssembly("TeamsHelper.WebApp")));
 
             services.AddScoped<IClaimsIdentityGenerator, ClaimsIdentityGenerator>();
@@ -74,13 +79,13 @@ namespace TeamsHelper.WebApp
             }
 
             app.UseRouting();
-
-            app.UseMvc(x => x.MapRoute("default", "{controller}/{action}"));
-
+            
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseCookiePolicy(new CookiePolicyOptions {MinimumSameSitePolicy = SameSiteMode.Strict});
+            app.UseCookiePolicy(new CookiePolicyOptions {MinimumSameSitePolicy = SameSiteMode.Lax});
+            
+            app.UseMvc(x => x.MapRoute("default", "{controller}/{action}"));
         }
     }
 }

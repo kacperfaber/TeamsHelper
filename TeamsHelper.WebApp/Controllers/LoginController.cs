@@ -40,9 +40,9 @@ namespace TeamsHelper.WebApp
                     ClaimsIdentity claimsIdentity = ClaimsIdentityGenerator.Generate(user);
                     AuthenticationProperties props = AuthenticationPropertiesGenerator.Generate(user);
 
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), props);
 
-                    return Json(user);
+                    return RedirectToAction("Home", "Home");
                 }
             }
 

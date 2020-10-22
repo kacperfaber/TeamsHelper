@@ -28,9 +28,6 @@ namespace TeamsHelper.WebApp.Migrations
                     b.Property<string>("RenewToken")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TokenUrl")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.ToTable("Authorizations");

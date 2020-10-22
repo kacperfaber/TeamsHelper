@@ -8,14 +8,12 @@ namespace TeamsHelper.WebApp
     {
         public ClaimsIdentity Generate(User user)
         {
-            // ClaimsIdentity claimsIdentity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-            // claimsIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
-            // claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, user.EmailAddress));
-            // claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, user.DisplayName));
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, user.EmailAddress));
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, user.DisplayName));
 
-            ClaimsIdentity id = new ClaimsIdentity();
-            id.AddClaim(new Claim(ClaimTypes.Name, "KACPER"));
-            return id;
+            return claimsIdentity;
         }
     }
 }

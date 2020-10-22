@@ -13,6 +13,8 @@
     @if (Model.MicrosoftAuthorization == null)
     {
         <strong>None</strong>
+        <br/>
+        @Html.ActionLink("Authorize", "AuthorizeMicrosoft", "OAuth")
     }
     
     else
