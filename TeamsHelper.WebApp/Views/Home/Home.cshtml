@@ -1,0 +1,31 @@
+﻿@model TeamsHelper.WebApp.ViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Home</h2>
+
+<div style="margin: 15px;">
+    <h4>Summary</h4>
+    <span>
+        Email Address: @Model.User.EmailAddress
+        <br/>
+    </span>
+
+    <span>
+        Display Name: @Model.User.DisplayName
+        <br/>
+    </span>
+
+    <span>
+        Microsoft Account: @(Model.User.MicrosoftAuthorization != null ? $"Ok, updated at {Model.User.MicrosoftAuthorization.GeneratedAt}" : "No.")
+        <br/>
+    </span>
+
+    <span>
+        Google Account: @(Model.User.GoogleAuthorization != null ? $"Ok, updated at {Model.User.MicrosoftAuthorization.GeneratedAt}" : "No.")
+        <br/>
+    </span>
+</div>

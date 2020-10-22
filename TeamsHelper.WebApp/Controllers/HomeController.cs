@@ -23,7 +23,7 @@ namespace TeamsHelper.WebApp
                 return RedirectToAction("Setup", "Setup");
             }
             
-            return Content("home.");
+            return View(new ViewModel {User = user});
         }
     }
 }

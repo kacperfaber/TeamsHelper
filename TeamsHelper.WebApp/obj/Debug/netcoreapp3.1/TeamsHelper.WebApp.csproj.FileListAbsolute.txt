@@ -81,3 +81,4 @@ C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcorea
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcoreapp3.1\TeamsHelper.WebApp.dll
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcoreapp3.1\TeamsHelper.WebApp.pdb
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcoreapp3.1\TeamsHelper.WebApp.genruntimeconfig.cache
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Home.cshtml.g.cs
