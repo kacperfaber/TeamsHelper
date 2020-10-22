@@ -36,6 +36,7 @@ namespace TeamsHelper.WebApp
             HelperContext = helperContext;
         }
 
+        [Authorize]
         public async Task<IActionResult> AuthorizeGoogle()
         {
             OAuthConfiguration authConfiguration = ConfigurationProvider.Provide(Configuration, "Google");
@@ -45,6 +46,7 @@ namespace TeamsHelper.WebApp
             return RedirectPermanent(url);
         }
 
+        [Authorize]
         public async Task<IActionResult> AuthorizeMicrosoft()
         {
             OAuthConfiguration authConfiguration = ConfigurationProvider.Provide(Configuration, "Microsoft");

@@ -49,8 +49,10 @@ namespace TeamsHelper.WebApp
                 .AddCookie(options =>
                 {
                     options.LoginPath = new PathString("/Login/Login");
-                    options.LogoutPath = new PathString("/logout");
+                    options.LogoutPath = new PathString("/Login/Logout");
                 });
+
+            services.AddAuthorization();
 
             services.AddDbContext<HelperContext>(b => b.UseSqlite("Data Source=.db;", s => s.MigrationsAssembly("TeamsHelper.WebApp")));
 
