@@ -8,7 +8,7 @@ namespace TeamsHelper.Database
     public class Day
     {
         [Key]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public User Owner { get; set; }
 

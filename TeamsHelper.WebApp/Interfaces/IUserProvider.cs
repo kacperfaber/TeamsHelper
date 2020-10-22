@@ -10,7 +10,7 @@ namespace TeamsHelper.WebApp
     {
         Task<User> Provide(string emailAddress);
 
-        Task<User> ProvideAsync(Guid id);
+        Task<User> ProvideAsync(string id);
 
         Task<User> ProvideAsync(HttpContext httpContext);
     }

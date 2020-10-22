@@ -9,19 +9,18 @@ using TeamsHelper.Database;
 namespace TeamsHelper.WebApp.Migrations
 {
     [DbContext(typeof(HelperContext))]
-    [Migration("20201022074710_IdMigration")]
-    partial class IdMigration
+    [Migration("20201022104911_StringMigration")]
+    partial class StringMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8");
+                .HasAnnotation("ProductVersion", "3.1.5");
 
             modelBuilder.Entity("TeamsHelper.Database.Authorization", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AccessToken")
@@ -37,11 +36,10 @@ namespace TeamsHelper.WebApp.Migrations
 
             modelBuilder.Entity("TeamsHelper.Database.Day", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("OwnerId")
+                    b.Property<string>("OwnerId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -53,11 +51,10 @@ namespace TeamsHelper.WebApp.Migrations
 
             modelBuilder.Entity("TeamsHelper.Database.Event", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("DayId")
+                    b.Property<string>("DayId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("GeneratedAt")
@@ -105,8 +102,7 @@ namespace TeamsHelper.WebApp.Migrations
 
             modelBuilder.Entity("TeamsHelper.Database.Meet", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("GeneratedAt")
@@ -142,8 +138,7 @@ namespace TeamsHelper.WebApp.Migrations
 
             modelBuilder.Entity("TeamsHelper.Database.User", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DisplayName")
@@ -152,10 +147,10 @@ namespace TeamsHelper.WebApp.Migrations
                     b.Property<string>("EmailAddress")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("GoogleAuthorizationId")
+                    b.Property<string>("GoogleAuthorizationId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("MicrosoftAuthorizationId")
+                    b.Property<string>("MicrosoftAuthorizationId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
