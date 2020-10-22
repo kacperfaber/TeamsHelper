@@ -23,7 +23,7 @@ namespace TeamsHelper.WebApp
                 x.EmailAddress.ToLower() == emailAddress.ToLower());
         }
 
-        public async Task<User> ProvideAsync(Guid id)
+        public async Task<User> ProvideAsync(string id)
         {
             return await HelperContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
@@ -32,9 +32,11 @@ namespace TeamsHelper.WebApp
         {
             return Task.Run(() =>
             {
-                Guid id = Guid.Parse(httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                string id = httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                return HelperContext.Users.Include(x => x.MicrosoftAuthorization).Include(x => x.GoogleAuthorization).ToList()
+                return HelperContext.Users
+                    .Include(x => x.MicrosoftAuthorization)
+                    .Include(x => x.GoogleAuthorization)
                     .FirstOrDefault(x => x.Id == id);
             });
         }

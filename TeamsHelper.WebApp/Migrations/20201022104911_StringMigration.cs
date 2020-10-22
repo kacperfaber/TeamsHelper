@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeamsHelper.WebApp.Migrations
 {
-    public partial class IdMigration : Migration
+    public partial class StringMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,7 @@ namespace TeamsHelper.WebApp.Migrations
                 name: "Authorizations",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<string>(nullable: false),
                     AccessToken = table.Column<string>(nullable: true),
                     RenewToken = table.Column<string>(nullable: true)
                 },
@@ -58,12 +58,12 @@ namespace TeamsHelper.WebApp.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<string>(nullable: false),
                     EmailAddress = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     DisplayName = table.Column<string>(nullable: true),
-                    MicrosoftAuthorizationId = table.Column<Guid>(nullable: true),
-                    GoogleAuthorizationId = table.Column<Guid>(nullable: true)
+                    GoogleAuthorizationId = table.Column<string>(nullable: true),
+                    MicrosoftAuthorizationId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,7 +86,7 @@ namespace TeamsHelper.WebApp.Migrations
                 name: "Meets",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<string>(nullable: false),
                     GeneratedAt = table.Column<DateTime>(nullable: false),
                     ScheduledAt = table.Column<DateTime>(nullable: false),
                     GoogleEventId = table.Column<string>(nullable: true),
@@ -113,8 +113,8 @@ namespace TeamsHelper.WebApp.Migrations
                 name: "Days",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    OwnerId = table.Column<Guid>(nullable: true)
+                    Id = table.Column<string>(nullable: false),
+                    OwnerId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -131,8 +131,8 @@ namespace TeamsHelper.WebApp.Migrations
                 name: "Events",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    DayId = table.Column<Guid>(nullable: true),
+                    Id = table.Column<string>(nullable: false),
+                    DayId = table.Column<string>(nullable: true),
                     TeamsEventId = table.Column<string>(nullable: true),
                     GoogleEventId = table.Column<string>(nullable: true),
                     GeneratedAt = table.Column<DateTime>(nullable: false)

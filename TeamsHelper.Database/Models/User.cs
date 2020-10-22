@@ -8,7 +8,7 @@ namespace TeamsHelper.Database
     public class User
     {
         [Key]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         
         public string EmailAddress { get; set; }
         
@@ -16,16 +16,15 @@ namespace TeamsHelper.Database
 
         public string DisplayName { get; set; }
 
-        [ForeignKey("MicrosoftAuthorizationId")]
-        public Authorization MicrosoftAuthorization { get; set; }
-
-        public Guid? MicrosoftAuthorizationId { get; set; }
-
-
         [ForeignKey("GoogleAuthorizationId")]
         public Authorization GoogleAuthorization { get; set; }
 
-        public Guid? GoogleAuthorizationId { get; set; }
+        public string GoogleAuthorizationId { get; set; }
+
+        [ForeignKey("MicrosoftAuthorizationId")]
+        public Authorization MicrosoftAuthorization { get; set; }
+        
+        public string MicrosoftAuthorizationId { get; set; }
 
         [InverseProperty("Owner")]
         public List<Day> Days { get; set; }

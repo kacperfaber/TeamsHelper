@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using TeamsHelper.Database;
 
@@ -60,7 +61,7 @@ namespace TeamsHelper.WebApp
             Token token = await TokenProvider.ProvideAsync(code, configuration);
             
             User user = await UserProvider.ProvideAsync(HttpContext);
-            Authorization authorization = await AuthorizationGenerator.GenerateAsync(token.AccessToken, token.RefreshToken);
+            Authorization authorization = await AuthorizationGenerator.GenerateAsync(token.AccessToken, token.RefreshToken, DateTime.Now);
             user.GoogleAuthorization = authorization;
 
             HelperContext.Update(user);
@@ -76,12 +77,12 @@ namespace TeamsHelper.WebApp
             Token token = await TokenProvider.ProvideAsync(code, configuration);
             
             User user = await UserProvider.ProvideAsync(HttpContext);
-            Authorization authorization = await AuthorizationGenerator.GenerateAsync(token.AccessToken, token.RefreshToken);
+            Authorization authorization = await AuthorizationGenerator.GenerateAsync(token.AccessToken, token.RefreshToken, DateTime.Now);
             user.MicrosoftAuthorization = authorization;
 
-            HelperContext.Update(user);
+            HelperContext.Users.Update(user);
             await HelperContext.SaveChangesAsync();
-            
+
             return RedirectToAction("Home", "Home");
         }
     }

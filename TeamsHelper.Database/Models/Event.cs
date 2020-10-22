@@ -8,7 +8,7 @@ namespace TeamsHelper.Database
     public class Event
     {
         [Key]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public Day Day { get; set; }
 

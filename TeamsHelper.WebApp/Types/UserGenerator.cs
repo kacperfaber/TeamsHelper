@@ -10,7 +10,7 @@ namespace TeamsHelper.WebApp
         {
             return Task.Run(() => new User
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Password = registerViewModel.Password,
                 EmailAddress = registerViewModel.EmailAddress,
                 DisplayName = registerViewModel.DisplayName

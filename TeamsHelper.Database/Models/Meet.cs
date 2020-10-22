@@ -7,7 +7,7 @@ namespace TeamsHelper.Database
     public class Meet
     {
         [Key]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public DateTime GeneratedAt { get; set; }
 
