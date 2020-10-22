@@ -9,8 +9,8 @@ using TeamsHelper.Database;
 namespace TeamsHelper.WebApp.Migrations
 {
     [DbContext(typeof(HelperContext))]
-    [Migration("20201021103301_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20201022074710_IdMigration")]
+    partial class IdMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,9 +28,6 @@ namespace TeamsHelper.WebApp.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("RenewToken")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TokenUrl")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

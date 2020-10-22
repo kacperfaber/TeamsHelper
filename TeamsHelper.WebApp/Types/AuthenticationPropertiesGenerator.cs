@@ -10,9 +10,9 @@ namespace TeamsHelper.WebApp
         {
             return new AuthenticationProperties
             {
-                AllowRefresh = true,
-                ExpiresUtc = DateTimeOffset.Now.AddDays(1),
                 IsPersistent = true,
+                AllowRefresh = true,
+                ExpiresUtc = DateTimeOffset.Now.AddDays(14)
             };
         }
     }

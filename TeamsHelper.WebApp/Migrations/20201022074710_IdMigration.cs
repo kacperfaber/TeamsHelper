@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeamsHelper.WebApp.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class IdMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,7 @@ namespace TeamsHelper.WebApp.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     AccessToken = table.Column<string>(nullable: true),
-                    RenewToken = table.Column<string>(nullable: true),
-                    TokenUrl = table.Column<string>(nullable: true)
+                    RenewToken = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
