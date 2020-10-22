@@ -910,6 +910,19 @@
           "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
       },
+      "TeamsHelper.CalendarApi/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "bin/placeholder/TeamsHelper.CalendarApi.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TeamsHelper.CalendarApi.dll": {}
+        }
+      },
       "TeamsHelper.Database/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -921,6 +934,19 @@
         },
         "runtime": {
           "bin/placeholder/TeamsHelper.Database.dll": {}
+        }
+      },
+      "TeamsHelper.TeamsApi/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "bin/placeholder/TeamsHelper.TeamsApi.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TeamsHelper.TeamsApi.dll": {}
         }
       }
     }
@@ -2321,10 +2347,20 @@
         "version.txt"
       ]
     },
+    "TeamsHelper.CalendarApi/1.0.0": {
+      "type": "project",
+      "path": "../TeamsHelper.CalendarApi/TeamsHelper.CalendarApi.csproj",
+      "msbuildProject": "../TeamsHelper.CalendarApi/TeamsHelper.CalendarApi.csproj"
+    },
     "TeamsHelper.Database/1.0.0": {
       "type": "project",
       "path": "../TeamsHelper.Database/TeamsHelper.Database.csproj",
       "msbuildProject": "../TeamsHelper.Database/TeamsHelper.Database.csproj"
+    },
+    "TeamsHelper.TeamsApi/1.0.0": {
+      "type": "project",
+      "path": "../TeamsHelper.TeamsApi/TeamsHelper.TeamsApi.csproj",
+      "msbuildProject": "../TeamsHelper.TeamsApi/TeamsHelper.TeamsApi.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2337,7 +2373,9 @@
       "Microsoft.EntityFrameworkCore.Design >= 3.1.4",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.5",
       "Newtonsoft.Json >= 12.0.3",
-      "TeamsHelper.Database >= 1.0.0"
+      "TeamsHelper.CalendarApi >= 1.0.0",
+      "TeamsHelper.Database >= 1.0.0",
+      "TeamsHelper.TeamsApi >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2368,8 +2406,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {
+              "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj"
+            },
             "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj": {
               "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj"
+            },
+            "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj": {
+              "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj"
             }
           }
         }

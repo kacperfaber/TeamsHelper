@@ -32,7 +32,9 @@
           "Microsoft.EntityFrameworkCore.Design": "3.1.4",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.5",
           "Newtonsoft.Json": "12.0.3",
+          "TeamsHelper.CalendarApi": "1.0.0",
           "TeamsHelper.Database": "1.0.0",
+          "TeamsHelper.TeamsApi": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies.Reference": "3.1.0.0",
@@ -996,6 +998,17 @@
           "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
       },
+      "TeamsHelper.CalendarApi/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "TeamsHelper.CalendarApi.dll": {}
+        },
+        "compile": {
+          "TeamsHelper.CalendarApi.dll": {}
+        }
+      },
       "TeamsHelper.Database/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "3.1.5"
@@ -1005,6 +1018,17 @@
         },
         "compile": {
           "TeamsHelper.Database.dll": {}
+        }
+      },
+      "TeamsHelper.TeamsApi/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "TeamsHelper.TeamsApi.dll": {}
+        },
+        "compile": {
+          "TeamsHelper.TeamsApi.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -3099,7 +3123,17 @@
       "path": "system.text.json/4.7.2",
       "hashPath": "system.text.json.4.7.2.nupkg.sha512"
     },
+    "TeamsHelper.CalendarApi/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "TeamsHelper.Database/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TeamsHelper.TeamsApi/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

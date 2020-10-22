@@ -26,7 +26,7 @@ namespace TeamsHelper.Database
         
         public string MicrosoftAuthorizationId { get; set; }
 
-        [InverseProperty("Owner")]
-        public List<Day> Days { get; set; }
+        [InverseProperty("User")]
+        public List<SynchronizeRaport> SynchronizeRaports { get; set; }
     }
 }

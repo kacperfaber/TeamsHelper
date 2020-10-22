@@ -31,4 +31,10 @@
       <Compile Remove="Types\LocalConfigurationProvider.cs" />
       <Compile Remove="Types\MicrosoftTokenRefresher.cs" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Interfaces" />
+      <Folder Include="Models" />
+      <Folder Include="Types" />
+    </ItemGroup>
 </Project>
