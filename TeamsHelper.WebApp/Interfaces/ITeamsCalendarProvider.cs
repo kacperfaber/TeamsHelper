@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TeamsHelper.TeamsApi;
 
-namespace TeamsHelper
+namespace TeamsHelper.WebApp
 {
     public interface ITeamsCalendarProvider
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeamsHelper
+namespace TeamsHelper.WebApp
 {
     public interface ITomorrowDatesGenerator
     {

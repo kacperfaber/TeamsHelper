@@ -2,10 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>TeamsHelper.WebApp</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TeamsHelper.CalendarApi\TeamsHelper.CalendarApi.csproj" />
       <ProjectReference Include="..\TeamsHelper.Database\TeamsHelper.Database.csproj" />
+      <ProjectReference Include="..\TeamsHelper.TeamsApi\TeamsHelper.TeamsApi.csproj" />
     </ItemGroup>
 
     <ItemGroup>

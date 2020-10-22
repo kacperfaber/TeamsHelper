@@ -13,6 +13,8 @@ namespace TeamsHelper.Database
 
         public DateTime ScheduledAt { get; set; }
 
+        public SynchronizeRaport SynchronizeRaport { get; set; }
+
         [ForeignKey("GoogleEventId")]
         public GoogleEvent GoogleEvent { get; set; }
 

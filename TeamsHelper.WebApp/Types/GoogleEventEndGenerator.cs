@@ -1,7 +1,8 @@
 ﻿using TeamsHelper.CalendarApi;
-using TeamsHelper.TeamsApi;
+using TeamsHelper.Database;
+using TeamsEvent = TeamsHelper.TeamsApi.TeamsEvent;
 
-namespace TeamsHelper
+namespace TeamsHelper.WebApp
 {
     public class GoogleEventEndGenerator : IGoogleEventEndGenerator
     {

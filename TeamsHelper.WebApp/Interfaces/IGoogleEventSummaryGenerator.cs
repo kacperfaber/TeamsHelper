@@ -1,6 +1,7 @@
-﻿using TeamsHelper.TeamsApi;
+﻿using TeamsEvent = TeamsHelper.TeamsApi.TeamsEvent;
 
-namespace TeamsHelper
+
+namespace TeamsHelper.WebApp
 {
     public interface IGoogleEventSummaryGenerator
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeamsHelper.TeamsApi;
+using TeamsHelper.Database;
 
-namespace TeamsHelper
+namespace TeamsHelper.WebApp
 {
     public interface ITeamsEventsProvider
     {

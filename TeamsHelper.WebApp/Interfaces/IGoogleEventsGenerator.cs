@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeamsHelper.CalendarApi;
-using TeamsHelper.TeamsApi;
+using TeamsHelper.Database;
+using GoogleEvent = TeamsHelper.CalendarApi.GoogleEvent;
+using TeamsEvent = TeamsHelper.TeamsApi.TeamsEvent;
 
-namespace TeamsHelper
+namespace TeamsHelper.WebApp
 {
     public interface IGoogleEventsGenerator
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using TeamsHelper.CalendarApi;
 
-namespace TeamsHelper
+namespace TeamsHelper.WebApp
 {
     public interface IPrimaryCalendarProvider
     {

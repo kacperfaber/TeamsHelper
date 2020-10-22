@@ -5,14 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TeamsHelper.Database
 {
-    public class Day
+    public class SynchronizeRaport
     {
         [Key]
         public string Id { get; set; }
 
-        public User Owner { get; set; }
+        public User User { get; set; }
 
-        [InverseProperty("Day")]
-        public List<Event> Events { get; set; }
+        public DateTime Date { get; set; }
+
+        [InverseProperty("SynchronizeRaport")]
+        public List<Meet> Meets { get; set; }
     }
 }

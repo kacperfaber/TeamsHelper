@@ -32,6 +32,11 @@ namespace TeamsHelper.WebApp
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging();
+            
+            services.AddHostedService<Service>();
+
+
             services.AddMvc(x => x.EnableEndpointRouting = false).AddNewtonsoftJson(x =>
             {
                 x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;

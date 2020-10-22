@@ -1,6 +1,8 @@
 ﻿using System;
 using TeamsHelper.CalendarApi;
 using TeamsHelper.TeamsApi;
+using TeamsHelper.WebApp;
+using TeamsEvent = TeamsHelper.TeamsApi.TeamsEvent;
 
 namespace TeamsHelper
 {
