@@ -20,7 +20,6 @@ namespace TeamsHelper.WebApp
                 Description = googleEvent.Description, 
                 Start = TimeGenerator.Generate((DateTime)googleEvent.Start.DateTime),
                 End = TimeGenerator.Generate((DateTime)googleEvent.End.DateTime),
-                Id = googleEvent.Id,
                 Summary = googleEvent.Summary,
                 ExtendedProperties = googleEvent.ExtendedProperties
             });
