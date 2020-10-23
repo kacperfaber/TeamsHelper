@@ -102,6 +102,8 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IJsonSerializer, CalendarApi.JsonSerializer>();
             services.AddScoped<CalendarApi.IGetCalendarsUrlGenerator, CalendarApi.GetCalendarsUrlGenerator>();
 
+            services.AddScoped<IGoogleEventFinder, GoogleEventFinder>();
+            services.AddScoped<IGoogleEventHasExtendedPropertiesChecker, GoogleEventHasExtendedPropertiesChecker>();
             services.AddScoped<ITokenValidator, TokenValidator>();
             services.AddScoped<IAuthorizationValidator, AuthorizationValidator>();
             services.AddScoped<IGetCalendarRequestGenerator, GetCalendarRequestGenerator>();
