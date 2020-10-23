@@ -15,7 +15,7 @@ namespace TeamsHelper.WebApp
         public Task<FormUrlEncodedContent> GenerateAsync(string code, OAuthConfiguration configuration)
         {
             return FormUrlGenerator.GenerateAsync("code", code, "authorization_code", configuration.RedirectUrl, configuration.ClientId,
-                configuration.ClientSecret);
+                configuration.ClientSecret, configuration.CodeVerifier);
         }
     }
 }

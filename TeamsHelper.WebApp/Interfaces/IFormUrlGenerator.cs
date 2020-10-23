@@ -7,5 +7,8 @@ namespace TeamsHelper.WebApp
     {
         Task<FormUrlEncodedContent> GenerateAsync(string accessName, string accessValue, string grantType, string redirectUrl, string clientId,
             string clientSecret);
+
+        Task<FormUrlEncodedContent> GenerateAsync(string accessName, string accessValue, string grantType, string redirectUrl, string clientId,
+            string clientSecret, string codeVerifier);
     }
 }
