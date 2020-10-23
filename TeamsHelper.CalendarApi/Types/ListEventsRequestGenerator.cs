@@ -12,11 +12,16 @@ namespace TeamsHelper.CalendarApi
             UrlGenerator = urlGenerator;
         }
 
-        public HttpRequestMessage Generate(string calendarId, string accessToken)
+        string Dt(DateTime dt)
+        {
+            return dt.ToString("yyyy-MM-ddTHH:mm:ssZ");
+        }
+
+        public HttpRequestMessage Generate(string calendarId, DateTime updatedMin, string accessToken)
         {
             HttpRequestMessage req = new HttpRequestMessage
             {
-                RequestUri = new Uri(UrlGenerator.Generate(calendarId)),
+                RequestUri = new Uri(UrlGenerator.Generate(calendarId, Dt(updatedMin))),
                 Method = HttpMethod.Get
             };
             

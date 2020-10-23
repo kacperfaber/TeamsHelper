@@ -33,8 +33,6 @@ namespace TeamsHelper.WebApp
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            return;
-            
             while (!stoppingToken.IsCancellationRequested)
             {
                 List<User> users = await UsersProvider.ProvideAsync();
@@ -50,7 +48,7 @@ namespace TeamsHelper.WebApp
                     Raport raport = await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
                 }
 
-                await Task.Delay(TimeSpan.FromHours(3), stoppingToken);
+                await Task.Delay(TimeSpan.FromHours(1), stoppingToken);
             }
         }
     }

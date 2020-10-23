@@ -17,7 +17,6 @@ namespace TeamsHelper.WebApp
         public ITomorrowDatesGenerator TomorrowDatesGenerator;
         public IGoogleEventGenerator GoogleEventGenerator;
         public IPrimaryCalendarProvider PrimaryCalendarProvider;
-
         public IGoogleEventFinder GoogleEventFinder;
         public IGoogleEventsProvider GoogleEventsProvider;
         public IGoogleEventValidator GoogleEventValidator;
@@ -75,7 +74,7 @@ namespace TeamsHelper.WebApp
 
                         UpdateEventPayload updatePayload = await UpdateEventPayloadGenerator.GenerateAsync(googleEvent);
 
-                        await GoogleApi.UpdateAsync(updatePayload, googleToken);
+                        await GoogleApi.UpdateAsync(updatePayload, googleCalendar.Id, googleEvent.Id, googleToken);
                     }
                 }
             }
