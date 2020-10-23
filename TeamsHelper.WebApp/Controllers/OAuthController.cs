@@ -28,7 +28,7 @@ namespace TeamsHelper.WebApp
 
         public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration,
             IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator,
-            ITokenProvider tokenProvider, IAuthorizationGenerator authorizationGenerator, HelperContext helperContext)
+            ITokenProvider tokenProvider, IAuthorizationGenerator authorizationGenerator, HelperContext helperContext, IAuthorizationValidator authorizationValidator, ITokenValidator tokenValidator)
         {
             UserProvider = userProvider;
             GoogleRedirectUrlGenerator = googleRedirectUrlGenerator;
@@ -38,6 +38,8 @@ namespace TeamsHelper.WebApp
             TokenProvider = tokenProvider;
             AuthorizationGenerator = authorizationGenerator;
             HelperContext = helperContext;
+            AuthorizationValidator = authorizationValidator;
+            TokenValidator = tokenValidator;
         }
 
         [Authorize]

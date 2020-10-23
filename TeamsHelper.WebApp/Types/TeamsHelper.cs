@@ -35,7 +35,7 @@ namespace TeamsHelper.WebApp
             TeamsCalendar teamsCalendar = await TeamsCalendarProvider.ProvideAsync(allCalendars);
             
             TomorrowDates tomorrowDates = TomorrowDatesGenerator.Generate(DateTime.Now);
-            List<TeamsEvent> events = await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, googleToken);
+            List<TeamsEvent> events = await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, microsoftToken);
             
             List<GoogleEvent> googleEvents = await GoogleEventsGenerator.GenerateAsync(events);
             

@@ -26,7 +26,9 @@ namespace TeamsHelper.WebApp
                 Method = HttpMethod.Post
             };
 
-            return JsonDeserializer.Deserialize<Token>(await (await _http.SendAsync(request)).Content.ReadAsStringAsync());
+            HttpResponseMessage response = await _http.SendAsync(request);
+
+            return JsonDeserializer.Deserialize<Token>(await response.Content.ReadAsStringAsync());
         }
     }
 }

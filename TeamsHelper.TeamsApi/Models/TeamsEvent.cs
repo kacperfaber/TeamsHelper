@@ -4,9 +4,6 @@ namespace TeamsHelper.TeamsApi
 {
     public class TeamsEvent
     {
-        [JsonProperty("@odata.etag")]
-        public string ETag { get; set; }
-        
         [JsonProperty("id")]
         public string Id { get; set; }
         

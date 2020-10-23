@@ -7,7 +7,7 @@ namespace TeamsHelper.WebApp
         public Task<bool> ValidateAsync(Token token)
         {
             return Task.Run(() =>
-                !string.IsNullOrEmpty(token.AccessToken) && string.IsNullOrEmpty(token.RefreshToken) && string.Equals(token.TokenType, "Bearer"));
+                !string.IsNullOrEmpty(token.AccessToken) && !string.IsNullOrEmpty(token.RefreshToken) && string.Equals(token.TokenType, "Bearer"));
         }
     }
 }
