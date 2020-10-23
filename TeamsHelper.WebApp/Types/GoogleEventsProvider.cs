@@ -18,7 +18,7 @@ namespace TeamsHelper.WebApp
 
         public async Task<List<GoogleEvent>> ProvideAsync(GoogleCalendar googleCalendar, string accessToken)
         {
-            List<GoogleEvent> events = await GoogleApi.ListAsync(TODO, accessToken);
+            List<GoogleEvent> events = await GoogleApi.ListAsync(googleCalendar.Id, accessToken);
 
             return events.Where(x => HasExtendedPropertiesChecker.Check(x)).ToList();
         }

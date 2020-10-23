@@ -4,8 +4,6 @@ namespace TeamsHelper.CalendarApi
 {
     public class InsertEventPayload
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
         
         [JsonProperty("summary")]
         public string Summary { get; set; }
