@@ -103,6 +103,8 @@ namespace TeamsHelper.WebApp
             services.AddScoped<CalendarApi.IGetCalendarsUrlGenerator, CalendarApi.GetCalendarsUrlGenerator>();
             services.AddScoped<IDeleteEventRequestGenerator, DeleteEventRequestGenerator>();
             services.AddScoped<IDeleteEventUrlGenerator, DeleteEventUrlGenerator>();
+            services.AddScoped<IListEventsRequestGenerator, ListEventsRequestGenerator>();
+            services.AddScoped<IListEventsUrlGenerator, ListEventsUrlGenerator>();
 
             services.AddScoped<IInsertEventPayloadGenerator, InsertEventPayloadGenerator>();
             services.AddScoped<IGoogleEventCorrector, GoogleEventCorrector>();

@@ -24,25 +24,34 @@ namespace TeamsHelper.WebApp
         public IGoogleCalendarCleaner GoogleCalendarCleaner;
         public IGoogleEventCorrector GoogleEventCorrector;
         public IUpdateEventPayloadGenerator UpdateEventPayloadGenerator;
+        public IInsertEventPayloadGenerator InsertEventPayloadGenerator;
 
-        public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider, ITomorrowDatesGenerator tomorrowDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider)
+        public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider,
+            ITomorrowDatesGenerator tomorrowDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider, IInsertEventPayloadGenerator insertEventPayloadGenerator, IUpdateEventPayloadGenerator updateEventPayloadGenerator, IGoogleEventCorrector googleEventCorrector, IGoogleCalendarCleaner googleCalendarCleaner, IGoogleEventValidator googleEventValidator, IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder)
         {
             TeamsApi = teamsApi;
             GoogleApi = googleApi;
             TeamsCalendarProvider = teamsCalendarProvider;
             TomorrowDatesGenerator = tomorrowDatesGenerator;
             PrimaryCalendarProvider = primaryCalendarProvider;
+            InsertEventPayloadGenerator = insertEventPayloadGenerator;
+            UpdateEventPayloadGenerator = updateEventPayloadGenerator;
+            GoogleEventCorrector = googleEventCorrector;
+            GoogleCalendarCleaner = googleCalendarCleaner;
+            GoogleEventValidator = googleEventValidator;
+            GoogleEventsProvider = googleEventsProvider;
+            GoogleEventFinder = googleEventFinder;
         }
 
         public async Task<Raport> DoSomething(string microsoftToken, string googleToken)
         {
             List<TeamsCalendar> allCalendars = await TeamsApi.GetCalendarsAsync(microsoftToken);
-            
+
             TeamsCalendar teamsCalendar = await TeamsCalendarProvider.ProvideAsync(allCalendars);
-            
+
             TomorrowDates tomorrowDates = TomorrowDatesGenerator.Generate(DateTime.Now);
             List<TeamsEvent> teamsEvents = await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, microsoftToken);
-            
+
             GoogleCalendar googleCalendar = await PrimaryCalendarProvider.Provide(googleToken);
             List<GoogleEvent> googleEvents = await GoogleEventsProvider.ProvideAsync(googleCalendar, googleToken);
 
@@ -52,8 +61,8 @@ namespace TeamsHelper.WebApp
 
                 if (googleEvent == null)
                 {
-                    GoogleEvent newEvent = await GoogleEventGenerator.GenerateAsync(teamsEvent);
-                    await GoogleApi.InsertEventAsync(googleCalendar, newEvent, googleToken);
+                    InsertEventPayload insertPayload = await InsertEventPayloadGenerator.GenerateAsync(teamsEvent);
+                    await GoogleApi.InsertAsync(insertPayload, googleCalendar.Id, googleToken);
                 }
 
                 else
@@ -63,16 +72,16 @@ namespace TeamsHelper.WebApp
                     if (!validationResult.Validated)
                     {
                         await GoogleEventCorrector.CorrectAsync(googleEvent, teamsEvent, validationResult);
-                        
+
                         UpdateEventPayload updatePayload = await UpdateEventPayloadGenerator.GenerateAsync(googleEvent);
-                        
+
                         await GoogleApi.UpdateAsync(updatePayload, googleToken);
                     }
                 }
             }
 
             await GoogleCalendarCleaner.CleanAsync(googleCalendar, googleEvents, teamsEvents, googleToken);
-            
+
             return new Raport();
         }
     }
