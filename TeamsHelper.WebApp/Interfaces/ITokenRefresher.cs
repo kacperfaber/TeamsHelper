@@ -5,6 +5,6 @@ namespace TeamsHelper.WebApp
 {
     public interface ITokenRefresher
     {
-        Task<string> RefreshAsync(Authorization authorization, OAuthConfiguration configuration);
+        Task<Token> RefreshAsync(Authorization authorization, OAuthConfiguration configuration);
     }
 }

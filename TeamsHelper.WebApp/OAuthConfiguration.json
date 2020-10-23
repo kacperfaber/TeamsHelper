@@ -9,10 +9,10 @@
         "TokenEndpoint": "https://oauth2.googleapis.com/token"
       },
       "Microsoft": {
-        "ClientId": "0b4e92b5-68e9-4083-922d-b989c9e2c477",
-        "ClientSecret": "u7TYbkjRs7_4h3P~6qT3.pf7x.~S8Mgmva",
+        "ClientId": "aae1b0c3-ad4c-4b0b-8dfb-ac59fbfdefc1",
+        "ClientSecret": "DV-dH__4~wZ1cJblx~-tZ.In8l6WOyl169",
         "RedirectUrl": "https://localhost:5001/signin-oidc",
-        "Scopes": "offline_access%20Calendars.Read.Shared%20Calendars.Read",
+        "Scopes": "offline_access%20Calendars.Read.Shared%20Calendars.Read%20Calendars.Read.Shared",
         "TokenEndpoint": "https://login.microsoftonline.com/466d5c5a-54d4-45fc-98eb-7877acf57f5f/oauth2/v2.0/token"
       }
     }

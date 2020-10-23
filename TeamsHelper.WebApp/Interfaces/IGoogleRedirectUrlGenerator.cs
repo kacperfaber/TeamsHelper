@@ -1,7 +1,9 @@
-﻿namespace TeamsHelper.WebApp
+﻿using System.Threading.Tasks;
+
+namespace TeamsHelper.WebApp
 {
-    public interface IGoogleRedirectUrlGenerator : IRedirectUrlGenerator
+    public interface IGoogleRedirectUrlGenerator
     {
-        
+        Task<string> GenerateAsync(OAuthConfiguration authConfiguration, string responseType);
     }
 }
