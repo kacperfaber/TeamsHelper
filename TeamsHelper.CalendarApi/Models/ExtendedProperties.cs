@@ -6,9 +6,9 @@ namespace TeamsHelper.CalendarApi
     public class ExtendedProperties
     {
         [JsonProperty("private")]
-        public Dictionary<string, string> Private { get; set; }
+        public Dictionary<string, string> Private { get; set; } = new Dictionary<string, string>();
         
         [JsonProperty("shared")]
-        public Dictionary<string, string> Shared { get; set; }
+        public Dictionary<string, string> Shared { get; set; } = new Dictionary<string, string>();
     }
 }

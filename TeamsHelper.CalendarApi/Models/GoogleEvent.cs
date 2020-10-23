@@ -43,5 +43,8 @@ namespace TeamsHelper.CalendarApi
         
         [JsonProperty("extendedProperties")]
         public ExtendedProperties ExtendedProperties { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 }

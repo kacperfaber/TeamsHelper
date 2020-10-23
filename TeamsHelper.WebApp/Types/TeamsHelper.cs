@@ -15,21 +15,22 @@ namespace TeamsHelper.WebApp
         public GoogleApi GoogleApi;
         public ITeamsCalendarProvider TeamsCalendarProvider;
         public ITomorrowDatesGenerator TomorrowDatesGenerator;
-        public IGoogleEventsGenerator GoogleEventsGenerator;
+        public IGoogleEventGenerator GoogleEventGenerator;
         public IPrimaryCalendarProvider PrimaryCalendarProvider;
 
         public IGoogleEventFinder GoogleEventFinder;
         public IGoogleEventsProvider GoogleEventsProvider;
         public IGoogleEventValidator GoogleEventValidator;
         public IGoogleCalendarCleaner GoogleCalendarCleaner;
+        public IGoogleEventCorrector GoogleEventCorrector;
+        public IUpdateEventPayloadGenerator UpdateEventPayloadGenerator;
 
-        public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider, ITomorrowDatesGenerator tomorrowDatesGenerator, IGoogleEventsGenerator googleEventsGenerator, IPrimaryCalendarProvider primaryCalendarProvider)
+        public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider, ITomorrowDatesGenerator tomorrowDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider)
         {
             TeamsApi = teamsApi;
             GoogleApi = googleApi;
             TeamsCalendarProvider = teamsCalendarProvider;
             TomorrowDatesGenerator = tomorrowDatesGenerator;
-            GoogleEventsGenerator = googleEventsGenerator;
             PrimaryCalendarProvider = primaryCalendarProvider;
         }
 
@@ -51,21 +52,21 @@ namespace TeamsHelper.WebApp
 
                 if (googleEvent == null)
                 {
-                    // CREATE
+                    GoogleEvent newEvent = await GoogleEventGenerator.GenerateAsync(teamsEvent);
+                    await GoogleApi.InsertEventAsync(googleCalendar, newEvent, googleToken);
                 }
 
                 else
                 {
                     GoogleEventValidationResult validationResult = await GoogleEventValidator.ValidateAsync(googleEvent, teamsEvent);
 
-                    if (validationResult.Validated)
+                    if (!validationResult.Validated)
                     {
-                        // RET
-                    }
-
-                    else
-                    {
-                        // UPDATE
+                        await GoogleEventCorrector.CorrectAsync(googleEvent, teamsEvent, validationResult, googleToken);
+                        
+                        UpdateEventPayload updatePayload = await UpdateEventPayloadGenerator.GenerateAsync(googleEvent);
+                        
+                        await GoogleApi.UpdateAsync(updatePayload, googleToken);
                     }
                 }
             }
