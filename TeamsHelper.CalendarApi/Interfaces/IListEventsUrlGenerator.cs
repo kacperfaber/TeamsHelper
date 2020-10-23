@@ -1,6 +1,6 @@
 ﻿namespace TeamsHelper.CalendarApi
 {
-    public interface IInsertEventUrlGenerator
+    public interface IListEventsUrlGenerator
     {
         string Generate(string calendarId);
     }
