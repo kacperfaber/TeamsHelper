@@ -23,8 +23,12 @@ namespace TeamsHelper.WebApp
         public ITokenProvider TokenProvider;
         public IAuthorizationGenerator AuthorizationGenerator;
         public HelperContext HelperContext;
+        public IAuthorizationValidator AuthorizationValidator;
+        public ITokenValidator TokenValidator;
 
-        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration, IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator, ITokenProvider tokenProvider, IAuthorizationGenerator authorizationGenerator, HelperContext helperContext)
+        public OAuthController(IUserProvider userProvider, IGoogleRedirectUrlGenerator googleRedirectUrlGenerator, IConfiguration configuration,
+            IOAuthConfigurationProvider configurationProvider, IMicrosoftRedirectUrlGenerator microsoftRedirectUrlGenerator,
+            ITokenProvider tokenProvider, IAuthorizationGenerator authorizationGenerator, HelperContext helperContext)
         {
             UserProvider = userProvider;
             GoogleRedirectUrlGenerator = googleRedirectUrlGenerator;
@@ -60,16 +64,29 @@ namespace TeamsHelper.WebApp
         public async Task<IActionResult> CallbackGoogle(string code)
         {
             OAuthConfiguration configuration = ConfigurationProvider.Provide(Configuration, "Google");
-            Token token = await TokenProvider.ProvideAsync(code, configuration);
-            
             User user = await UserProvider.ProvideAsync(HttpContext);
-            Authorization authorization = await AuthorizationGenerator.GenerateAsync(token.AccessToken, token.RefreshToken, DateTime.Now);
-            user.GoogleAuthorization = authorization;
+            Token token = await TokenProvider.ProvideAsync(code, configuration);
 
-            HelperContext.Update(user);
-            await HelperContext.SaveChangesAsync();
+            if (await TokenValidator.ValidateAsync(token))
+            {
+                Authorization authorization = await AuthorizationGenerator.GenerateAsync(token.AccessToken, token.RefreshToken, DateTime.Now);
 
-            return RedirectToAction("Home", "Home");
+                if (await AuthorizationValidator.ValidateAsync(authorization))
+                {
+                    user.GoogleAuthorization = authorization;
+
+                    HelperContext.Update(user);
+                    await HelperContext.SaveChangesAsync();
+
+                    return RedirectToAction("Home", "Home");
+                }
+
+                Response.StatusCode = 404;
+                return View("AuthorizationValidationFailed", new AuthorizationValidationFailedViewModel {Authorization = authorization, User = user});
+            }
+
+            Response.StatusCode = 404;
+            return View("TokenValidationFailed", new TokenValidationFailedViewModel {Token = token, User = user});
         }
 
         [HttpGet("signin-oidc")]
@@ -77,7 +94,7 @@ namespace TeamsHelper.WebApp
         {
             OAuthConfiguration configuration = ConfigurationProvider.Provide(Configuration, "Microsoft");
             Token token = await TokenProvider.ProvideAsync(code, configuration);
-            
+
             User user = await UserProvider.ProvideAsync(HttpContext);
             Authorization authorization = await AuthorizationGenerator.GenerateAsync(token.AccessToken, token.RefreshToken, DateTime.Now);
             user.MicrosoftAuthorization = authorization;

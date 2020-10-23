@@ -1,0 +1,21 @@
+﻿@model TeamsHelper.WebApp.TokenValidationFailedViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Token Validation Failed</h2>
+
+<div>
+    Access Token: @Model.Token.AccessToken
+    <br>
+    Refresh Token: @Model.Token.AccessToken
+    <br>
+    Token Type: @Model.Token.TokenType
+    
+    <br/>
+    <br/>
+    
+    @Html.ActionLink("Back home", "Home", "Home")
+</div>
