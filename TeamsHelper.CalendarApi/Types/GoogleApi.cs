@@ -38,7 +38,7 @@ namespace TeamsHelper.CalendarApi
             HttpRequestMessage req = GetCalendarRequestGenerator.Generate(calendarId, accessToken);
             HttpResponseMessage response = await _http.SendAsync(req);
             string content = await response.Content.ReadAsStringAsync();
-            return JObject.Parse(content)["items"].ToObject<GoogleCalendar>();
+            return JObject.Parse(content).ToObject<GoogleCalendar>();
         }
         
         public async Task<GoogleCalendar> CreateCalendarAsync(GoogleCalendar googleCalendar, string accessToken)

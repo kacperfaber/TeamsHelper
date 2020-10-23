@@ -21,7 +21,7 @@ namespace TeamsHelper.CalendarApi
         public string HtmlLink { get; set; }
         
         [JsonProperty("created")]
-        public DateTime Created { get; set; }
+        public DateTime? Created { get; set; }
         
         [JsonProperty("updated")]
         public DateTime? Updated { get; set; }

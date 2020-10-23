@@ -7,7 +7,7 @@ namespace TeamsHelper.WebApp
     {
         public GoogleTime Generate(DateTime dt)
         {
-            return new GoogleTime {Date = dt};
+            return new GoogleTime {DateTime = dt, TimeZone = "Europe/Warsaw"};
         }
     }
 }
