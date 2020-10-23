@@ -138,6 +138,7 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IUserProvider, UserProvider>();
             services.AddScoped<IUsersProvider, UsersProvider>();
             services.AddScoped<IUserStore, UserStore>();
+            services.AddScoped<IGoogleEventValidator, GoogleEventValidator>();
 
             services.AddScoped<TeamsApi.TeamsApi>();
             services.AddScoped<IHttpClient, TeamsApi.HttpClient>();
