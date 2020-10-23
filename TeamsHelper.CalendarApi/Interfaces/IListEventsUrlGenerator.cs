@@ -2,6 +2,6 @@
 {
     public interface IListEventsUrlGenerator
     {
-        string Generate(string calendarId);
+        string Generate(string calendarId, string updatedMin);
     }
 }

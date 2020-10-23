@@ -12,7 +12,11 @@ namespace TeamsHelper.WebApp
         {
             return Task.Run(() =>
             {
-                GoogleEventValidationResult result = new GoogleEventValidationResult();
+                GoogleEventValidationResult result = new GoogleEventValidationResult
+                {
+                    EndingAtValidated = true,
+                    StartingAtValidated = true
+                };
 
                 TimeSpan startCompare = (DateTime) googleEvent.Start.DateTime - teamsEvent.Start.DateTime;
 

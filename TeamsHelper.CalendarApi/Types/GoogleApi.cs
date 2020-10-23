@@ -72,9 +72,9 @@ namespace TeamsHelper.CalendarApi
             await _http.SendAsync(request);
         }
 
-        public async Task<List<GoogleEvent>> ListAsync(string calendarId, string accessToken)
+        public async Task<List<GoogleEvent>> ListAsync(string calendarId, DateTime updatedMin,  string accessToken)
         {
-            HttpRequestMessage request = ListEventsRequestGenerator.Generate(calendarId, accessToken);
+            HttpRequestMessage request = ListEventsRequestGenerator.Generate(calendarId, updatedMin, accessToken);
             HttpResponseMessage response = await _http.SendAsync(request);
             JObject obj = JObject.Parse(await response.Content.ReadAsStringAsync());
             return obj.SelectToken("items").ToObject<List<GoogleEvent>>();

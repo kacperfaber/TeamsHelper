@@ -9,7 +9,7 @@ namespace TeamsHelper.WebApp
     {
         public Task<GoogleEvent> FindAsync(List<GoogleEvent> googleEvents, string teamsId)
         {
-            return Task.Run(() => googleEvents.FirstOrDefault(x => x.ExtendedProperties.Private["teamsId"] == teamsId));
+            return Task.Run(() => googleEvents.FirstOrDefault(x => x.ExtendedProperties.Private.GetValueOrDefault("teamsId") == teamsId));
         }
     }
 }
