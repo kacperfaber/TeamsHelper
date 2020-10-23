@@ -57,5 +57,10 @@ namespace TeamsHelper.CalendarApi
             string content = await response.Content.ReadAsStringAsync();
             return JObject.Parse(content).ToObject<GoogleEvent>();
         }
+
+        public async Task DeleteEventAsync(GoogleEvent googleEvent, string accessToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
