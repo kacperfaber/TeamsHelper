@@ -104,6 +104,7 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IDeleteEventRequestGenerator, DeleteEventRequestGenerator>();
             services.AddScoped<IDeleteEventUrlGenerator, DeleteEventUrlGenerator>();
 
+            services.AddScoped<IInsertEventPayloadGenerator, InsertEventPayloadGenerator>();
             services.AddScoped<IGoogleEventCorrector, GoogleEventCorrector>();
             services.AddScoped<IUpdateEventPayloadGenerator, UpdateEventPayloadGenerator>();
             services.AddScoped<IGoogleEventsProvider, GoogleEventsProvider>();
