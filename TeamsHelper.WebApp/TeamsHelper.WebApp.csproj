@@ -45,6 +45,10 @@
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
+      <Content Update="Pages\Account\Delete.cshtml">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
@@ -56,6 +60,10 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.5" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Account\Delete.cshtml" />
     </ItemGroup>
 
 </Project>
