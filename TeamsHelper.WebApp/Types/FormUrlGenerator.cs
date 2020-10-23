@@ -22,5 +22,24 @@ namespace TeamsHelper.WebApp
                 return new FormUrlEncodedContent(pairs);
             });
         }
+
+        public Task<FormUrlEncodedContent> GenerateAsync(string accessName, string accessValue, string grantType, string redirectUrl, string clientId, 
+            string clientSecret, string codeVerifier)
+        {
+            return Task.Run(() =>
+            {
+                List<KeyValuePair<string, string>> pairs = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>(accessName, accessValue),
+                    new KeyValuePair<string, string>("grant_type", grantType),
+                    new KeyValuePair<string, string>("client_id", clientId),
+                    new KeyValuePair<string, string>("client_secret", clientSecret),
+                    new KeyValuePair<string, string>("redirect_uri", redirectUrl),
+                    new KeyValuePair<string, string>("code_verifier", codeVerifier)
+                };
+
+                return new FormUrlEncodedContent(pairs);
+            });
+        }
     }
 }
