@@ -1,10 +1,7 @@
-﻿using System;
-using TeamsHelper.CalendarApi;
-using TeamsHelper.TeamsApi;
-using TeamsHelper.WebApp;
+﻿using TeamsHelper.CalendarApi;
 using TeamsEvent = TeamsHelper.TeamsApi.TeamsEvent;
 
-namespace TeamsHelper
+namespace TeamsHelper.WebApp
 {
     public class GoogleEventStartGenerator : IGoogleEventStartGenerator
     {

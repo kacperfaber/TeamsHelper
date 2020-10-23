@@ -1,8 +1,7 @@
 ﻿using System;
 using TeamsHelper.CalendarApi;
-using TeamsHelper.WebApp;
 
-namespace TeamsHelper
+namespace TeamsHelper.WebApp
 {
     public class GoogleTimeGenerator : IGoogleTimeGenerator
     {
