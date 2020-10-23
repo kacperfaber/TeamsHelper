@@ -10,8 +10,8 @@ namespace TeamsHelper.WebApp
 
             return new TomorrowDates
             {
-                DayEndingAt = tomorrow.AddHours(23).AddMinutes(59).AddSeconds(59),
-                DayStartingAt = tomorrow
+                DayEndingAt = nowOrToday.AddHours(23).AddMinutes(59).AddSeconds(59),
+                DayStartingAt = nowOrToday // TODO: TESTING, CHANGE TO TOMORROW.
             };
         }
     }

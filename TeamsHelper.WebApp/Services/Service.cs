@@ -33,16 +33,16 @@ namespace TeamsHelper.WebApp
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (false)
+            while (!stoppingToken.IsCancellationRequested)
             {
                 List<User> users = await UsersProvider.ProvideAsync();
-
+                
+                OAuthConfiguration googleConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Google");
+                OAuthConfiguration microsoftConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Microsoft");
+                
                 foreach (User user in users)
                 {
-                    OAuthConfiguration googleConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Google");
                     Token googleToken = await TokenRefresher.RefreshAsync(user.GoogleAuthorization, googleConfiguration);
-
-                    OAuthConfiguration microsoftConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Microsoft");
                     Token microsoftToken = await TokenRefresher.RefreshAsync(user.MicrosoftAuthorization, microsoftConfiguration);
 
                     Raport raport = await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);

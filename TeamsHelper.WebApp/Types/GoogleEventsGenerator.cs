@@ -19,6 +19,7 @@ namespace TeamsHelper.WebApp
             return Task.Run(async () =>
             {
                 List<GoogleEvent> output = new List<GoogleEvent>();
+                
                 foreach (TeamsEvent teamsEvent in events)
                 {
                     GoogleEvent googleEvent = await GoogleEventGenerator.GenerateAsync(teamsEvent);

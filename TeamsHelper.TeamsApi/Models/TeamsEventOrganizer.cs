@@ -5,6 +5,6 @@ namespace TeamsHelper.TeamsApi
     public class TeamsEventOrganizer
     {
         [JsonProperty("emailAddress")]
-        public string EmailAddress { get; set; }
+        public TeamsEmailAddress EmailAddress { get; set; }
     }
 }
