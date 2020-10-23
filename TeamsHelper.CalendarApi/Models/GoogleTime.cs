@@ -5,7 +5,10 @@ namespace TeamsHelper.CalendarApi
 {
     public class GoogleTime
     {
-        [JsonProperty("date")]
-        public DateTime? Date { get; set; }
+        [JsonProperty("dateTime")]
+        public DateTime? DateTime { get; set; }
+        
+        [JsonProperty("timeZone")]
+        public string TimeZone { get; set; }
     }
 }

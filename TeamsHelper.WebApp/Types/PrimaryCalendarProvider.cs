@@ -14,7 +14,7 @@ namespace TeamsHelper.WebApp
 
         public Task<GoogleCalendar> Provide(string accessToken)
         {
-            return GoogleApi.GetCalendar("PRIMARY", accessToken);
+            return GoogleApi.GetCalendar("primary", accessToken);
         }
     }
 }

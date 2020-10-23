@@ -6,7 +6,7 @@ namespace TeamsHelper.CalendarApi
     {
         public string Serialize(object o)
         {
-            return JsonConvert.SerializeObject(o);
+            return JsonConvert.SerializeObject(o, new JsonSerializerSettings() {NullValueHandling = NullValueHandling.Ignore});
         }
     }
 }

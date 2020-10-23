@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text;
 
 namespace TeamsHelper.CalendarApi
 {
@@ -20,7 +21,7 @@ namespace TeamsHelper.CalendarApi
             {
                 RequestUri = new Uri(UrlGenerator.Generate(googleCalendar)),
                 Method = HttpMethod.Post,
-                Content = new StringContent(Serializer.Serialize(googleGoogleEvent))
+                Content = new StringContent(Serializer.Serialize(googleGoogleEvent), Encoding.UTF8, "application/json")
             };
             
             req.Headers.Add("Authorization", "Bearer " + accessToken);
