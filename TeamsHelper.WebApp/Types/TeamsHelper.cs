@@ -62,7 +62,7 @@ namespace TeamsHelper.WebApp
 
                     if (!validationResult.Validated)
                     {
-                        await GoogleEventCorrector.CorrectAsync(googleEvent, teamsEvent, validationResult, googleToken);
+                        await GoogleEventCorrector.CorrectAsync(googleEvent, teamsEvent, validationResult);
                         
                         UpdateEventPayload updatePayload = await UpdateEventPayloadGenerator.GenerateAsync(googleEvent);
                         
@@ -71,7 +71,7 @@ namespace TeamsHelper.WebApp
                 }
             }
 
-            await GoogleCalendarCleaner.CleanAsync(googleEvents, teamsEvents, googleToken);
+            await GoogleCalendarCleaner.CleanAsync(googleCalendar, googleEvents, teamsEvents, googleToken);
             
             return new Raport();
         }

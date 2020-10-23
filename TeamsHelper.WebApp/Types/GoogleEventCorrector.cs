@@ -14,7 +14,7 @@ namespace TeamsHelper.WebApp
             TimeGenerator = timeGenerator;
         }
 
-        public Task CorrectAsync(GoogleEvent googleEvent, TeamsEvent teamsEvent, GoogleEventValidationResult validationResult, string accessToken)
+        public Task CorrectAsync(GoogleEvent googleEvent, TeamsEvent teamsEvent, GoogleEventValidationResult validationResult)
         {
             return Task.Run(() =>
             {
