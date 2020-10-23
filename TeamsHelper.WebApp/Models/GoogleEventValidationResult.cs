@@ -2,7 +2,7 @@
 {
     public class GoogleEventValidationResult
     {
-        public bool Validated { get; set; }
+        public bool Validated => EndingAtValidated && StartingAtValidated;
 
         public bool EndingAtValidated { get; set; }
 
