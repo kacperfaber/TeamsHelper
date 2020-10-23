@@ -62,5 +62,10 @@ namespace TeamsHelper.CalendarApi
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<GoogleEvent>> EventsAsync(GoogleCalendar googleCalendar, string accessToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

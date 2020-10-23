@@ -18,6 +18,11 @@ namespace TeamsHelper.WebApp
         public IGoogleEventsGenerator GoogleEventsGenerator;
         public IPrimaryCalendarProvider PrimaryCalendarProvider;
 
+        public IGoogleEventFinder GoogleEventFinder;
+        public IGoogleEventsProvider GoogleEventsProvider;
+        public IGoogleEventValidator GoogleEventValidator;
+        public IGoogleCalendarCleaner GoogleCalendarCleaner;
+
         public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider, ITomorrowDatesGenerator tomorrowDatesGenerator, IGoogleEventsGenerator googleEventsGenerator, IPrimaryCalendarProvider primaryCalendarProvider)
         {
             TeamsApi = teamsApi;
@@ -35,17 +40,38 @@ namespace TeamsHelper.WebApp
             TeamsCalendar teamsCalendar = await TeamsCalendarProvider.ProvideAsync(allCalendars);
             
             TomorrowDates tomorrowDates = TomorrowDatesGenerator.Generate(DateTime.Now);
-            List<TeamsEvent> events = await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, microsoftToken);
-            
-            List<GoogleEvent> googleEvents = await GoogleEventsGenerator.GenerateAsync(events);
+            List<TeamsEvent> teamsEvents = await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, microsoftToken);
             
             GoogleCalendar googleCalendar = await PrimaryCalendarProvider.Provide(googleToken);
-            
-            foreach (GoogleEvent googleEvent in googleEvents)
+            List<GoogleEvent> googleEvents = await GoogleEventsProvider.ProvideAsync(googleCalendar, googleToken);
+
+            foreach (TeamsEvent teamsEvent in teamsEvents)
             {
-                await GoogleApi.InsertEventAsync(googleCalendar, googleEvent, googleToken);
+                GoogleEvent googleEvent = await GoogleEventFinder.FindAsync(googleEvents, teamsEvent.Id);
+
+                if (googleEvent == null)
+                {
+                    // CREATE
+                }
+
+                else
+                {
+                    GoogleEventValidationResult validationResult = await GoogleEventValidator.ValidateAsync(googleEvent, teamsEvent);
+
+                    if (validationResult.Validated)
+                    {
+                        // RET
+                    }
+
+                    else
+                    {
+                        // UPDATE
+                    }
+                }
             }
 
+            await GoogleCalendarCleaner.CleanAsync(googleEvents, teamsEvents, googleToken);
+            
             return new Raport();
         }
     }

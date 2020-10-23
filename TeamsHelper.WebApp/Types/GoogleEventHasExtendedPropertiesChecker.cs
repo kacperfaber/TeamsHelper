@@ -6,7 +6,7 @@ namespace TeamsHelper.WebApp
     {
         public bool Check(GoogleEvent googleEvent)
         {
-            return googleEvent.ExtendedProperties != null;
+            return googleEvent?.ExtendedProperties?.Private != null;
         }
     }
 }
