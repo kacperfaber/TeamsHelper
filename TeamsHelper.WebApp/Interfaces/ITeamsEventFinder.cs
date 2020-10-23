@@ -6,6 +6,6 @@ namespace TeamsHelper.WebApp
 {
     public interface ITeamsEventFinder
     {
-        Task<TeamsEvent> FindAsync(List<TeamsEvent> teamsEvents, string teamsId);
+        Task<TeamsEvent> FindAsync(IEnumerable<TeamsEvent> teamsEvents, string teamsId);
     }
 }

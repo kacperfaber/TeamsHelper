@@ -7,6 +7,6 @@ namespace TeamsHelper.WebApp
 {
     public interface IGoogleCalendarCleaner
     {
-        Task CleanAsync(List<GoogleEvent> googleEvents, List<TeamsEvent> teamsEvents, string accessToken);
+        Task CleanAsync(GoogleCalendar googleCalendar, IEnumerable<GoogleEvent> googleEvents, IEnumerable<TeamsEvent> teamsEvents, string accessToken);
     }
 }

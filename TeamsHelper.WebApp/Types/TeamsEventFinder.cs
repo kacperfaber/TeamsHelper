@@ -7,7 +7,7 @@ namespace TeamsHelper.WebApp
 {
     public class TeamsEventFinder : ITeamsEventFinder
     {
-        public Task<TeamsEvent> FindAsync(List<TeamsEvent> teamsEvents, string teamsId)
+        public Task<TeamsEvent> FindAsync(IEnumerable<TeamsEvent> teamsEvents, string teamsId)
         {
             return Task.Run(() => teamsEvents.FirstOrDefault(x => x.Id == teamsId));
         }

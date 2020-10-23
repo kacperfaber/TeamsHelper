@@ -6,6 +6,6 @@ namespace TeamsHelper.WebApp
 {
     public interface IGoogleEventCorrector
     {
-        Task CorrectAsync(GoogleEvent googleEvent, TeamsEvent teamsEvent, GoogleEventValidationResult validationResult, string accessToken);
+        Task CorrectAsync(GoogleEvent googleEvent, TeamsEvent teamsEvent, GoogleEventValidationResult validationResult);
     }
 }

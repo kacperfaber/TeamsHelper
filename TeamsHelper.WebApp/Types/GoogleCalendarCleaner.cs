@@ -18,7 +18,7 @@ namespace TeamsHelper.WebApp
             GoogleApi = googleApi;
         }
 
-        public async Task CleanAsync(List<GoogleEvent> googleEvents, List<TeamsEvent> teamsEvents, string accessToken)
+        public async Task CleanAsync(GoogleCalendar googleCalendar, IEnumerable<GoogleEvent> googleEvents, IEnumerable<TeamsEvent> teamsEvents, string accessToken)
         {
             foreach (GoogleEvent googleEvent in googleEvents)
             {
@@ -27,7 +27,7 @@ namespace TeamsHelper.WebApp
 
                 if (teamsEvent == null)
                 {
-                    await GoogleApi.DeleteEventAsync(googleEvent, accessToken);
+                    await GoogleApi.DeleteAsync(googleCalendar.Id, googleEvent.Id, accessToken);
                 }
             }
         }
