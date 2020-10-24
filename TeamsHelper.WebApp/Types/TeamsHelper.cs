@@ -14,7 +14,7 @@ namespace TeamsHelper.WebApp
         public TeamsApi.TeamsApi TeamsApi;
         public GoogleApi GoogleApi;
         public ITeamsCalendarProvider TeamsCalendarProvider;
-        public ITomorrowDatesGenerator TomorrowDatesGenerator;
+        public IEventsDatesGenerator EventsDatesGenerator;
         public IGoogleEventGenerator GoogleEventGenerator;
         public IPrimaryCalendarProvider PrimaryCalendarProvider;
         public IGoogleEventFinder GoogleEventFinder;
@@ -24,19 +24,18 @@ namespace TeamsHelper.WebApp
         public IGoogleEventCorrector GoogleEventCorrector;
         public IUpdateEventPayloadGenerator UpdateEventPayloadGenerator;
         public IInsertEventPayloadGenerator InsertEventPayloadGenerator;
-
         public ITeamsEventIsCanceledChecker TeamsEventIsCanceledChecker;
 
         public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider,
-            ITomorrowDatesGenerator tomorrowDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider,
+            IEventsDatesGenerator eventsDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider,
             IInsertEventPayloadGenerator insertEventPayloadGenerator, IUpdateEventPayloadGenerator updateEventPayloadGenerator,
             IGoogleEventCorrector googleEventCorrector, IGoogleCalendarCleaner googleCalendarCleaner, IGoogleEventValidator googleEventValidator,
-            IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder)
+            IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder, ITeamsEventIsCanceledChecker teamsEventIsCanceledChecker)
         {
             TeamsApi = teamsApi;
             GoogleApi = googleApi;
             TeamsCalendarProvider = teamsCalendarProvider;
-            TomorrowDatesGenerator = tomorrowDatesGenerator;
+            EventsDatesGenerator = eventsDatesGenerator;
             PrimaryCalendarProvider = primaryCalendarProvider;
             InsertEventPayloadGenerator = insertEventPayloadGenerator;
             UpdateEventPayloadGenerator = updateEventPayloadGenerator;
@@ -45,6 +44,7 @@ namespace TeamsHelper.WebApp
             GoogleEventValidator = googleEventValidator;
             GoogleEventsProvider = googleEventsProvider;
             GoogleEventFinder = googleEventFinder;
+            TeamsEventIsCanceledChecker = teamsEventIsCanceledChecker;
         }
 
         public async Task<Raport> DoSomething(string microsoftToken, string googleToken)
@@ -53,9 +53,10 @@ namespace TeamsHelper.WebApp
 
             TeamsCalendar teamsCalendar = await TeamsCalendarProvider.ProvideAsync(allCalendars);
 
-            TomorrowDates tomorrowDates = TomorrowDatesGenerator.Generate(DateTime.Now);
+            EventsDates eventsDates = EventsDatesGenerator.Generate(DateTime.Now);
+            
             List<TeamsEvent> teamsEvents =
-                await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, microsoftToken);
+                await TeamsApi.GetEventsAsync(teamsCalendar, eventsDates.DayStartingAt, eventsDates.DayEndingAt, microsoftToken);
 
             GoogleCalendar googleCalendar = await PrimaryCalendarProvider.Provide(googleToken);
             List<GoogleEvent> googleEvents = await GoogleEventsProvider.ProvideAsync(googleCalendar, googleToken);

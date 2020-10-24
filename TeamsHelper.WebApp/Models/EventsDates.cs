@@ -2,7 +2,7 @@
 
 namespace TeamsHelper
 {
-    public class TomorrowDates
+    public class EventsDates
     {
         public DateTime DayStartingAt { get; set; }
         public DateTime DayEndingAt { get; set; }
