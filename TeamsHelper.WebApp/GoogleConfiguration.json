@@ -1,15 +1,17 @@
 ﻿{
-  "DeleteCanceled": false,
-  "Colors": {
-    "Active": "",
-    "Canceled": ""
-  },
-  "Reminders": {
-    "Enable": true,
-    "MinutesBefore": 3
-  },
-  "CanceledReminders": {
-    "Enable": false,
-    "MinutesBefore": 0
+  "GoogleConfiguration": {
+    "DeleteCanceled": false,
+    "Colors": {
+      "Active": "",
+      "Canceled": ""
+    },
+    "Reminders": {
+      "Enable": true,
+      "MinutesBefore": 3
+    },
+    "CanceledReminders": {
+      "Enable": false,
+      "MinutesBefore": 0
+    }
   }
 }
