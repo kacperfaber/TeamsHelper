@@ -10,6 +10,9 @@ namespace TeamsHelper.TeamsApi
         [JsonProperty("subject")]
         public string Subject { get; set; }
         
+        [JsonProperty("isCanceled")]
+        public bool IsCanceled { get; set; }
+        
         [JsonProperty("body")]
         public TeamsEventBody Body { get; set; }
         
