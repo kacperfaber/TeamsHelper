@@ -17,6 +17,7 @@ namespace TeamsHelper.WebApp
         public ITokenRefresher TokenRefresher;
         public IOAuthConfigurationProvider OAuthConfigurationProvider;
         public IConfiguration Configuration;
+        public IAccessTokenValidator AccessTokenValidator;
 
         public Service(IServiceScopeFactory scopeFactory)
         {
@@ -27,14 +28,13 @@ namespace TeamsHelper.WebApp
             TokenRefresher = Factory.ServiceProvider.GetService<ITokenRefresher>();
             OAuthConfigurationProvider = Factory.ServiceProvider.GetService<IOAuthConfigurationProvider>();
             Configuration = Factory.ServiceProvider.GetService<IConfiguration>();
+            AccessTokenValidator = Factory.ServiceProvider.GetService<IAccessTokenValidator>();
         }
 
         public IServiceScope Factory { get; set; }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            return;
-            
             while (!stoppingToken.IsCancellationRequested)
             {
                 List<User> users = await UsersProvider.ProvideAsync();
@@ -47,7 +47,13 @@ namespace TeamsHelper.WebApp
                     Token googleToken = await TokenRefresher.RefreshAsync(user.GoogleAuthorization, googleConfiguration);
                     Token microsoftToken = await TokenRefresher.RefreshAsync(user.MicrosoftAuthorization, microsoftConfiguration);
 
-                    Raport raport = await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
+                    TokenValidation googleValidation = await AccessTokenValidator.ValidateAsync(googleToken, googleConfiguration);
+                    TokenValidation microsoftValidation = await AccessTokenValidator.ValidateAsync(microsoftToken, microsoftConfiguration);
+
+                    if (googleValidation.Success && microsoftValidation.Success)
+                    {
+                        _ = await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
+                    }
                 }
 
                 await Task.Delay(TimeSpan.FromHours(1), stoppingToken);
