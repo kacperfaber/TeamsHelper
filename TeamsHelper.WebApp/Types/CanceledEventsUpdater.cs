@@ -7,7 +7,7 @@ namespace TeamsHelper.WebApp
 {
     public class CanceledEventsUpdater : ICanceledEventsUpdater
     {
-        public ITeamsEventIsActiveValidator TeamsEventIsActiveValidator;
+        public ITeamsEventIsCanceledChecker IsCanceledChecker;
         public GoogleEventFinder GoogleEventFinder;
         public GoogleApi GoogleApi;
         
@@ -15,22 +15,20 @@ namespace TeamsHelper.WebApp
         {
             foreach (TeamsEvent teamsEvent in teamsEvents)
             {
-                if (await TeamsEventIsActiveValidator.ValidateAsync(teamsEvent))
+                if (IsCanceledChecker.Check(teamsEvent))
                 {
-                    continue;
-                }
-                
-                GoogleEvent googleEvent = await GoogleEventFinder.FindAsync(googleEvents, teamsEvent.Id);
+                    GoogleEvent googleEvent = await GoogleEventFinder.FindAsync(googleEvents, teamsEvent.Id);
 
-                if (configuration.DeleteCanceled)
-                {
-                    await GoogleApi.DeleteAsync(googleCalendar.Id, googleEvent.Id, googleToken);
-                }
+                    if (configuration.DeleteCanceled)
+                    {
+                        await GoogleApi.DeleteAsync(googleCalendar.Id, googleEvent.Id, googleToken);
+                    }
 
-                else
-                {
-                    UpdateEventPayload payload = null;
-                    await GoogleApi.UpdateAsync(payload, googleCalendar.Id, googleEvent.Id, googleToken);
+                    else
+                    {
+                        UpdateEventPayload payload = null;
+                        await GoogleApi.UpdateAsync(payload, googleCalendar.Id, googleEvent.Id, googleToken);
+                    }
                 }
             }
         }
