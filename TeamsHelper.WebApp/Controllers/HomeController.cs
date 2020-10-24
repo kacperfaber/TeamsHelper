@@ -14,7 +14,8 @@ namespace TeamsHelper.WebApp
             UserProvider = userProvider;
         }
 
-        public async Task<IActionResult> Home()
+        [Authorize]
+        public async Task<IActionResult> AuthorizedHome()
         {
             User user = await UserProvider.ProvideAsync(HttpContext);
 
@@ -24,6 +25,12 @@ namespace TeamsHelper.WebApp
             }
             
             return View(new ViewModel {User = user});
+        }
+
+        [AllowAnonymous]
+        public IActionResult Home()
+        {
+            return View("NotLogged");
         }
     }
 }

@@ -35,6 +35,8 @@ namespace TeamsHelper.WebApp
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            return;
+            
             while (!stoppingToken.IsCancellationRequested)
             {
                 List<User> users = await UsersProvider.ProvideAsync();
