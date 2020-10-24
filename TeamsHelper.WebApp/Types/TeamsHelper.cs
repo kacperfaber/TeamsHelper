@@ -63,11 +63,6 @@ namespace TeamsHelper.WebApp
 
             foreach (TeamsEvent teamsEvent in teamsEvents)
             {
-                if (TeamsEventIsCanceledChecker.Check(teamsEvent))
-                {
-                    continue;
-                }
-
                 GoogleEvent googleEvent = await GoogleEventFinder.FindAsync(googleEvents, teamsEvent.Id);
 
                 if (googleEvent == null)
