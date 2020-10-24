@@ -18,10 +18,11 @@ namespace TeamsHelper.WebApp
         {
             return Task.Run(() => new InsertEventPayload
             {
-                ExtendedProperties = new ExtendedProperties()
+                ExtendedProperties = new ExtendedProperties
                 {
                     Private = new Dictionary<string, string> {{"teamsId", teamsEvent.Id}}
                 },
+                Description = $"Nauczyciel: {teamsEvent.TeamsOrganizer.EmailAddress.Name}",
                 Summary = teamsEvent.Subject,
                 End = GoogleTimeGenerator.Generate(teamsEvent.End.DateTime),
                 Start = GoogleTimeGenerator.Generate(teamsEvent.Start.DateTime)
