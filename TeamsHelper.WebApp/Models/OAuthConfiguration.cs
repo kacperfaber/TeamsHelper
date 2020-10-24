@@ -1,4 +1,6 @@
-﻿namespace TeamsHelper.WebApp
+﻿using System.Net.Http;
+
+namespace TeamsHelper.WebApp
 {
     public class OAuthConfiguration
     {
@@ -17,5 +19,7 @@
         public string CodeChallenge { get; set; }
 
         public string CodeChallengeMethod { get; set; }
+
+        public string IdentityUrl { get; set; }
     }
 }
