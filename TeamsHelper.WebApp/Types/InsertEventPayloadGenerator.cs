@@ -22,7 +22,7 @@ namespace TeamsHelper.WebApp
                 {
                     Private = new Dictionary<string, string> {{"teamsId", teamsEvent.Id}}
                 },
-                Description = $"Nauczyciel: {teamsEvent.TeamsOrganizer.EmailAddress.Name}",
+                Description = $"Grupa: \"{teamsEvent.TeamsOrganizer.EmailAddress.Name}\"",
                 Summary = teamsEvent.Subject,
                 End = GoogleTimeGenerator.Generate(teamsEvent.End.DateTime),
                 Start = GoogleTimeGenerator.Generate(teamsEvent.Start.DateTime)

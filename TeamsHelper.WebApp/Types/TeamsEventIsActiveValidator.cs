@@ -7,7 +7,7 @@ namespace TeamsHelper.WebApp
     {
         public Task<bool> ValidateAsync(TeamsEvent teamsEvent)
         {
-            return Task.FromResult(teamsEvent.IsCanceled);
+            return Task.FromResult(!teamsEvent.IsCanceled);
         }
     }
 }
