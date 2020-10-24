@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using TeamsHelper.CalendarApi;
 using TeamsHelper.TeamsApi;
 using GoogleEvent = TeamsHelper.CalendarApi.GoogleEvent;
@@ -25,12 +26,16 @@ namespace TeamsHelper.WebApp
         public IUpdateEventPayloadGenerator UpdateEventPayloadGenerator;
         public IInsertEventPayloadGenerator InsertEventPayloadGenerator;
         public ITeamsEventIsCanceledChecker TeamsEventIsCanceledChecker;
+        public ICanceledEventsUpdater CanceledEventsUpdater;
+        public IGoogleConfigurationProvider GoogleConfigurationProvider;
+        public IConfiguration Configuration;
 
         public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider,
             IEventsDatesGenerator eventsDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider,
             IInsertEventPayloadGenerator insertEventPayloadGenerator, IUpdateEventPayloadGenerator updateEventPayloadGenerator,
             IGoogleEventCorrector googleEventCorrector, IGoogleCalendarCleaner googleCalendarCleaner, IGoogleEventValidator googleEventValidator,
-            IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder, ITeamsEventIsCanceledChecker teamsEventIsCanceledChecker)
+            IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder,
+            ITeamsEventIsCanceledChecker teamsEventIsCanceledChecker, ICanceledEventsUpdater canceledEventsUpdater, IGoogleConfigurationProvider googleConfigurationProvider, IConfiguration configuration)
         {
             TeamsApi = teamsApi;
             GoogleApi = googleApi;
@@ -45,6 +50,9 @@ namespace TeamsHelper.WebApp
             GoogleEventsProvider = googleEventsProvider;
             GoogleEventFinder = googleEventFinder;
             TeamsEventIsCanceledChecker = teamsEventIsCanceledChecker;
+            CanceledEventsUpdater = canceledEventsUpdater;
+            GoogleConfigurationProvider = googleConfigurationProvider;
+            Configuration = configuration;
         }
 
         public async Task<Raport> DoSomething(string microsoftToken, string googleToken)
@@ -54,20 +62,27 @@ namespace TeamsHelper.WebApp
             TeamsCalendar teamsCalendar = await TeamsCalendarProvider.ProvideAsync(allCalendars);
 
             EventsDates eventsDates = EventsDatesGenerator.Generate(DateTime.Now);
-            
+
             List<TeamsEvent> teamsEvents =
                 await TeamsApi.GetEventsAsync(teamsCalendar, eventsDates.DayStartingAt, eventsDates.DayEndingAt, microsoftToken);
 
             GoogleCalendar googleCalendar = await PrimaryCalendarProvider.Provide(googleToken);
             List<GoogleEvent> googleEvents = await GoogleEventsProvider.ProvideAsync(googleCalendar, googleToken);
 
+            GoogleConfiguration googleConfiguration = GoogleConfigurationProvider.Provide(Configuration);
+            
             foreach (TeamsEvent teamsEvent in teamsEvents)
             {
+                if (TeamsEventIsCanceledChecker.Check(teamsEvent))
+                {
+                    continue;
+                }
+
                 GoogleEvent googleEvent = await GoogleEventFinder.FindAsync(googleEvents, teamsEvent.Id);
 
                 if (googleEvent == null)
                 {
-                    InsertEventPayload insertPayload = await InsertEventPayloadGenerator.GenerateAsync(teamsEvent);
+                    InsertEventPayload insertPayload = await InsertEventPayloadGenerator.GenerateAsync(teamsEvent,googleConfiguration);
                     await GoogleApi.InsertAsync(insertPayload, googleCalendar.Id, googleToken);
                 }
 
@@ -86,7 +101,9 @@ namespace TeamsHelper.WebApp
                 }
             }
 
-            await GoogleCalendarCleaner.CleanAsync(googleCalendar, googleEvents, teamsEvents, googleToken);
+            // await GoogleCalendarCleaner.CleanAsync(googleCalendar, googleEvents, teamsEvents, googleToken);
+            
+            await CanceledEventsUpdater.UpdateAsync(teamsEvents, googleCalendar, googleEvents, googleConfiguration, googleToken);
 
             return new Raport();
         }

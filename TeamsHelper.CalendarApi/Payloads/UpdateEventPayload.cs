@@ -21,5 +21,8 @@ namespace TeamsHelper.CalendarApi
 
         [JsonProperty("reminders")]
         public GoogleEventReminders Reminders { get; set; }
+
+        [JsonProperty("colorId")]
+        public string ColorId { get; set; }
     }
 }

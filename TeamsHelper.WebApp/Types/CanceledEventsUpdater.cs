@@ -8,9 +8,18 @@ namespace TeamsHelper.WebApp
     public class CanceledEventsUpdater : ICanceledEventsUpdater
     {
         public ITeamsEventIsCanceledChecker IsCanceledChecker;
-        public GoogleEventFinder GoogleEventFinder;
+        public IGoogleEventFinder GoogleEventFinder;
         public GoogleApi GoogleApi;
-        
+        public IUpdateCanceledEventPayloadGenerator UpdateCanceledEventPayloadGenerator;
+
+        public CanceledEventsUpdater(IUpdateCanceledEventPayloadGenerator updateCanceledEventPayloadGenerator, GoogleApi googleApi, IGoogleEventFinder googleEventFinder, ITeamsEventIsCanceledChecker isCanceledChecker)
+        {
+            UpdateCanceledEventPayloadGenerator = updateCanceledEventPayloadGenerator;
+            GoogleApi = googleApi;
+            GoogleEventFinder = googleEventFinder;
+            IsCanceledChecker = isCanceledChecker;
+        }
+
         public async Task UpdateAsync(List<TeamsEvent> teamsEvents, GoogleCalendar googleCalendar, List<GoogleEvent> googleEvents, GoogleConfiguration configuration, string googleToken)
         {
             foreach (TeamsEvent teamsEvent in teamsEvents)
@@ -26,7 +35,7 @@ namespace TeamsHelper.WebApp
 
                     else
                     {
-                        UpdateEventPayload payload = null;
+                        UpdateEventPayload payload = UpdateCanceledEventPayloadGenerator.Generate(googleEvent, teamsEvent, configuration);
                         await GoogleApi.UpdateAsync(payload, googleCalendar.Id, googleEvent.Id, googleToken);
                     }
                 }

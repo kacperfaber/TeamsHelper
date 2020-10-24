@@ -8,8 +8,8 @@ namespace TeamsHelper.WebApp
 
         public GoogleConfigurationColors Colors { get; set; }
 
-        public List<GoogleConfigurationReminder> Reminders { get; set; }
+        public List<GoogleConfigurationReminder> Reminders { get; set; } = new List<GoogleConfigurationReminder>();
 
-        public List<GoogleConfigurationReminder> CanceledReminders { get; set; }
+        public List<GoogleConfigurationReminder> CanceledReminders { get; set; } = new List<GoogleConfigurationReminder>();
     }
 }

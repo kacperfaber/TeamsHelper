@@ -108,7 +108,7 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IUpdateEventRequestGenerator, UpdateEventRequestGenerator>();
             services.AddScoped<IUpdateEventUrlGenerator, UpdateEventUrlGenerator>();
 
-            services.AddScoped<IUpdateCanceledEventGenerator, UpdateCanceledEventGenerator>();
+            services.AddScoped<IUpdateCanceledEventPayloadGenerator, UpdateCanceledEventPayloadGenerator>();
             services.AddScoped<IGoogleEventRemindersGenerator, GoogleEventRemindersGenerator>();
             services.AddScoped<ICanceledEventsUpdater, CanceledEventsUpdater>();
             services.AddScoped<IGoogleConfigurationProvider, GoogleConfigurationProvider>();
