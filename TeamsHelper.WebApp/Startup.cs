@@ -108,6 +108,10 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IUpdateEventRequestGenerator, UpdateEventRequestGenerator>();
             services.AddScoped<IUpdateEventUrlGenerator, UpdateEventUrlGenerator>();
 
+            services.AddScoped<ITokenValidationGenerator, TokenValidationGenerator>();
+            services.AddScoped<ITokenIdentityGenerator, TokenIdentityGenerator>();
+            services.AddScoped<IIdentityRequestGenerator, IdentityRequestGenerator>();
+            services.AddScoped<IIdentityRequestMethodProvider, IdentityRequestMethodProvider>();
             services.AddScoped<IAccessTokenValidator, AccessTokenValidator>();
             services.AddScoped<ITeamsEventIsCanceledChecker, TeamsEventIsCanceledChecker>();
             services.AddScoped<ITeamsEventIsActiveValidator, TeamsEventIsActiveValidator>();

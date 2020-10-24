@@ -21,5 +21,9 @@ namespace TeamsHelper.WebApp
         public string CodeChallengeMethod { get; set; }
 
         public string IdentityUrl { get; set; }
+
+        public string IdentityMethod { get; set; }
+
+        public IdentityModelKeys IdentityModel { get; set; }
     }
 }
