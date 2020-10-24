@@ -8,10 +8,12 @@ namespace TeamsHelper.WebApp
     public class InsertEventPayloadGenerator : IInsertEventPayloadGenerator
     {
         public IGoogleTimeGenerator GoogleTimeGenerator;
+        public IGoogleEventRemindersGenerator RemindersGenerator;
 
-        public InsertEventPayloadGenerator(IGoogleTimeGenerator googleTimeGenerator)
+        public InsertEventPayloadGenerator(IGoogleTimeGenerator googleTimeGenerator, IGoogleEventRemindersGenerator remindersGenerator)
         {
             GoogleTimeGenerator = googleTimeGenerator;
+            RemindersGenerator = remindersGenerator;
         }
 
         public Task<InsertEventPayload> GenerateAsync(TeamsEvent teamsEvent, GoogleConfiguration googleConfiguration)
@@ -22,11 +24,12 @@ namespace TeamsHelper.WebApp
                 {
                     Private = new Dictionary<string, string> {{"teamsId", teamsEvent.Id}}
                 },
-                Description = $"Grupa: \"{teamsEvent.TeamsOrganizer.EmailAddress.Name}\"",
+                Description = $"{teamsEvent.TeamsOrganizer.EmailAddress.Name}",
                 Summary = teamsEvent.Subject,
                 End = GoogleTimeGenerator.Generate(teamsEvent.End.DateTime),
                 Start = GoogleTimeGenerator.Generate(teamsEvent.Start.DateTime),
-                ColorId = googleConfiguration.Colors.Active
+                ColorId = googleConfiguration.Colors.Active,
+                Reminders = RemindersGenerator.Generate(googleConfiguration, false)
             });
         }
     }
