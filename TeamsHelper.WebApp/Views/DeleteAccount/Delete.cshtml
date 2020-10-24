@@ -1,0 +1,21 @@
+﻿@model TeamsHelper.WebApp.ViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h3>
+    Delete account
+</h3>
+<p>
+    @Model.User.DisplayName (@Model.User.EmailAddress)
+</p>
+
+<br/>
+<br/>
+
+@using (Html.BeginForm("ProceedDelete", "DeleteAccount", FormMethod.Post))
+{
+    <input type="submit" value="Submit">
+}
