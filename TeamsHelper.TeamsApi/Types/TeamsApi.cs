@@ -10,10 +10,11 @@ namespace TeamsHelper.TeamsApi
     {
         public IGetEventsRequestGenerator GetEventsRequestGenerator;
         public IGetCalendarsRequestGenerator GetCalendarsRequestGenerator;
-        
+
         public IHttpClient HttpClient;
 
-        public TeamsApi(IGetEventsRequestGenerator getEventsRequestGenerator, IHttpClient httpClient, IGetCalendarsRequestGenerator getCalendarsRequestGenerator)
+        public TeamsApi(IGetEventsRequestGenerator getEventsRequestGenerator, IHttpClient httpClient,
+            IGetCalendarsRequestGenerator getCalendarsRequestGenerator)
         {
             GetEventsRequestGenerator = getEventsRequestGenerator;
             HttpClient = httpClient;
