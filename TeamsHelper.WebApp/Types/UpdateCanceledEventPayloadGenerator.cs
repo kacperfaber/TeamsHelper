@@ -3,11 +3,11 @@ using TeamsHelper.TeamsApi;
 
 namespace TeamsHelper.WebApp
 {
-    public class UpdateCanceledEventGenerator : IUpdateCanceledEventGenerator
+    public class UpdateCanceledEventPayloadGenerator : IUpdateCanceledEventPayloadGenerator
     {
         public IGoogleEventRemindersGenerator RemindersGenerator;
 
-        public UpdateCanceledEventGenerator(IGoogleEventRemindersGenerator remindersGenerator)
+        public UpdateCanceledEventPayloadGenerator(IGoogleEventRemindersGenerator remindersGenerator)
         {
             RemindersGenerator = remindersGenerator;
         }
@@ -21,7 +21,8 @@ namespace TeamsHelper.WebApp
                 Start = googleEvent.Start,
                 End = googleEvent.End,
                 ExtendedProperties = googleEvent.ExtendedProperties,
-                Reminders = RemindersGenerator.Generate(configuration, true)
+                Reminders = RemindersGenerator.Generate(configuration, true),
+                ColorId = configuration.Colors.Canceled
             };
         }
     }

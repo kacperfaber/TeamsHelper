@@ -4,6 +4,6 @@ namespace TeamsHelper.WebApp
 {
     public interface IGoogleEventRemindersGenerator
     {
-        GoogleEventReminders Generate(GoogleConfiguration googleConfiguration, bool isCanceled);
+        GoogleEventReminders Generate(GoogleConfiguration googleConfiguration, bool isCancelled);
     }
 }

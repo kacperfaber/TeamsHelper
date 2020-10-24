@@ -2,8 +2,8 @@
   "GoogleConfiguration": {
     "DeleteCanceled": false,
     "Colors": {
-      "Active": "",
-      "Canceled": ""
+      "Active": "5",
+      "Canceled": "8"
     },
     "Reminders": [
       {

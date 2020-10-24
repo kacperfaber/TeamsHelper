@@ -6,6 +6,6 @@ namespace TeamsHelper.WebApp
 {
     public interface IInsertEventPayloadGenerator
     {
-        Task<InsertEventPayload> GenerateAsync(TeamsEvent teamsEvent);
+        Task<InsertEventPayload> GenerateAsync(TeamsEvent teamsEvent, GoogleConfiguration googleConfiguration);
     }
 }

@@ -14,7 +14,7 @@ namespace TeamsHelper.WebApp
             GoogleTimeGenerator = googleTimeGenerator;
         }
 
-        public Task<InsertEventPayload> GenerateAsync(TeamsEvent teamsEvent)
+        public Task<InsertEventPayload> GenerateAsync(TeamsEvent teamsEvent, GoogleConfiguration googleConfiguration)
         {
             return Task.Run(() => new InsertEventPayload
             {
@@ -25,7 +25,8 @@ namespace TeamsHelper.WebApp
                 Description = $"Grupa: \"{teamsEvent.TeamsOrganizer.EmailAddress.Name}\"",
                 Summary = teamsEvent.Subject,
                 End = GoogleTimeGenerator.Generate(teamsEvent.End.DateTime),
-                Start = GoogleTimeGenerator.Generate(teamsEvent.Start.DateTime)
+                Start = GoogleTimeGenerator.Generate(teamsEvent.Start.DateTime),
+                ColorId = googleConfiguration.Colors.Active
             });
         }
     }

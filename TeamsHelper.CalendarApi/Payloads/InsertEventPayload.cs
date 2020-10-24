@@ -19,5 +19,8 @@ namespace TeamsHelper.CalendarApi
         
         [JsonProperty("start")]
         public GoogleTime Start { get; set; }
+
+        [JsonProperty("colorId")]
+        public string ColorId { get; set; }
     }
 }

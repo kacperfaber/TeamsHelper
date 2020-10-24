@@ -6,7 +6,7 @@ namespace TeamsHelper.WebApp
     {
         public bool Check(TeamsEvent teamsEvent)
         {
-            return teamsEvent.IsCanceled;
+            return teamsEvent.IsCancelled;
         }
     }
 }

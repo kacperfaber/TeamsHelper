@@ -6,12 +6,14 @@ namespace TeamsHelper.WebApp
 {
     public class GoogleEventRemindersGenerator : IGoogleEventRemindersGenerator
     {
-        public GoogleEventReminders Generate(GoogleConfiguration googleConfiguration, bool isCanceled)
+        public GoogleEventReminders Generate(GoogleConfiguration googleConfiguration, bool isCancelled)
         {
+            List<GoogleRemind> reminds = (isCancelled ? googleConfiguration.CanceledReminders : googleConfiguration.Reminders).ConvertAll(x => new GoogleRemind {Method = "popup", Minutes = x.MinutesBefore});
+
             return new GoogleEventReminders
             {
                 UseDefault = false,
-                Reminds = (isCanceled ? googleConfiguration.CanceledReminders : googleConfiguration.Reminders).ConvertAll(x => new GoogleRemind {Method = "popup", Minutes = x.MinutesBefore})
+                Reminds = reminds
             };
         }
     }
