@@ -5,13 +5,11 @@
       "Active": "",
       "Canceled": ""
     },
-    "Reminders": {
-      "Enable": true,
-      "MinutesBefore": 3
-    },
-    "CanceledReminders": {
-      "Enable": false,
-      "MinutesBefore": 0
-    }
+    "Reminders": [
+      {
+        "MinutesBefore": 3
+      }
+    ],
+    "CanceledReminders": []
   }
 }
