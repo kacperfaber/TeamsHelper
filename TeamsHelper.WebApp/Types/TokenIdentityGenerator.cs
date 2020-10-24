@@ -13,9 +13,9 @@ namespace TeamsHelper.WebApp
 
                 Identity identity = new Identity
                 {
-                    Email = obj.SelectToken(authConfiguration.IdentityModel.Email).ToObject<string>(),
-                    Id = obj.SelectToken(authConfiguration.IdentityModel.Id).ToObject<string>(),
-                    Name = obj.SelectToken(authConfiguration.IdentityModel.Name).ToObject<string>(),
+                    Email = obj.SelectToken(authConfiguration.IdentityModelKeys.Email).ToObject<string>(),
+                    Id = obj.SelectToken(authConfiguration.IdentityModelKeys.Id).ToObject<string>(),
+                    Name = obj.SelectToken(authConfiguration.IdentityModelKeys.Name).ToObject<string>()
                 };
 
                 return identity;

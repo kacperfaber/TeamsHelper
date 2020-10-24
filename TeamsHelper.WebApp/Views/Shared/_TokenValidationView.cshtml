@@ -1,0 +1,17 @@
+﻿@model TeamsHelper.WebApp.TokenValidation
+
+<div>
+    @if (Model.Success)
+    {
+        <div>
+            Ok, @Model.Identity.Email
+        </div> 
+    }
+
+    else
+    {
+        <div>
+            Failed,
+        </div>
+    }
+</div>
