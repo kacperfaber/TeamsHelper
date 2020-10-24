@@ -25,8 +25,13 @@ namespace TeamsHelper.WebApp
         public IUpdateEventPayloadGenerator UpdateEventPayloadGenerator;
         public IInsertEventPayloadGenerator InsertEventPayloadGenerator;
 
+        public ITeamsEventIsCanceledChecker TeamsEventIsCanceledChecker;
+
         public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider,
-            ITomorrowDatesGenerator tomorrowDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider, IInsertEventPayloadGenerator insertEventPayloadGenerator, IUpdateEventPayloadGenerator updateEventPayloadGenerator, IGoogleEventCorrector googleEventCorrector, IGoogleCalendarCleaner googleCalendarCleaner, IGoogleEventValidator googleEventValidator, IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder)
+            ITomorrowDatesGenerator tomorrowDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider,
+            IInsertEventPayloadGenerator insertEventPayloadGenerator, IUpdateEventPayloadGenerator updateEventPayloadGenerator,
+            IGoogleEventCorrector googleEventCorrector, IGoogleCalendarCleaner googleCalendarCleaner, IGoogleEventValidator googleEventValidator,
+            IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder)
         {
             TeamsApi = teamsApi;
             GoogleApi = googleApi;
@@ -49,13 +54,19 @@ namespace TeamsHelper.WebApp
             TeamsCalendar teamsCalendar = await TeamsCalendarProvider.ProvideAsync(allCalendars);
 
             TomorrowDates tomorrowDates = TomorrowDatesGenerator.Generate(DateTime.Now);
-            List<TeamsEvent> teamsEvents = await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, microsoftToken);
+            List<TeamsEvent> teamsEvents =
+                await TeamsApi.GetEventsAsync(teamsCalendar, tomorrowDates.DayStartingAt, tomorrowDates.DayEndingAt, microsoftToken);
 
             GoogleCalendar googleCalendar = await PrimaryCalendarProvider.Provide(googleToken);
             List<GoogleEvent> googleEvents = await GoogleEventsProvider.ProvideAsync(googleCalendar, googleToken);
 
             foreach (TeamsEvent teamsEvent in teamsEvents)
             {
+                if (TeamsEventIsCanceledChecker.Check(teamsEvent))
+                {
+                    continue;
+                }
+
                 GoogleEvent googleEvent = await GoogleEventFinder.FindAsync(googleEvents, teamsEvent.Id);
 
                 if (googleEvent == null)

@@ -108,6 +108,8 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IUpdateEventRequestGenerator, UpdateEventRequestGenerator>();
             services.AddScoped<IUpdateEventUrlGenerator, UpdateEventUrlGenerator>();
 
+            services.AddScoped<ITeamsEventIsCanceledChecker, TeamsEventIsCanceledChecker>();
+            services.AddScoped<ITeamsEventIsActiveValidator, TeamsEventIsActiveValidator>();
             services.AddScoped<IInsertEventPayloadGenerator, InsertEventPayloadGenerator>();
             services.AddScoped<IGoogleEventCorrector, GoogleEventCorrector>();
             services.AddScoped<IUpdateEventPayloadGenerator, UpdateEventPayloadGenerator>();
