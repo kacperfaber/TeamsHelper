@@ -24,6 +24,6 @@ namespace TeamsHelper.WebApp
 
         public string IdentityMethod { get; set; }
 
-        public IdentityModelKeys IdentityModel { get; set; }
+        public IdentityModelKeys IdentityModelKeys { get; set; }
     }
 }

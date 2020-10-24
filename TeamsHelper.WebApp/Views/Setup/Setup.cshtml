@@ -9,37 +9,34 @@
 <div>
     <span>Microsoft Account</span>
     <br/>
-    
-    @if (Model.MicrosoftAuthorization == null)
+
+    @if (Model.MicrosoftValidation == null)
     {
-        <strong>None</strong>
-        <br/>
         @Html.ActionLink("Authorize", "AuthorizeMicrosoft", "OAuth")
     }
-    
+
     else
     {
-    <strong>Ok</strong>
+        @await Html.PartialAsync("_TokenValidationView", Model.MicrosoftValidation)
     }
-    
+
     <br/>
 </div>
 
 <div>
     <span>Google Account</span>
     <br/>
+
+        @if (Model.GoogleValidation== null)
+        {
+            @Html.ActionLink("Authorize", "AuthorizeGoogle", "OAuth")
+        }
     
-    @if (Model.GoogleAuthorization == null)
-    {
-        <strong>None</strong>
-        <br/>
-        @Html.ActionLink("Authorize", "AuthorizeGoogle", "OAuth")
-    }
-    
-    else 
-    {
-        <strong>Ok</strong>
-    }
-    
+        else
+        {
+            @await Html.PartialAsync("_TokenValidationView", Model.GoogleValidation)
+        }
+
+
     <br/>
 </div>

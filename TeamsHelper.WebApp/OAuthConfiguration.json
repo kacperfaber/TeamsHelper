@@ -22,7 +22,7 @@
         "ClientId": "aae1b0c3-ad4c-4b0b-8dfb-ac59fbfdefc1",
         "ClientSecret": "DV-dH__4~wZ1cJblx~-tZ.In8l6WOyl169",
         "RedirectUrl": "http://localhost:5001/signin-oidc",
-        "Scopes": "offline_access%20Calendars.Read%20openid",
+        "Scopes": "offline_access%20Calendars.Read%20openid%20User.Read",
         "TokenEndpoint": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
         "CodeVerifier": "F3ymZzepYKI1mTf_XiOm1zGAXMqXGOS4w75ac.8vg1bAzNb6EDGrbaPJ0di1CLmEQHUIPZZR8q6d9NLi1L_CwLE1jqB6DeMcIa6mP.pzm76utHc-ZCpgZ7v92EnOuPpS",
         "CodeChallenge": "y2bIuR4-3A4kYtYuKdi9B-5Sl3eXzd_8A62G7qTpGdU",

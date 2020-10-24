@@ -88,3 +88,4 @@ C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\bin\Debug\netcorea
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\bin\Debug\netcoreapp3.1\TeamsHelper.TeamsApi.pdb
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\OAuth\AuthorizationValidationFailed.cshtml.g.cs
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\OAuth\TokenValidationFailed.cshtml.g.cs
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TokenValidationView.cshtml.g.cs
