@@ -18,5 +18,8 @@ namespace TeamsHelper.CalendarApi
         
         [JsonProperty("start")]
         public GoogleTime Start { get; set; }
+
+        [JsonProperty("reminders")]
+        public GoogleEventReminders Reminders { get; set; }
     }
 }

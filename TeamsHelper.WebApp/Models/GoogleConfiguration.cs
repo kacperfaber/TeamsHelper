@@ -1,4 +1,6 @@
-﻿namespace TeamsHelper.WebApp
+﻿using System.Collections.Generic;
+
+namespace TeamsHelper.WebApp
 {
     public class GoogleConfiguration
     {
@@ -6,8 +8,8 @@
 
         public GoogleConfigurationColors Colors { get; set; }
 
-        public GoogleConfigurationReminders Reminders { get; set; }
+        public List<GoogleConfigurationReminder> Reminders { get; set; }
 
-        public GoogleConfigurationReminders CanceledReminders { get; set; }
+        public List<GoogleConfigurationReminder> CanceledReminders { get; set; }
     }
 }
