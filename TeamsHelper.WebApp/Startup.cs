@@ -152,7 +152,7 @@ namespace TeamsHelper.WebApp
             services.AddScoped<ITokenContentGenerator, TokenContentGenerator>();
             services.AddScoped<ITokenProvider, TokenProvider>();
             services.AddScoped<ITokenRefresher, TokenRefresher>();
-            services.AddScoped<ITomorrowDatesGenerator, TomorrowDatesGenerator>();
+            services.AddScoped<IEventsDatesGenerator, EventsDatesGenerator>();
             services.AddScoped<IUserGenerator, UserGenerator>();
             services.AddScoped<IUserPasswordValidator, UserPasswordValidator>();
             services.AddScoped<IUserProvider, UserProvider>();
