@@ -39,7 +39,7 @@ namespace TeamsHelper.WebApp
                     User user = await UserGenerator.GenerateAsync(registerViewModel);
                     await UserStore.StoreAsync(user);
 
-                    return RedirectToAction("Home", "Home");
+                    return RedirectToAction("Login", "Login", new {email = user.EmailAddress});
                 }
 
                 else

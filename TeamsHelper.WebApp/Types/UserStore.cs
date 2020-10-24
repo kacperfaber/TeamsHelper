@@ -15,6 +15,7 @@ namespace TeamsHelper.WebApp
         public async Task StoreAsync(User user)
         {
             await HelperContext.AddAsync(user);
+            await HelperContext.SaveChangesAsync();
         }
     }
 }

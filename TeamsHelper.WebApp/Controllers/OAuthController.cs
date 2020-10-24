@@ -80,7 +80,7 @@ namespace TeamsHelper.WebApp
                     HelperContext.Update(user);
                     await HelperContext.SaveChangesAsync();
 
-                    return RedirectToAction("Home", "Home");
+                    return RedirectToAction("AuthorizedHome", "Home");
                 }
 
                 Response.StatusCode = 404;
@@ -104,7 +104,7 @@ namespace TeamsHelper.WebApp
             HelperContext.Users.Update(user);
             await HelperContext.SaveChangesAsync();
 
-            return RedirectToAction("Home", "Home");
+            return RedirectToAction("AuthorizedHome", "Home");
         }
     }
 }

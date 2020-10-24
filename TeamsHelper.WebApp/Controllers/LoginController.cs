@@ -25,7 +25,7 @@ namespace TeamsHelper.WebApp
 
         public IActionResult Login()
         {
-            return View("Login", new LoginViewModel());
+            return View("Login", new LoginViewModel {Email = Request.Query["email"]});
         }
 
         [HttpPost]
@@ -42,7 +42,7 @@ namespace TeamsHelper.WebApp
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), props);
 
-                    return RedirectToAction("Home", "Home");
+                    return RedirectToAction("AuthorizedHome", "Home");
                 }
             }
 
