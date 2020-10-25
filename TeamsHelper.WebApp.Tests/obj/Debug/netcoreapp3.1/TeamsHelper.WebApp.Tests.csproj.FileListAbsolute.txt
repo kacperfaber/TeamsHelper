@@ -157,3 +157,4 @@ C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp.Tests\obj\Debug\ne
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp.Tests\obj\Debug\netcoreapp3.1\TeamsHelper.WebApp.Tests.dll
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp.Tests\obj\Debug\netcoreapp3.1\TeamsHelper.WebApp.Tests.pdb
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp.Tests\obj\Debug\netcoreapp3.1\TeamsHelper.WebApp.Tests.genruntimeconfig.cache
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp.Tests\bin\Debug\netcoreapp3.1\ServiceConfiguration.json

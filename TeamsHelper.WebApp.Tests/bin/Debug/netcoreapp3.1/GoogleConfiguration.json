@@ -2,12 +2,12 @@
   "GoogleConfiguration": {
     "DeleteCanceled": false,
     "Colors": {
-      "Active": "5",
+      "Active": "9",
       "Canceled": "8"
     },
     "Reminders": [
       {
-        "MinutesBefore": 3
+        "MinutesBefore": 2
       }
     ],
     "CanceledReminders": []

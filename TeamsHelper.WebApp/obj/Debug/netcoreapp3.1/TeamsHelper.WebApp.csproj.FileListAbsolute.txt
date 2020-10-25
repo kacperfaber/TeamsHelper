@@ -93,3 +93,4 @@ C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcorea
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\NotLogged.cshtml.g.cs
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Settings\Settings.cshtml.g.cs
 C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\bin\Debug\netcoreapp3.1\GoogleConfiguration.json
+C:\Users\kacpe_v67r5jm\Desktop\TeamsHelper\TeamsHelper.WebApp\bin\Debug\netcoreapp3.1\ServiceConfiguration.json

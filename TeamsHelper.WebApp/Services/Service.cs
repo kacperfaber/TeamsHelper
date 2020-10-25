@@ -18,6 +18,9 @@ namespace TeamsHelper.WebApp
         public IOAuthConfigurationProvider OAuthConfigurationProvider;
         public IConfiguration Configuration;
         public IAccessTokenValidator AccessTokenValidator;
+        public IIsNightChecker IsNightChecker;
+        public ISleepTimeProvider SleepTimeProvider;
+        public IServiceConfigurationProvider ServiceConfigurationProvider;
 
         public Service(IServiceScopeFactory scopeFactory)
         {
@@ -29,34 +32,46 @@ namespace TeamsHelper.WebApp
             OAuthConfigurationProvider = Factory.ServiceProvider.GetService<IOAuthConfigurationProvider>();
             Configuration = Factory.ServiceProvider.GetService<IConfiguration>();
             AccessTokenValidator = Factory.ServiceProvider.GetService<IAccessTokenValidator>();
+            IsNightChecker = Factory.ServiceProvider.GetService<IIsNightChecker>();
+            SleepTimeProvider = Factory.ServiceProvider.GetService<ISleepTimeProvider>();
+            ServiceConfigurationProvider = Factory.ServiceProvider.GetService<IServiceConfigurationProvider>();
         }
 
-        public IServiceScope Factory { get; set; }
+        public IServiceScope Factory { get; }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                List<User> users = await UsersProvider.ProvideAsync();
-                
-                OAuthConfiguration googleConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Google");
-                OAuthConfiguration microsoftConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Microsoft");
-                
-                foreach (User user in users)
+                ServiceConfiguration serviceConfiguration = ServiceConfigurationProvider.Provide(Configuration);
+
+                if (IsNightChecker.Check(DateTime.Now) && !serviceConfiguration.WorkOnNight)
                 {
-                    Token googleToken = await TokenRefresher.RefreshAsync(user.GoogleAuthorization, googleConfiguration);
-                    Token microsoftToken = await TokenRefresher.RefreshAsync(user.MicrosoftAuthorization, microsoftConfiguration);
+                }
 
-                    TokenValidation googleValidation = await AccessTokenValidator.ValidateAsync(googleToken, googleConfiguration);
-                    TokenValidation microsoftValidation = await AccessTokenValidator.ValidateAsync(microsoftToken, microsoftConfiguration);
+                else
+                {
+                    List<User> users = await UsersProvider.ProvideAsync();
 
-                    if (googleValidation.Success && microsoftValidation.Success)
+                    OAuthConfiguration googleConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Google");
+                    OAuthConfiguration microsoftConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Microsoft");
+
+                    foreach (User user in users)
                     {
-                        _ = await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
+                        Token googleToken = await TokenRefresher.RefreshAsync(user.GoogleAuthorization, googleConfiguration);
+                        Token microsoftToken = await TokenRefresher.RefreshAsync(user.MicrosoftAuthorization, microsoftConfiguration);
+
+                        TokenValidation googleValidation = await AccessTokenValidator.ValidateAsync(googleToken, googleConfiguration);
+                        TokenValidation microsoftValidation = await AccessTokenValidator.ValidateAsync(microsoftToken, microsoftConfiguration);
+
+                        if (googleValidation.Success && microsoftValidation.Success)
+                        {
+                            await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
+                        }
                     }
                 }
 
-                await Task.Delay(TimeSpan.FromHours(1), stoppingToken);
+                await Task.Delay(SleepTimeProvider.Provide(DateTime.Now, serviceConfiguration), stoppingToken);
             }
         }
     }

@@ -23,7 +23,9 @@ namespace TeamsHelper.WebApp
                     builder
                         .SetBasePath(host.HostingEnvironment.ContentRootPath)
                         .AddJsonFile("OAuthConfiguration.json")
-                        .AddJsonFile("GoogleConfiguration.json");
+                        .AddJsonFile("GoogleConfiguration.json")
+                        .AddJsonFile("ServiceConfiguration.json");
+
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }

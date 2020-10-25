@@ -1,0 +1,6 @@
+﻿{
+  "ServiceConfiguration": {
+    "SleepMinutes": 60,
+    "WorkOnNight": false
+  }
+}
