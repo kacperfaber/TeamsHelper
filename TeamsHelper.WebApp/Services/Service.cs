@@ -45,29 +45,31 @@ namespace TeamsHelper.WebApp
             {
                 ServiceConfiguration serviceConfiguration = ServiceConfigurationProvider.Provide(Configuration);
 
-                if (IsNightChecker.Check(DateTime.Now) && !serviceConfiguration.WorkOnNight)
+                // if (IsNightChecker.Check(DateTime.Now) && !serviceConfiguration.WorkOnNight)
+                // {
+                // }
+                //
+                // else
+                // {
+                //     
+                // }
+                
+                List<User> users = await UsersProvider.ProvideAsync();
+
+                OAuthConfiguration googleConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Google");
+                OAuthConfiguration microsoftConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Microsoft");
+
+                foreach (User user in users)
                 {
-                }
+                    Token googleToken = await TokenRefresher.RefreshAsync(user.GoogleAuthorization, googleConfiguration);
+                    Token microsoftToken = await TokenRefresher.RefreshAsync(user.MicrosoftAuthorization, microsoftConfiguration);
 
-                else
-                {
-                    List<User> users = await UsersProvider.ProvideAsync();
+                    TokenValidation googleValidation = await AccessTokenValidator.ValidateAsync(googleToken, googleConfiguration);
+                    TokenValidation microsoftValidation = await AccessTokenValidator.ValidateAsync(microsoftToken, microsoftConfiguration);
 
-                    OAuthConfiguration googleConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Google");
-                    OAuthConfiguration microsoftConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Microsoft");
-
-                    foreach (User user in users)
+                    if (googleValidation.Success && microsoftValidation.Success)
                     {
-                        Token googleToken = await TokenRefresher.RefreshAsync(user.GoogleAuthorization, googleConfiguration);
-                        Token microsoftToken = await TokenRefresher.RefreshAsync(user.MicrosoftAuthorization, microsoftConfiguration);
-
-                        TokenValidation googleValidation = await AccessTokenValidator.ValidateAsync(googleToken, googleConfiguration);
-                        TokenValidation microsoftValidation = await AccessTokenValidator.ValidateAsync(microsoftToken, microsoftConfiguration);
-
-                        if (googleValidation.Success && microsoftValidation.Success)
-                        {
-                            await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
-                        }
+                        await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
                     }
                 }
 
