@@ -108,13 +108,15 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IUpdateEventRequestGenerator, UpdateEventRequestGenerator>();
             services.AddScoped<IUpdateEventUrlGenerator, UpdateEventUrlGenerator>();
 
-            services.AddScoped<ICanceledEventDescriptionGenerator, CanceledEventDescriptionGenerator>();
+            services.AddScoped<ICancelledAnnotateGenerator, CancelledAnnotateGenerator>();
+            services.AddScoped<IDateTimeConverter, DateTimeConverter>();
+            services.AddScoped<ICancelledEventsDescriptionGenerator, CancelledEventsDescriptionGenerator>();
             services.AddScoped<IIsNightChecker, IsNightChecker>();
             services.AddScoped<ISleepTimeProvider, SleepTimeProvider>();
             services.AddScoped<IServiceConfigurationProvider, ServiceConfigurationProvider>();
             services.AddScoped<IUpdateCanceledEventPayloadGenerator, UpdateCanceledEventPayloadGenerator>();
             services.AddScoped<IGoogleEventRemindersGenerator, GoogleEventRemindersGenerator>();
-            services.AddScoped<ICanceledEventsUpdater, CanceledEventsUpdater>();
+            services.AddScoped<ICancelledEventsUpdater, CancelledEventsUpdater>();
             services.AddScoped<IGoogleConfigurationProvider, GoogleConfigurationProvider>();
             services.AddScoped<ITokenValidationGenerator, TokenValidationGenerator>();
             services.AddScoped<ITokenIdentityGenerator, TokenIdentityGenerator>();

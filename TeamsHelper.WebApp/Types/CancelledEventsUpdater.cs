@@ -5,14 +5,14 @@ using TeamsHelper.TeamsApi;
 
 namespace TeamsHelper.WebApp
 {
-    public class CanceledEventsUpdater : ICanceledEventsUpdater
+    public class CancelledEventsUpdater : ICancelledEventsUpdater
     {
         public ITeamsEventIsCanceledChecker IsCanceledChecker;
         public IGoogleEventFinder GoogleEventFinder;
         public GoogleApi GoogleApi;
         public IUpdateCanceledEventPayloadGenerator UpdateCanceledEventPayloadGenerator;
 
-        public CanceledEventsUpdater(IUpdateCanceledEventPayloadGenerator updateCanceledEventPayloadGenerator, GoogleApi googleApi, IGoogleEventFinder googleEventFinder, ITeamsEventIsCanceledChecker isCanceledChecker)
+        public CancelledEventsUpdater(IUpdateCanceledEventPayloadGenerator updateCanceledEventPayloadGenerator, GoogleApi googleApi, IGoogleEventFinder googleEventFinder, ITeamsEventIsCanceledChecker isCanceledChecker)
         {
             UpdateCanceledEventPayloadGenerator = updateCanceledEventPayloadGenerator;
             GoogleApi = googleApi;

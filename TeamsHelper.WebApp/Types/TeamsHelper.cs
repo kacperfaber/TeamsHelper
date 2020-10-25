@@ -25,7 +25,7 @@ namespace TeamsHelper.WebApp
         public IUpdateEventPayloadGenerator UpdateEventPayloadGenerator;
         public IInsertEventPayloadGenerator InsertEventPayloadGenerator;
         public ITeamsEventIsCanceledChecker TeamsEventIsCanceledChecker;
-        public ICanceledEventsUpdater CanceledEventsUpdater;
+        public ICancelledEventsUpdater CancelledEventsUpdater;
         public IGoogleConfigurationProvider GoogleConfigurationProvider;
         public IConfiguration Configuration;
 
@@ -34,7 +34,7 @@ namespace TeamsHelper.WebApp
             IInsertEventPayloadGenerator insertEventPayloadGenerator, IUpdateEventPayloadGenerator updateEventPayloadGenerator,
             IGoogleEventCorrector googleEventCorrector, IGoogleEventValidator googleEventValidator,
             IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder,
-            ITeamsEventIsCanceledChecker teamsEventIsCanceledChecker, ICanceledEventsUpdater canceledEventsUpdater, IGoogleConfigurationProvider googleConfigurationProvider, IConfiguration configuration)
+            ITeamsEventIsCanceledChecker teamsEventIsCanceledChecker, ICancelledEventsUpdater cancelledEventsUpdater, IGoogleConfigurationProvider googleConfigurationProvider, IConfiguration configuration)
         {
             TeamsApi = teamsApi;
             GoogleApi = googleApi;
@@ -48,7 +48,7 @@ namespace TeamsHelper.WebApp
             GoogleEventsProvider = googleEventsProvider;
             GoogleEventFinder = googleEventFinder;
             TeamsEventIsCanceledChecker = teamsEventIsCanceledChecker;
-            CanceledEventsUpdater = canceledEventsUpdater;
+            CancelledEventsUpdater = cancelledEventsUpdater;
             GoogleConfigurationProvider = googleConfigurationProvider;
             Configuration = configuration;
         }
@@ -99,7 +99,7 @@ namespace TeamsHelper.WebApp
                 }
             }
 
-            await CanceledEventsUpdater.UpdateAsync(teamsEvents, googleCalendar, googleEvents, googleConfiguration, googleToken);
+            await CancelledEventsUpdater.UpdateAsync(teamsEvents, googleCalendar, googleEvents, googleConfiguration, googleToken);
         }
     }
 }
