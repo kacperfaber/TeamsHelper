@@ -6,17 +6,19 @@ namespace TeamsHelper.WebApp
     public class UpdateCanceledEventPayloadGenerator : IUpdateCanceledEventPayloadGenerator
     {
         public IGoogleEventRemindersGenerator RemindersGenerator;
+        public ICanceledEventDescriptionGenerator DescriptionGenerator;
 
-        public UpdateCanceledEventPayloadGenerator(IGoogleEventRemindersGenerator remindersGenerator)
+        public UpdateCanceledEventPayloadGenerator(IGoogleEventRemindersGenerator remindersGenerator, ICanceledEventDescriptionGenerator descriptionGenerator)
         {
             RemindersGenerator = remindersGenerator;
+            DescriptionGenerator = descriptionGenerator;
         }
 
         public UpdateEventPayload Generate(GoogleEvent googleEvent, TeamsEvent teamsEvent, GoogleConfiguration configuration)
         {
             return new UpdateEventPayload
             {
-                Description = googleEvent.Description,
+                Description = DescriptionGenerator.Generate(googleEvent.Description, configuration.DescriptionAfterCancelled),
                 Summary = teamsEvent.Subject,
                 Start = googleEvent.Start,
                 End = googleEvent.End,
