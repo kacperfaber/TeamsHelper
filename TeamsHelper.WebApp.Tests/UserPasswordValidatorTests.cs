@@ -10,12 +10,7 @@ namespace TeamsHelper.WebApp.Tests
         [Fact]
         public async Task DontThrowsExceptions()
         {
-            Mock<User> user = new Mock<User>();
-            user.SetupGet(x => x.Password).Returns("helloWorld!");
-
-            UserPasswordValidator validator = new UserPasswordValidator();
-
-            bool res = await validator.ValidateAsync(user.Object, "helloWorld!");
+            
         }
     }
 }

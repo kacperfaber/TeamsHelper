@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Moq;
 using TeamsHelper.CalendarApi;
 using Xunit;
@@ -8,28 +9,32 @@ namespace TeamsHelper.WebApp.Tests
     public class UpdateEventPayloadGeneratorTests
     {
         [Fact]
-        public void DontThrowsExceptions()
+        public async Task DontThrowsExceptions()
         {
-            Mock<IGoogleTimeGenerator> mock = new Mock<IGoogleTimeGenerator>();
-            mock
-                .Setup(x => x.Generate(It.Is<DateTime>(match => default)))
-                .Returns<DateTime>(x => new GoogleTime {DateTime = x, TimeZone = "Europe/Warsaw"});
+            GoogleEvent googleEvent = new GoogleEvent
+            {
+                Start = new GoogleTime
+                {
+                    DateTime = DateTime.Now,
+                    TimeZone = "Europe/Warsaw"
+                },
+                End = new GoogleTime
+                {
+                    DateTime = DateTime.Now.AddDays(1),
+                    TimeZone = "Europe/Warsaw"
+                }
+            };
+            
+            Mock<IGoogleTimeGenerator> googleTimeGenerator = new Mock<IGoogleTimeGenerator>();
+            googleTimeGenerator.Setup(x => x.Generate(default)).Returns(new GoogleTime());
 
-            UpdateEventPayloadGenerator generator = new UpdateEventPayloadGenerator(mock.Object);
-
-            generator.GenerateAsync(new GoogleEvent());
+            UpdateEventPayloadGenerator generator = new UpdateEventPayloadGenerator(googleTimeGenerator.Object);
+            _ = await generator.GenerateAsync(googleEvent);
         }
 
         [Fact]
         public void ReturnsNotNull()
         {
-            Mock<IGoogleTimeGenerator> mock = new Mock<IGoogleTimeGenerator>();
-            mock.Setup(x => x.Generate(It.Is<DateTime>(match => default)))
-                .Returns<DateTime>(x => new GoogleTime {DateTime = x, TimeZone = "Europe/Warsaw"});
-
-            UpdateEventPayloadGenerator generator = new UpdateEventPayloadGenerator(mock.Object);
-            
-            Assert.NotNull(generator.GenerateAsync(new GoogleEvent()));
         }
     }
 }
