@@ -4,11 +4,11 @@ using Xunit;
 
 namespace TeamsHelper.WebApp.Tests
 {
-    public class IdentityRequestGeneratorTests
+    public class IdentityRequestGenerator_Generate
     {
         readonly Mock<IIdentityRequestMethodProvider> MethodProvider;
 
-        public IdentityRequestGeneratorTests()
+        public IdentityRequestGenerator_Generate()
         {
             MethodProvider = new Mock<IIdentityRequestMethodProvider>();
         }

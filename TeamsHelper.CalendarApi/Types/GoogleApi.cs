@@ -18,9 +18,14 @@ namespace TeamsHelper.CalendarApi
 
         readonly HttpClient _http = new HttpClient();
 
+        public GoogleApi()
+        {
+        }
+
         public GoogleApi(IGetCalendarsRequestGenerator getCalendarsRequestGenerator, ICreateCalendarRequestGenerator createCalendarRequestGenerator,
             IInsertEventRequestGenerator insertEventRequestGenerator, IGetCalendarRequestGenerator getCalendarRequestGenerator,
-            IDeleteEventRequestGenerator deleteEventRequestGenerator, IListEventsRequestGenerator listEventsRequestGenerator, IUpdateEventRequestGenerator updateEventRequestGenerator)
+            IDeleteEventRequestGenerator deleteEventRequestGenerator, IListEventsRequestGenerator listEventsRequestGenerator,
+            IUpdateEventRequestGenerator updateEventRequestGenerator)
         {
             GetCalendarsRequestGenerator = getCalendarsRequestGenerator;
             CreateCalendarRequestGenerator = createCalendarRequestGenerator;
@@ -31,7 +36,7 @@ namespace TeamsHelper.CalendarApi
             UpdateEventRequestGenerator = updateEventRequestGenerator;
         }
 
-        public async Task<List<GoogleCalendar>> GetCalendarsAsync(string accessToken)
+        public virtual async Task<List<GoogleCalendar>> GetCalendarsAsync(string accessToken)
         {
             HttpRequestMessage req = GetCalendarsRequestGenerator.Generate(accessToken);
             HttpResponseMessage response = await _http.SendAsync(req);
@@ -41,7 +46,7 @@ namespace TeamsHelper.CalendarApi
             return calendars;
         }
 
-        public async Task<GoogleCalendar> GetCalendar(string calendarId, string accessToken)
+        public virtual async Task<GoogleCalendar> GetCalendar(string calendarId, string accessToken)
         {
             HttpRequestMessage req = GetCalendarRequestGenerator.Generate(calendarId, accessToken);
             HttpResponseMessage response = await _http.SendAsync(req);
@@ -49,7 +54,7 @@ namespace TeamsHelper.CalendarApi
             return JObject.Parse(content).ToObject<GoogleCalendar>();
         }
 
-        public async Task<GoogleCalendar> CreateCalendarAsync(GoogleCalendar googleCalendar, string accessToken)
+        public virtual async Task<GoogleCalendar> CreateCalendarAsync(GoogleCalendar googleCalendar, string accessToken)
         {
             HttpRequestMessage req = CreateCalendarRequestGenerator.Generate(googleCalendar, accessToken);
             HttpResponseMessage response = await _http.SendAsync(req);
@@ -58,7 +63,7 @@ namespace TeamsHelper.CalendarApi
             return JObject.Parse(content).ToObject<GoogleCalendar>();
         }
 
-        public async Task<GoogleEvent> InsertAsync(InsertEventPayload payload, string calendarId, string accessToken)
+        public virtual async Task<GoogleEvent> InsertAsync(InsertEventPayload payload, string calendarId, string accessToken)
         {
             HttpRequestMessage request = InsertEventRequestGenerator.Generate(calendarId, payload, accessToken);
             HttpResponseMessage response = await _http.SendAsync(request);
@@ -66,13 +71,13 @@ namespace TeamsHelper.CalendarApi
             return JObject.Parse(content).ToObject<GoogleEvent>();
         }
 
-        public async Task DeleteAsync(string calendarId, string eventId, string accessToken)
+        public virtual async Task DeleteAsync(string calendarId, string eventId, string accessToken)
         {
             HttpRequestMessage request = DeleteEventRequestGenerator.Generate(calendarId, eventId, accessToken);
             await _http.SendAsync(request);
         }
 
-        public async Task<List<GoogleEvent>> ListAsync(string calendarId, DateTime updatedMin,  string accessToken)
+        public virtual async Task<List<GoogleEvent>> ListAsync(string calendarId, DateTime updatedMin, string accessToken)
         {
             HttpRequestMessage request = ListEventsRequestGenerator.Generate(calendarId, updatedMin, accessToken);
             HttpResponseMessage response = await _http.SendAsync(request);
@@ -80,7 +85,8 @@ namespace TeamsHelper.CalendarApi
             return obj.SelectToken("items").ToObject<List<GoogleEvent>>();
         }
 
-        public async Task<GoogleEvent> UpdateAsync(UpdateEventPayload updateEventPayload, string calendarId, string eventId, string accessToken)
+        public virtual async Task<GoogleEvent> UpdateAsync(UpdateEventPayload updateEventPayload, string calendarId, string eventId,
+            string accessToken)
         {
             HttpRequestMessage req = UpdateEventRequestGenerator.Generate(updateEventPayload, calendarId, eventId, accessToken);
             HttpResponseMessage response = await _http.SendAsync(req);

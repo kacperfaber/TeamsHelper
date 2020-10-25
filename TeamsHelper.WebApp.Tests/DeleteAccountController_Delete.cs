@@ -39,7 +39,7 @@ namespace TeamsHelper.WebApp.Tests
         }
 
         [Fact]
-        public async Task ModelNotNull()
+        public async Task NotNullModel()
         {
             UserProvider.Setup(x => x.ProvideAsync(It.IsAny<HttpContext>())).ReturnsAsync(new User());
             
@@ -63,7 +63,7 @@ namespace TeamsHelper.WebApp.Tests
         }
 
         [Fact]
-        public async Task ModelUserNotNull()
+        public async Task NotNullModelUser()
         {
             UserProvider.Setup(x => x.ProvideAsync(It.IsAny<HttpContext>())).ReturnsAsync(new User());
             
@@ -77,7 +77,7 @@ namespace TeamsHelper.WebApp.Tests
         }
         
         [Fact]
-        public async Task ModelUserIsExpected()
+        public async Task ExpectedModelUser()
         {
             User user = new User();
             

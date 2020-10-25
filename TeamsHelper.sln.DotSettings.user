@@ -2,6 +2,9 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=be166d70_002D6ad9_002D46f2_002D904c_002D42f199f1ad11/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DeleteAccountController_Delete" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::D630993C-E83E-41F1-901B-998EAEF163B9::.NETCoreApp,Version=v3.1::TeamsHelper.WebApp.Tests.DeleteAccountController_Delete&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::D630993C-E83E-41F1-901B-998EAEF163B9::.NETCoreApp,Version=v3.1::TeamsHelper.WebApp.Tests.AccessTokenValidator_ValidateAsync.DontThrows&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::D630993C-E83E-41F1-901B-998EAEF163B9::.NETCoreApp,Version=v3.1::TeamsHelper.WebApp.Tests.GoogleTimeGenerator_Generate.ExpectedDateTime&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::D630993C-E83E-41F1-901B-998EAEF163B9::.NETCoreApp,Version=v3.1::TeamsHelper.WebApp.Tests.EventsDatesGenerator_Generate.ExpectedDayEndingAt&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fd153e96_002Deffe_002D4879_002Dad4a_002Defd4a15438d3/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="True" ContinuousTestingMode="3" Name="All tests from &amp;lt;TeamsHelper.WebApp.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
