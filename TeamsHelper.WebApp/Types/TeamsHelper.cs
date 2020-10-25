@@ -21,7 +21,6 @@ namespace TeamsHelper.WebApp
         public IGoogleEventFinder GoogleEventFinder;
         public IGoogleEventsProvider GoogleEventsProvider;
         public IGoogleEventValidator GoogleEventValidator;
-        public IGoogleCalendarCleaner GoogleCalendarCleaner;
         public IGoogleEventCorrector GoogleEventCorrector;
         public IUpdateEventPayloadGenerator UpdateEventPayloadGenerator;
         public IInsertEventPayloadGenerator InsertEventPayloadGenerator;
@@ -33,7 +32,7 @@ namespace TeamsHelper.WebApp
         public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider,
             IEventsDatesGenerator eventsDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider,
             IInsertEventPayloadGenerator insertEventPayloadGenerator, IUpdateEventPayloadGenerator updateEventPayloadGenerator,
-            IGoogleEventCorrector googleEventCorrector, IGoogleCalendarCleaner googleCalendarCleaner, IGoogleEventValidator googleEventValidator,
+            IGoogleEventCorrector googleEventCorrector, IGoogleEventValidator googleEventValidator,
             IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder,
             ITeamsEventIsCanceledChecker teamsEventIsCanceledChecker, ICanceledEventsUpdater canceledEventsUpdater, IGoogleConfigurationProvider googleConfigurationProvider, IConfiguration configuration)
         {
@@ -45,7 +44,6 @@ namespace TeamsHelper.WebApp
             InsertEventPayloadGenerator = insertEventPayloadGenerator;
             UpdateEventPayloadGenerator = updateEventPayloadGenerator;
             GoogleEventCorrector = googleEventCorrector;
-            GoogleCalendarCleaner = googleCalendarCleaner;
             GoogleEventValidator = googleEventValidator;
             GoogleEventsProvider = googleEventsProvider;
             GoogleEventFinder = googleEventFinder;
@@ -55,7 +53,7 @@ namespace TeamsHelper.WebApp
             Configuration = configuration;
         }
 
-        public async Task<Raport> DoSomething(string microsoftToken, string googleToken)
+        public async Task DoSomething(string microsoftToken, string googleToken)
         {
             List<TeamsCalendar> allCalendars = await TeamsApi.GetCalendarsAsync(microsoftToken);
 
@@ -101,11 +99,7 @@ namespace TeamsHelper.WebApp
                 }
             }
 
-            // await GoogleCalendarCleaner.CleanAsync(googleCalendar, googleEvents, teamsEvents, googleToken);
-            
             await CanceledEventsUpdater.UpdateAsync(teamsEvents, googleCalendar, googleEvents, googleConfiguration, googleToken);
-
-            return new Raport();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace TeamsHelper.WebApp
     {
         public GoogleEventReminders Generate(GoogleConfiguration googleConfiguration, bool isCancelled)
         {
-            List<GoogleRemind> reminds = (isCancelled ? googleConfiguration.CanceledReminders : googleConfiguration.Reminders).ConvertAll(x => new GoogleRemind {Method = "popup", Minutes = x.MinutesBefore});
+            List<GoogleRemind> reminds = (isCancelled ? googleConfiguration.CancelledReminders : googleConfiguration.Reminders).ConvertAll(x => new GoogleRemind {Method = "popup", Minutes = x.MinutesBefore});
 
             return new GoogleEventReminders
             {
