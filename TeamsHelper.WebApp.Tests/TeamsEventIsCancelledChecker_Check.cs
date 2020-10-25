@@ -4,7 +4,7 @@ using Xunit;
 
 namespace TeamsHelper.WebApp.Tests
 {
-    public class TeamsEventIsCanceledCheckerTests
+    public class TeamsEventIsCancelledChecker_Check
     {
         [Fact]
         public void DontThrows()
