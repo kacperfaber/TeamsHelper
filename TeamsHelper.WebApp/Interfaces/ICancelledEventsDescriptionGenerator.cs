@@ -3,7 +3,7 @@ using TeamsHelper.TeamsApi;
 
 namespace TeamsHelper.WebApp
 {
-    public interface ICanceledEventDescriptionGenerator
+    public interface ICancelledEventsDescriptionGenerator
     {
         string Generate(string originalDescription, DescriptionAfterCancelled afterCancelled);
     }
