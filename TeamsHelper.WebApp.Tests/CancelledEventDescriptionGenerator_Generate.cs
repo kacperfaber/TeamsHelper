@@ -84,5 +84,16 @@ namespace TeamsHelper.WebApp.Tests
             string res = exec("Hello World!", DescriptionAfterCancelled.ChangeDescription);
             Assert.Equal(annotate, res);
         }
+
+        [Fact]
+        public void MatchingRegexIfAppendDescription()
+        {
+            const string annotate = "{annotate}";
+            const string desc = "Hello World!";
+            
+            AnnotateGenerator.Setup(x => x.Generate(It.IsAny<DateTime>())).Returns(annotate);
+            string res = exec(desc, DescriptionAfterCancelled.AppendDescription);
+            Assert.Matches(@$"^{desc}\n\n{annotate}$", res);
+        }
     }
 }
