@@ -108,6 +108,7 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IUpdateEventRequestGenerator, UpdateEventRequestGenerator>();
             services.AddScoped<IUpdateEventUrlGenerator, UpdateEventUrlGenerator>();
 
+            services.AddScoped<ISummaryGenerator, SummaryGenerator>();
             services.AddScoped<ICancelledAnnotateGenerator, CancelledAnnotateGenerator>();
             services.AddScoped<IDateTimeConverter, DateTimeConverter>();
             services.AddScoped<ICancelledEventsDescriptionGenerator, CancelledEventsDescriptionGenerator>();
