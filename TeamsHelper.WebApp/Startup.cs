@@ -164,9 +164,10 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IUserStore, UserStore>();
             services.AddScoped<IGoogleEventValidator, GoogleEventValidator>();
             services.AddScoped<IUserDeletor, UserDeletor>();
+            services.AddScoped<WebApp.IHttpClient, WebApp.HttpClient>();
 
             services.AddScoped<TeamsApi.TeamsApi>();
-            services.AddScoped<IHttpClient, TeamsApi.HttpClient>();
+            services.AddScoped<TeamsApi.IHttpClient, TeamsApi.HttpClient>();
             services.AddScoped<IGetEventsUrlGenerator, GetEventsUrlGenerator>();
             services.AddScoped<IGetEventsRequestGenerator, GetEventsRequestGenerator>();
             services.AddScoped<TeamsApi.IGetCalendarsUrlGenerator, TeamsApi.GetCalendarsUrlGenerator>();

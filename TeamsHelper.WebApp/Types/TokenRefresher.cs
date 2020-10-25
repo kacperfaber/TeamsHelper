@@ -10,13 +10,14 @@ namespace TeamsHelper.WebApp
     {
         public IFormUrlGenerator FormUrlGenerator;
         public IJsonDeserializer JsonDeserializer;
+        public IHttpClient Http;
         
-        readonly HttpClient _http = new HttpClient();
 
-        public TokenRefresher(IFormUrlGenerator formUrlGenerator, IJsonDeserializer jsonDeserializer)
+        public TokenRefresher(IFormUrlGenerator formUrlGenerator, IJsonDeserializer jsonDeserializer, IHttpClient http)
         {
             FormUrlGenerator = formUrlGenerator;
             JsonDeserializer = jsonDeserializer;
+            Http = http;
         }
 
         public async Task<Token> RefreshAsync(Authorization authorization, OAuthConfiguration configuration)
@@ -29,7 +30,7 @@ namespace TeamsHelper.WebApp
                 RequestUri = new Uri(configuration.TokenEndpoint)
             };
 
-            string content = await (await _http.SendAsync(req)).Content.ReadAsStringAsync();
+            string content = await (await Http.SendAsync(req)).Content.ReadAsStringAsync();
 
             return JsonDeserializer.Deserialize<Token>(content);
         }
