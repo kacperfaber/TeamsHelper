@@ -5,5 +5,7 @@ namespace TeamsHelper.WebApp
     {
         public TokenValidation GoogleValidation { get; set; }
         public TokenValidation MicrosoftValidation { get; set; }
+        public Token GoogleToken { get; set; }
+        public Token MicrosoftToken { get; set; }
     }
 }
