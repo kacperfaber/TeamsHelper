@@ -22,10 +22,12 @@ namespace TeamsHelper.WebApp
 
         public async Task<Token> RefreshAsync(Authorization authorization, OAuthConfiguration configuration)
         {
+            FormUrlEncodedContent form = await FormUrlGenerator.GenerateAsync("refresh_token", authorization.RenewToken, "refresh_token", configuration.RedirectUrl,
+                configuration.ClientId, configuration.ClientSecret);
+
             HttpRequestMessage req = new HttpRequestMessage
             {
-                Content = await FormUrlGenerator.GenerateAsync("refresh_token", authorization.RenewToken, "refresh_token", configuration.RedirectUrl,
-                    configuration.ClientId, configuration.ClientSecret),
+                Content = form,
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(configuration.TokenEndpoint)
             };
@@ -36,6 +38,7 @@ namespace TeamsHelper.WebApp
             Token token = JsonDeserializer.Deserialize<Token>(content);
             token.ResponseBody = content;
             token.Code = response.StatusCode;
+            token.Request = await form.ReadAsStringAsync();
             
             return token;
         }

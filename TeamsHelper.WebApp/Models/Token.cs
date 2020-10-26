@@ -19,5 +19,8 @@ namespace TeamsHelper.WebApp
         
         [JsonProperty("code")]
         public HttpStatusCode Code { get; set; }
+        
+        [JsonProperty("request")]
+        public string Request { get; set; }
     }
 }
