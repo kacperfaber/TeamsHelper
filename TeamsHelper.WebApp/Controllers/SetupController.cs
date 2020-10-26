@@ -38,6 +38,7 @@ namespace TeamsHelper.WebApp
                 OAuthConfiguration googleConfiguration = AuthConfigurationProvider.Provide(Configuration, "Google");
                 Token googleToken = await TokenRefresher.RefreshAsync(user.GoogleAuthorization, googleConfiguration);
                 viewModel.GoogleValidation = await AccessTokenValidator.ValidateAsync(googleToken, googleConfiguration);
+                viewModel.GoogleToken = googleToken;
             }
 
             if (user.MicrosoftAuthorization != null)
@@ -45,6 +46,7 @@ namespace TeamsHelper.WebApp
                 OAuthConfiguration microsoftConfiguration = AuthConfigurationProvider.Provide(Configuration, "Microsoft");
                 Token microsoftToken = await TokenRefresher.RefreshAsync(user.MicrosoftAuthorization, microsoftConfiguration);
                 viewModel.MicrosoftValidation = await AccessTokenValidator.ValidateAsync(microsoftToken, microsoftConfiguration);
+                viewModel.GoogleToken = microsoftToken;
             }
 
             return View("Setup", viewModel);

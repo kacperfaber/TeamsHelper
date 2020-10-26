@@ -30,9 +30,14 @@ namespace TeamsHelper.WebApp
                 RequestUri = new Uri(configuration.TokenEndpoint)
             };
 
-            string content = await (await Http.SendAsync(req)).Content.ReadAsStringAsync();
+            HttpResponseMessage response = await Http.SendAsync(req);
+            string content = await response.Content.ReadAsStringAsync();
 
-            return JsonDeserializer.Deserialize<Token>(content);
+            Token token = JsonDeserializer.Deserialize<Token>(content);
+            token.ResponseBody = content;
+            token.Code = response.StatusCode;
+            
+            return token;
         }
     }
 }

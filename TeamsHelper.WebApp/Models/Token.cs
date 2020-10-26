@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Net;
+using Newtonsoft.Json;
 
 namespace TeamsHelper.WebApp
 {
@@ -12,5 +13,11 @@ namespace TeamsHelper.WebApp
         
         [JsonProperty("refresh_token")]
         public string RefreshToken { get; set; }
+        
+        [JsonProperty("response")]
+        public string ResponseBody { get; set; }
+        
+        [JsonProperty("code")]
+        public HttpStatusCode Code { get; set; }
     }
 }
