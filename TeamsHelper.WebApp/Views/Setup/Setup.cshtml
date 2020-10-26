@@ -35,13 +35,6 @@
     else
     {
         @await Html.PartialAsync("_TokenValidationView", Model.GoogleValidation)
-
-        <div style="margin: 15px;">
-            @Model.GoogleToken.ResponseBody
-            <br>
-            <br>
-            @Model.GoogleToken.Request
-        </div>
     }
 
 
