@@ -45,15 +45,6 @@ namespace TeamsHelper.WebApp
             {
                 ServiceConfiguration serviceConfiguration = ServiceConfigurationProvider.Provide(Configuration);
 
-                // if (IsNightChecker.Check(DateTime.Now) && !serviceConfiguration.WorkOnNight)
-                // {
-                // }
-                //
-                // else
-                // {
-                //     
-                // }
-                
                 List<User> users = await UsersProvider.ProvideAsync();
 
                 OAuthConfiguration googleConfiguration = OAuthConfigurationProvider.Provide(Configuration, "Google");
