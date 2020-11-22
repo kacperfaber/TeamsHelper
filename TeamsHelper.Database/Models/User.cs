@@ -25,8 +25,5 @@ namespace TeamsHelper.Database
         public Authorization MicrosoftAuthorization { get; set; }
         
         public string MicrosoftAuthorizationId { get; set; }
-
-        [InverseProperty("User")]
-        public List<SynchronizeRaport> SynchronizeRaports { get; set; }
     }
 }
