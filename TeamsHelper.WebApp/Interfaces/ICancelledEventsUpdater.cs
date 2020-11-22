@@ -7,7 +7,7 @@ namespace TeamsHelper.WebApp
 {
     public interface ICancelledEventsUpdater
     {
-        Task UpdateAsync(List<TeamsEvent> teamsEvents, GoogleCalendar googleCalendar, List<GoogleEvent> googleEvents,
+        Task<List<CanceledEvent>> UpdateAsync(IEnumerable<TeamsEvent> teamsEvents, GoogleCalendar googleCalendar, List<GoogleEvent> googleEvents,
             GoogleConfiguration configuration, string googleToken);
     }
 }

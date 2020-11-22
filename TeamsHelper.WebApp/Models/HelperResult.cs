@@ -4,6 +4,7 @@ namespace TeamsHelper.WebApp
 {
     public class HelperResult
     {
-        public IEnumerable<Event> Events { get; set; }
+        public List<Event> Events { get; set; }
+        public List<CanceledEvent> CanceledEvents { get; set; }
     }
 }

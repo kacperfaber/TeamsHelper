@@ -60,7 +60,9 @@ namespace TeamsHelper.WebApp
 
                     if (googleValidation.Success && microsoftValidation.Success)
                     {
-                        await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
+                        HelperResult result = await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
+                        
+                        // Make synchronization
                     }
                 }
 

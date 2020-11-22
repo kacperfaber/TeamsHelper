@@ -107,6 +107,9 @@ namespace TeamsHelper.WebApp
             services.AddScoped<IListEventsUrlGenerator, ListEventsUrlGenerator>();
             services.AddScoped<IUpdateEventRequestGenerator, UpdateEventRequestGenerator>();
             services.AddScoped<IUpdateEventUrlGenerator, UpdateEventUrlGenerator>();
+            
+            services.AddScoped<IHelperResultGenerator, HelperResultGenerator>();
+            services.AddScoped<IEventGenerator, EventGenerator>();
 
             services.AddScoped<ISummaryGenerator, SummaryGenerator>();
             services.AddScoped<ICancelledAnnotateGenerator, CancelledAnnotateGenerator>();

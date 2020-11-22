@@ -8,8 +8,10 @@ namespace TeamsHelper.WebApp
         public string TeamsEventId { get; set; }
         public string TeamsEventSubject { get; set; }
         public string TeamsEventOrganizerEmail { get; set; }
-        public DateTime PlannedAt { get; set; }
+        public DateTime StartingAt { get; set; }
+        public DateTime EndingAt { get; set; }
+        public string GoogleEventSummary { get; set; }
+        public string GoogleEventDescription { get; set; }
         public bool IsUpdated { get; set; }
-        public bool IsCreated { get; set; }
     }
 }

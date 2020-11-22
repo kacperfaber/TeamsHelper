@@ -28,13 +28,16 @@ namespace TeamsHelper.WebApp
         public ICancelledEventsUpdater CancelledEventsUpdater;
         public IGoogleConfigurationProvider GoogleConfigurationProvider;
         public IConfiguration Configuration;
+        
+        public IEventGenerator EventGenerator;
+        public IHelperResultGenerator HelperResultGenerator;
 
         public TeamsHelper(TeamsApi.TeamsApi teamsApi, GoogleApi googleApi, ITeamsCalendarProvider teamsCalendarProvider,
             IEventsDatesGenerator eventsDatesGenerator, IPrimaryCalendarProvider primaryCalendarProvider,
             IInsertEventPayloadGenerator insertEventPayloadGenerator, IUpdateEventPayloadGenerator updateEventPayloadGenerator,
             IGoogleEventCorrector googleEventCorrector, IGoogleEventValidator googleEventValidator,
             IGoogleEventsProvider googleEventsProvider, IGoogleEventFinder googleEventFinder,
-            ITeamsEventIsCanceledChecker teamsEventIsCanceledChecker, ICancelledEventsUpdater cancelledEventsUpdater, IGoogleConfigurationProvider googleConfigurationProvider, IConfiguration configuration)
+            ITeamsEventIsCanceledChecker teamsEventIsCanceledChecker, ICancelledEventsUpdater cancelledEventsUpdater, IGoogleConfigurationProvider googleConfigurationProvider, IConfiguration configuration, IEventGenerator eventGenerator, IHelperResultGenerator helperResultGenerator)
         {
             TeamsApi = teamsApi;
             GoogleApi = googleApi;
@@ -51,10 +54,14 @@ namespace TeamsHelper.WebApp
             CancelledEventsUpdater = cancelledEventsUpdater;
             GoogleConfigurationProvider = googleConfigurationProvider;
             Configuration = configuration;
+            EventGenerator = eventGenerator;
+            HelperResultGenerator = helperResultGenerator;
         }
 
-        public async Task DoSomething(string microsoftToken, string googleToken)
+        public async Task<HelperResult> DoSomething(string microsoftToken, string googleToken)
         {
+            List<Event> eventsResult = new List<Event>();
+            
             List<TeamsCalendar> allCalendars = await TeamsApi.GetCalendarsAsync(microsoftToken);
 
             TeamsCalendar teamsCalendar = await TeamsCalendarProvider.ProvideAsync(allCalendars);
@@ -81,7 +88,10 @@ namespace TeamsHelper.WebApp
                 if (googleEvent == null)
                 {
                     InsertEventPayload insertPayload = await InsertEventPayloadGenerator.GenerateAsync(teamsEvent,googleConfiguration);
-                    await GoogleApi.InsertAsync(insertPayload, googleCalendar.Id, googleToken);
+                    GoogleEvent insertedEvent = await GoogleApi.InsertAsync(insertPayload, googleCalendar.Id, googleToken);
+
+                    Event @event = EventGenerator.Generate(teamsEvent, insertedEvent, false);
+                    eventsResult.Add(@event);
                 }
 
                 else
@@ -99,7 +109,9 @@ namespace TeamsHelper.WebApp
                 }
             }
 
-            await CancelledEventsUpdater.UpdateAsync(teamsEvents, googleCalendar, googleEvents, googleConfiguration, googleToken);
+            List<CanceledEvent> canceledEvents = await CancelledEventsUpdater.UpdateAsync(teamsEvents, googleCalendar, googleEvents, googleConfiguration, googleToken);
+
+            return HelperResultGenerator.Generate(eventsResult, canceledEvents);
         }
     }
 }
