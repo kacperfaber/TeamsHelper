@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj": {}
+    "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {
+    "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
+        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
         "projectName": "TeamsHelper.CalendarApi",
-        "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
+        "projectPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
         "packagesPath": "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\obj\\",
+        "outputPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -62,21 +62,16 @@
           "warn": true,
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
-      },
-      "runtimes": {
-        "linux": {
-          "#import": []
-        }
       }
     },
-    "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj": {
+    "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj",
+        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj",
         "projectName": "TeamsHelper.Database",
-        "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj",
+        "projectPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj",
         "packagesPath": "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.Database\\obj\\",
+        "outputPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.Database\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -127,21 +122,16 @@
           "warn": true,
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
-      },
-      "runtimes": {
-        "linux": {
-          "#import": []
-        }
       }
     },
-    "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj": {
+    "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj",
+        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj",
         "projectName": "TeamsHelper.TeamsApi",
-        "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj",
+        "projectPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj",
         "packagesPath": "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\obj\\",
+        "outputPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -192,21 +182,16 @@
           "warn": true,
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
-      },
-      "runtimes": {
-        "linux": {
-          "#import": []
-        }
       }
     },
-    "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj": {
+    "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj",
+        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj",
         "projectName": "TeamsHelper.WebApp",
-        "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj",
+        "projectPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj",
         "packagesPath": "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.WebApp\\obj\\",
+        "outputPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -223,14 +208,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {
-                "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj"
+              "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {
+                "projectPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj"
               },
-              "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj": {
-                "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj"
+              "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj": {
+                "projectPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj"
               },
-              "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj": {
-                "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj"
+              "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj": {
+                "projectPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj"
               }
             }
           }
@@ -296,11 +281,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "linux": {
-          "#import": []
         }
       }
     }

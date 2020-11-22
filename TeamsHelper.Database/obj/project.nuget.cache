@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "38wisxrbk7dwXC0pRZ9AesXL8YbqDHags4YDLwiIDAvFnq0Tv78RPPtqR48Rj7ef4+NW3C5PYsriHyrRDtYrtA==",
+  "dgSpecHash": "10r/LdQGOG7y37LCFYWXQeHD64f1E/Yr2NEB87RUGBQQ8jU9Qrp+m2jexnqQmrQdRBXx9Ee4GPvKfAwzdcR4ng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj",
+  "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.Database\\TeamsHelper.Database.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JmkZ9gIFzR6YgDkCFHa2V4maHrk9ezD87VrW3LQie2JbfHRR/cSfFS3qKI7AhKHsosvloLnTBajyrATN6M7Syg==",
+  "dgSpecHash": "siF8BC3WQdBA1j8VP5HTX32EjO6m9Cv3o6hhDayXnmWYFUDA+zNURNQfSg+/D/ow64s2bfy6bogiqhgTDWYKrA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj",
+  "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.TeamsApi\\TeamsHelper.TeamsApi.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

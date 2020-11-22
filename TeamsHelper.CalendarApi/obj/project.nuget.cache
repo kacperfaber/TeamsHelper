@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Lvl9XnxasAFyPdrIhaHjxS2S3ABM7aAd4LlKZ0rTPcH7FQIdT9Q2xekvxZnZzfbVqihrxpmijbeVMIUcwHuroA==",
+  "dgSpecHash": "u9u1zjbz8ux/EKaym0sdzYolbX0voWoUbbbW7RhTN+Lwy3EoJMQyCq8iq74EPhNDebBgiCmegSI7hUb+nZV9LA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
+  "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {}
+    "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {
+    "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
+        "projectUniqueName": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
         "projectName": "TeamsHelper.CalendarApi",
-        "projectPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
+        "projectPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\TeamsHelper.CalendarApi.csproj",
         "packagesPath": "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\obj\\",
+        "outputPath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.CalendarApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -61,11 +61,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "linux": {
-          "#import": []
         }
       }
     }

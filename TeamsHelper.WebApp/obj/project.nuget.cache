@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hPGJcD5RVbnjIU3FlC86NfOsALK4ak7MyAXJYyG3WZh1pMDSIgI+ASI3LOrogxSCT4oyqCV3N8lNUaIt27CPCQ==",
+  "dgSpecHash": "zx1TDx45jPhnhKjjSTikKUd8KdJZVGH/mw1vBCu6OUOa3IE/w2faJj4lxavUaa5Z3xpWdrfJdxemlp4L0K3X4g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\Desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj",
+  "projectFilePath": "C:\\Users\\kacpe_v67r5jm\\desktop\\TeamsHelper\\TeamsHelper.WebApp\\TeamsHelper.WebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\kacpe_v67r5jm\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
