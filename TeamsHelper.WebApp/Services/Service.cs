@@ -38,6 +38,8 @@ namespace TeamsHelper.WebApp
             IsNightChecker = Factory.ServiceProvider.GetService<IIsNightChecker>();
             SleepTimeProvider = Factory.ServiceProvider.GetService<ISleepTimeProvider>();
             ServiceConfigurationProvider = Factory.ServiceProvider.GetService<IServiceConfigurationProvider>();
+            Context = Factory.ServiceProvider.GetService<HelperContext>();
+            SynchronizationGenerator = Factory.ServiceProvider.GetService<ISynchronizationGenerator>();
         }
 
         public IServiceScope Factory { get; }

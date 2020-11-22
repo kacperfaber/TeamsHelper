@@ -110,6 +110,9 @@ namespace TeamsHelper.WebApp
             
             services.AddScoped<IHelperResultGenerator, HelperResultGenerator>();
             services.AddScoped<IEventGenerator, EventGenerator>();
+            services.AddScoped<ISynchronizationGenerator, SynchronizationGenerator>();
+            services.AddScoped<ISynchronizationEventsGenerator, SynchronizationEventsGenerator>();
+            services.AddScoped<ISynchronizationEventGenerator, SynchronizationEventGenerator>();
 
             services.AddScoped<ISummaryGenerator, SummaryGenerator>();
             services.AddScoped<ICancelledAnnotateGenerator, CancelledAnnotateGenerator>();
