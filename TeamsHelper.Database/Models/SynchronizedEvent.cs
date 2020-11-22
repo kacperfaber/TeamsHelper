@@ -21,5 +21,7 @@ namespace TeamsHelper.Database
         public string TeamsTitle { get; set; }
 
         public string TeamsTeacher { get; set; }
+        public DateTime StartingAt { get; set; }
+        public DateTime EndingAt { get; set; }
     }
 }

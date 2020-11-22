@@ -22,6 +22,9 @@ namespace TeamsHelper.WebApp
         public ISleepTimeProvider SleepTimeProvider;
         public IServiceConfigurationProvider ServiceConfigurationProvider;
 
+        public ISynchronizationGenerator SynchronizationGenerator;
+        public HelperContext Context;
+
         public Service(IServiceScopeFactory scopeFactory)
         {
             Factory = scopeFactory.CreateScope();
@@ -61,8 +64,11 @@ namespace TeamsHelper.WebApp
                     if (googleValidation.Success && microsoftValidation.Success)
                     {
                         HelperResult result = await TeamsHelper.DoSomething(microsoftToken.AccessToken, googleToken.AccessToken);
-                        
-                        // Make synchronization
+
+                        Synchronization sync = SynchronizationGenerator.Generate(result, user);
+
+                        Context.Add(sync);
+                        await Context.SaveChangesAsync(stoppingToken);
                     }
                 }
 
