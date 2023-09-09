@@ -1,5 +1,12 @@
 # TeamsHelper
-Web App to synchronize Teams calendar with Google Calendar.
+C# WebService to synchronize Teams calendar with Google calendar.
+<br>
+It supports customization of reminders and colors.
+<br>
+We can customize what to do with canceled event 
+* Delete reminders
+* Change colors
+* Delete event from google calendar.
 <br>
 It's archived right now.
 
