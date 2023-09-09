@@ -2,8 +2,8 @@
 **/*.db
 
 # build
-**/obj/*
-**/bin*
+**/obj/
+**/bin/
 
 # idea
 .idea/
